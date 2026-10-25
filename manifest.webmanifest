@@ -1,0 +1,30 @@
+{
+  "name": "GCHE Estudio",
+  "short_name": "GCHE",
+  "lang": "es-MX",
+  "description": "App de estudio para el Ceneval: 12 semanas por aparatos y sistemas, examen con retroalimentación, temporizador y salud.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f5f5f7",
+  "theme_color": "#f5f5f7",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
