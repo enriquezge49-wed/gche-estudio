@@ -824,6 +824,99 @@ body.rv-on .plate-wrap:not(.in) .pl-lbl { opacity: 0; }
 .plate-info h3 { margin: 0; font-family: var(--f-display); font-size: 28px; font-weight: 600; }
 .plate-info p { margin: 0; color: var(--ink-2); font-size: 17px; }
 
+
+/* Hoy en salud */
+:root { --hb-kcal: #ff6b4a; --hb-pro: #f5a524; --hb-agua: #32ade6; --hb-mov: #34c759; --hb-over: #ff9f0a; }
+.hz-scene { width: 100%; height: auto; border-radius: 24px; display: block; }
+.hz-scene .sc-sun { animation: scFloat 6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+.hz-scene .sc-cloud { animation: scDrift 14s ease-in-out infinite alternate; }
+.hz-scene .sc-cloud.b { animation-duration: 19s; }
+.hz-scene .sc-star { animation: scTwinkle 2.6s ease-in-out infinite; }
+@keyframes scFloat { 50% { transform: translateY(-6px); } }
+@keyframes scDrift { to { transform: translateX(34px); } }
+@keyframes scTwinkle { 50% { opacity: .25; } }
+.hz-tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 2px; scrollbar-width: none; width: 100%; max-width: 100%; align-self: stretch; justify-content: flex-start; }
+@media (min-width: 900px) { .hz-tabs { justify-content: center; flex-wrap: wrap; } }
+#hz-date { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 6px 10px; }
+#hz-scene { width: 100%; max-width: 760px; }
+.hz-tab { flex: none; display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 7px; border-radius: 980px; background: var(--surface); font-size: 14px; font-weight: 600; color: var(--ink); transition: transform .3s var(--spring); }
+.hz-tab:active { transform: scale(.95); }
+.hz-tab .bub { width: 28px; height: 28px; border-radius: 50%; display: grid; place-items: center; color: #fff; }
+.hz-tab .bub .ico { width: 16px; height: 16px; stroke-width: 2; }
+.hz-chip { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 980px; background: var(--surface); font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.hz-chip i { width: 8px; height: 8px; border-radius: 50%; background: var(--c, var(--primary)); }
+.hz-card { border-radius: 24px; background: var(--surface); padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+.hb { display: flex; flex-direction: column; gap: 16px; }
+.hb-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-variant-numeric: tabular-nums; }
+.hb-name { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; }
+.hb-name i { width: 10px; height: 10px; border-radius: 3px; background: var(--c); }
+.hb-top b { font-size: 15px; font-weight: 600; }
+.hb-top b small { color: var(--ink-2); font-weight: 500; }
+.hb-track { position: relative; height: 16px; border-radius: 980px; background: var(--surface-2); overflow: hidden; margin-top: 6px; }
+.hb-fill { position: absolute; inset: 0; border-radius: inherit; background: var(--c); transform-origin: left; transform: scaleX(0); transition: transform 1.1s var(--spring), background .4s; transition-delay: var(--d, 0s); }
+.hb-row.over .hb-fill { background: var(--hb-over); }
+.hb-note { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+.hb-row.over .hb-note { color: var(--hb-over); }
+.hz-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.hz-btns > * { flex: 1 1 140px; }
+.hz-day { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 18px; align-items: center; }
+.hz-day svg, .hz-dish svg { width: 100%; height: auto; }
+.hz-day h3, .hz-next h3 { margin: 0; font-family: var(--f-display); font-size: 22px; font-weight: 600; line-height: 1.2; text-wrap: balance; }
+.hz-day p, .hz-next p { margin: 0; color: var(--ink-2); }
+.hz-checks { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+.hz-check { display: flex; align-items: center; gap: 10px; text-align: left; font-size: 15px; }
+.hz-check .check, .hz-slot .check { width: 24px; height: 24px; border-radius: 50%; border: 2px solid var(--surface-3); display: grid; place-items: center; color: transparent; flex: none; transition: background .25s, border-color .25s, transform .3s var(--spring); }
+.hz-check .check .ico, .hz-slot .check .ico { width: 14px; height: 14px; stroke-width: 2.6; }
+.hz-check.on .check, .hz-slot.done .check { background: var(--green); border-color: var(--green); color: #fff; transform: scale(1.08); }
+.hz-next { display: grid; grid-template-columns: minmax(0, 200px) minmax(0, 1fr); gap: 20px; align-items: center; }
+.hz-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+.hz-meta span { padding: 4px 10px; border-radius: 980px; background: var(--surface-2); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.hz-slots { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.hz-slot { border-radius: 22px; background: var(--surface); padding: 14px; display: flex; flex-direction: column; gap: 8px; text-align: left; transition: transform .3s var(--spring); }
+.hz-slot:active { transform: scale(.97); }
+.hz-slot .hd { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.hz-slot b { font-size: 15px; }
+.hz-slot .nm { font-size: 14px; color: var(--ink-2); min-height: 2.8em; }
+.hz-slot .kc { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.hz-slot.done .nm { text-decoration: line-through; text-decoration-color: var(--ink-3); }
+.hz-kg { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.hz-kg input { width: 120px; font: inherit; font-size: 20px; font-weight: 600; padding: 10px 14px; border-radius: 14px; border: 1px solid var(--hair); background: var(--canvas); color: var(--ink); }
+.hz-stats { display: flex; gap: 8px; flex-wrap: wrap; }
+.hz-stats span { padding: 6px 12px; border-radius: 12px; background: var(--surface-2); font-size: 14px; font-variant-numeric: tabular-nums; }
+.hz-warn { border-radius: 16px; padding: 12px 14px; font-size: 15px; background: rgba(255,159,10,.14); color: var(--ink); }
+.hz-warn.red { background: rgba(255,69,58,.14); }
+.hz-scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.hz-scale button { padding: 10px 0; border-radius: 14px; background: var(--surface-2); font-weight: 600; font-variant-numeric: tabular-nums; transition: transform .3s var(--spring), background .25s, color .25s; }
+.hz-scale button.on { background: var(--primary); color: #fff; transform: scale(1.06); }
+.hz-alarms { display: flex; gap: 8px; flex-wrap: wrap; }
+.hz-alarms button { padding: 9px 14px; border-radius: 980px; background: var(--surface-2); font-size: 14px; font-weight: 600; transition: background .25s, color .25s; }
+.hz-alarms button.on { background: var(--red); color: #fff; }
+.crave-fab { position: sticky; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); align-self: flex-end; margin-left: auto; display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border-radius: 980px; background: var(--ink); color: var(--canvas); font-weight: 600; font-size: 15px; box-shadow: 0 8px 24px rgba(0,0,0,.18); z-index: 4; transition: transform .3s var(--spring); }
+.crave-fab:active { transform: scale(.94); }
+.hz-opt { display: grid; grid-template-columns: 64px minmax(0, 1fr) auto; gap: 12px; align-items: center; text-align: left; padding: 10px; border-radius: 18px; background: var(--surface-2); }
+.hz-opt.cur { outline: 2px solid var(--primary); }
+.hz-opt svg { width: 64px; height: auto; }
+.hz-opt span { color: var(--ink-2); font-size: 14px; font-variant-numeric: tabular-nums; }
+.cr-t { font-family: var(--f-display); font-size: 56px; font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
+.dish .steam path { animation: steam 2.4s ease-in-out infinite; opacity: 0; }
+.dish .steam path:nth-child(2) { animation-delay: .8s; }
+.dish .steam path:nth-child(3) { animation-delay: 1.6s; }
+@keyframes steam { 0% { opacity: 0; transform: translateY(6px); } 40% { opacity: .7; } 100% { opacity: 0; transform: translateY(-8px); } }
+.dish .food { transform-box: fill-box; transform-origin: center; animation: dishPop .7s var(--spring) both; }
+@keyframes dishPop { from { transform: scale(.6); opacity: 0; } }
+.upd { position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 140%); z-index: 60; display: flex; align-items: center; gap: 12px; padding: 10px 10px 10px 18px; border-radius: 980px; background: var(--ink); color: var(--canvas); font-size: 15px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,.25); transition: transform .5s var(--spring); max-width: calc(100% - 32px); }
+.upd.on { transform: translate(-50%, 0); }
+.upd button { padding: 8px 14px; border-radius: 980px; background: var(--primary); color: #fff; font-weight: 600; white-space: nowrap; }
+@media (max-width: 640px) {
+  .hz-day { grid-template-columns: 88px minmax(0, 1fr); }
+  .hz-next { grid-template-columns: 1fr; }
+  .hz-next .hz-dish { width: 100%; max-width: 180px; justify-self: center; }
+  .hz-slots { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hz-scene *, .dish *, .hb-fill { animation: none !important; transition: none !important; }
+}
+
 /* Kit de guardia */
 .kit-wrap { width: min(900px, 100%); display: flex; flex-direction: column; gap: 26px; }
 .kit-group { display: flex; flex-direction: column; gap: 12px; }
@@ -1305,7 +1398,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
         <div class="section" id="h-salud">
           <button class="health-teaser rv" type="button" data-go="health">
             <svg class="mini" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="none" stroke="var(--surface-2)" stroke-width="5"/><circle cx="24" cy="24" r="20" fill="none" stroke="var(--green)" stroke-width="5" stroke-linecap="round" stroke-dasharray="125.7" stroke-dashoffset="50"/><circle cx="24" cy="24" r="12.5" fill="none" stroke="var(--surface-2)" stroke-width="5"/><circle cx="24" cy="24" r="12.5" fill="none" stroke="var(--ring-2)" stroke-width="5" stroke-linecap="round" stroke-dasharray="78.5" stroke-dashoffset="30"/></svg>
-            <div class="tx"><b>Salud</b><span>Caminata con Figo, agua y el menú de hoy.</span></div>
+            <div class="tx"><b>Salud</b><span>Metas de hoy, tu siguiente comida y tu peso.</span></div>
             <svg class="ico chev"><use href="#i-chev"/></svg>
           </button>
         </div>
@@ -1444,31 +1537,60 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
       <div class="subnav"><button class="nav-back" type="button" data-back><svg class="ico" style="width:20px;height:20px"><use href="#i-back"/></svg>Hoy</button><div class="mini">Salud</div><div></div></div>
       <div class="content">
         <div class="hero" id="sa-top">
-          <span class="eyebrow">Plan de alimentación · inicia el lunes 26 de octubre</span>
-          <h1>Salud.</h1>
-          <p class="sub">Tu control diario sigue en Notion. Aquí ves tu día de un vistazo.</p>
-          <div id="health-rings"></div>
+          <div id="hz-scene"></div>
+          <span class="eyebrow">Plan de 1,000 kilocalorías · desde el lunes 26 de octubre</span>
+          <h1>Hoy en salud.</h1>
+          <p class="sub" id="hz-date"></p>
+          <div class="hz-tabs" id="hz-tabs"></div>
+        </div>
+        <div class="section" id="sa-metas">
+          <div class="section-head rv"><h2>Tus metas de hoy.</h2><p>Se llenan solas al marcar tus comidas, el agua y la caminata.</p></div>
+          <div class="hz-card rv"><div class="hb" id="hz-bars"></div>
+            <div class="hz-btns"><button class="btn-secondary" type="button" data-hz="water+">Vaso de agua</button><button class="btn-secondary" type="button" data-hz="water-">Quitar un vaso</button><button class="btn-secondary" type="button" data-hz="move+">Sumar 10 minutos</button><button class="btn-primary" type="button" data-hz="walk" id="hz-walk">Caminé con Figo</button></div>
+          </div>
+        </div>
+        <div class="section" id="sa-dia">
+          <div class="hz-card rv" id="hz-day"></div>
+        </div>
+        <div class="section" id="sa-next">
+          <div class="section-head rv"><h2>Tu siguiente comida.</h2></div>
+          <div class="hz-card rv" id="hz-next"></div>
         </div>
         <div class="section" id="sa-menu">
-          <div class="section-head rv"><h2>El menú de hoy.</h2><p>Menú de ejemplo para ver el diseño; se cambia por el tuyo cuando lo armemos en Notion.</p></div>
-          <div class="list rv" id="menu-list"></div>
+          <div class="section-head rv"><h2>Tus comidas de hoy.</h2><p>Toca una comida para marcarla. Menú del plan aprobado en el chat.</p></div>
+          <div class="hz-slots rv" id="hz-slots"></div>
+        </div>
+        <div class="section" id="sa-peso">
+          <div class="section-head rv"><h2>Tu peso.</h2><p>Pésate en la mañana, en ayunas y con la misma báscula.</p></div>
+          <div class="hz-card rv">
+            <div class="hz-kg"><input id="hz-kg" type="number" inputmode="decimal" step="0.1" min="30" max="250" placeholder="0.0" aria-label="Peso de hoy en kilogramos"><span>kilogramos</span><button class="btn-primary" type="button" data-hz="kg">Guardar peso</button></div>
+            <div class="hz-stats" id="hz-wstats"></div>
+            <div id="hz-wwarn"></div>
+            <div id="weight-chart"></div>
+          </div>
         </div>
         <div class="section" id="sa-habits">
           <div class="section-head rv"><h2>Tus hábitos.</h2></div>
           <div class="habits rv" id="habits"></div>
         </div>
-        <div class="section" id="sa-peso">
-          <div class="section-head rv"><h2>Tu peso.</h2><p>Se llena con lo que registres en Notion o en la revisión del domingo.</p></div>
-          <div class="card-plain rv" id="weight-chart"></div>
+        <div class="section" id="sa-cierre">
+          <div class="section-head rv"><h2>Cierre del día.</h2><p>Del 1 al 5. Con estos datos ajustamos el plan.</p></div>
+          <div class="hz-card rv"><b>Energía</b><div class="hz-scale" id="hz-e"></div><b>Hambre</b><div class="hz-scale" id="hz-h"></div></div>
+        </div>
+        <div class="section" id="sa-alarma">
+          <div class="section-head rv"><h2>Señales de alarma.</h2><p>Marca si hoy tuviste alguna.</p></div>
+          <div class="hz-card rv"><div class="hz-alarms" id="hz-alarms"></div><div id="hz-alarm-msg"></div></div>
         </div>
         <div class="section" id="sa-plato">
           <div class="section-head rv"><h2>El Plato del Bien Comer.</h2><p>Toca un grupo para ver cómo usarlo al armar cada comida.</p></div>
           <div class="plate-wrap rv"><svg id="plate" viewBox="0 0 320 320" role="group" aria-label="Plato del Bien Comer"></svg><div class="plate-info" id="plate-info"></div></div>
         </div>
+        <button class="crave-fab" type="button" data-hz="crave"><svg class="ico" style="width:18px;height:18px"><use href="#i-flame"/></svg>Tengo antojo</button>
       </div>
     </section>
   </div>
 
+  <div class="upd" id="upd" role="status"><span>Nueva versión disponible</span><button type="button" id="upd-go">Actualizar</button></div>
   <aside class="panel" id="panel" aria-label="Reloj, calendario y avisos">
     <div class="p-head">
       <b>Panel</b>
@@ -1585,9 +1707,9 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   document.body.classList.add("pre");
 
   /* Fechas y guardias (Excel Octubre-Diciembre 2026) */
-  const GUARDS = ["2026-10-07","2026-10-10","2026-10-13","2026-10-16","2026-10-19","2026-10-22","2026-10-28","2026-10-31",
-    "2026-11-03","2026-11-06","2026-11-09","2026-11-12","2026-11-18","2026-11-21","2026-11-24","2026-11-27","2026-11-30",
-    "2026-12-03","2026-12-09","2026-12-12","2026-12-15","2026-12-18","2026-12-21","2026-12-24","2026-12-30"];
+  const GUARDS = ["2026-10-05","2026-10-08","2026-10-10","2026-10-13","2026-10-16","2026-10-21","2026-10-26","2026-10-29","2026-10-31",
+    "2026-11-02","2026-11-05","2026-11-07","2026-11-10","2026-11-13","2026-11-18","2026-11-23","2026-11-26","2026-11-28",
+    "2026-12-01","2026-12-04","2026-12-09","2026-12-14","2026-12-17","2026-12-19","2026-12-22","2026-12-25","2026-12-30"];
   const START = "2026-10-26";
   const DIAS = ["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
   const MESES = ["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"];
@@ -1606,7 +1728,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     blocks: store.get("blocks", 0), qod: store.get("qod2", {}), review: store.get("review2", []), ach: store.get("ach", []),
     widgets: store.get("widgets", ["rings", "qod", "guard", "countdown", "dominio", "rescue", "flash", "exam"]), exams: store.get("exams", 0), decks: store.get("decks", 0),
     presets: store.get("presets", [{ n: "Pomodoro", s: 25, r: 5 }, { n: "Tiempo muerto", s: 20, r: 5 }, { n: "Tarde en casa", s: 50, r: 10 }]),
-    health: Object.assign({ walk: {}, water: {}, meals: {}, weights: {}, waterGoal: 8 }, store.get("health", {})),
+    health: Object.assign({ walk: {}, water: {}, meals: {}, weights: {}, waterGoal: 8, move: {}, other: {}, swap: {}, feel: {}, alarm: {}, kit: {}, crave: {} }, store.get("health", {})),
     log: store.get("log", []), examDate: store.get("examDate", null), sims: store.get("sims", []), qday: store.get("qday", {}), correct: store.get("correct", 0), cardMiss: store.get("cardMiss", {})
   };
   const save = k => store.set({ mods: "mods2", favs: "favs2", qod: "qod2", review: "review2" }[k] || k, S[k]);
@@ -2697,7 +2819,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   ENT["h-timer"] = { g: "Herramientas", icon: "i-timer", title: "Temporizador", sub: "Herramienta", open: () => openIsland() };
   ENT["h-flash"] = { g: "Herramientas", icon: "i-cards", title: "Tarjetas de memoria", sub: "Herramienta", open: () => openFlash() };
   ENT["h-exam"] = { g: "Herramientas", icon: "i-exam", title: "Modo examen", sub: "Herramienta", kw: "simulacro", open: () => openExam() };
-  ENT["s-health"] = { g: "Salud", icon: "i-leaf", title: "Salud", sub: "Anillos, menú y hábitos", kw: "dieta comida peso agua caminata figo kilocalorias", open: () => nav(["home", "health"]) };
+  ENT["s-health"] = { g: "Salud", icon: "i-leaf", title: "Hoy en salud", sub: "Metas, comidas y peso", kw: "dieta comida peso agua caminata figo kilocalorias", open: () => nav(["home", "health"]) };
   ENT["s-menu"] = { g: "Salud", icon: "i-bowl", title: "Menú de hoy", sub: "Salud", kw: "comida desayuno cena dieta", open: () => { nav(["home", "health"]); setTimeout(() => scrollToId("sa-menu"), 640); } };
   ENT["s-plato"] = { g: "Salud", icon: "i-grid", title: "Plato del Bien Comer", sub: "Salud", kw: "verduras frutas cereales leguminosas", open: () => { nav(["home", "health"]); setTimeout(() => scrollToId("sa-plato"), 640); } };
   ENT["h-kit"] = { g: "Herramientas", icon: "i-kit", title: "Kit de guardia", sub: "Herramienta", kw: "urgencias", open: () => openKit() };
@@ -3125,6 +3247,9 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     const stat = (n, l) => `<div class="stat"><b data-count="${n}">0</b><span>${l}</span></div>`;
     const t = realToday();
     switch (key) {
+      case "h-swap": return healthSheet("swap", arg);
+      case "h-other": return healthSheet("other", arg);
+      case "h-crave": return healthSheet("crave", arg);
       case "case": { const [tid, i] = arg.split(":"); return head("i-case", TOP[tid].cases[+i].t, "") + caseHTML(arg) + done; }
       case "pharma": {
         const list = arg === "topic" ? TOP[curT].drugs : Object.keys(DRUG);
@@ -3290,7 +3415,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   $("#btn-index").addEventListener("click", e => {
     const top = stack[stack.length - 1]; let h;
     if (top === "home") h = `<div class="pop-title">En Hoy</div>` + popItem('data-scroll="h-hoy"', "i-home", "Saludo y plan") + popItem('data-scroll="h-widgets"', "i-grid", "Widgets") + popItem('data-scroll="h-favs"', "i-star", "Favoritos") + popItem('data-scroll="h-tools"', "i-chart", "Herramientas") + popItem('data-scroll="h-weeks"', "i-cal", "Semanas", "12") + popItem('data-act="panel-open"', "i-clock", "Mi día", "Panel");
-    else if (top === "health") h = `<div class="pop-title">En Salud</div>` + popItem('data-scroll="sa-top"', "i-leaf", "Anillos de salud") + popItem('data-scroll="sa-menu"', "i-bowl", "Menú de hoy") + popItem('data-scroll="sa-habits"', "i-flame", "Hábitos") + popItem('data-scroll="sa-peso"', "i-scale", "Peso") + popItem('data-scroll="sa-plato"', "i-grid", "Plato del Bien Comer");
+    else if (top === "health") h = `<div class="pop-title">En Salud</div>` + popItem('data-scroll="sa-metas"', "i-target", "Metas de hoy") + popItem('data-scroll="sa-next"', "i-bowl", "Siguiente comida") + popItem('data-scroll="sa-menu"', "i-bowl", "Comidas de hoy") + popItem('data-scroll="sa-habits"', "i-flame", "Hábitos") + popItem('data-scroll="sa-peso"', "i-scale", "Peso") + popItem('data-scroll="sa-plato"', "i-grid", "Plato del Bien Comer");
     else if (top === "week") { const w = WEEKS[curW - 1]; h = `<div class="pop-title">En la Semana ${curW}</div>` + popItem('data-scroll="w-top"', "i-cal", "Portada") + (w.topics ? weekTopics(curW).map(t => popItem(`data-topic="${t.id}"`, t.icon, t.title, `${approved(t.id)}/${t.mods.length}`)).join("") : w.list.map(l => popItem('data-scroll="w-temas"', w.icon, l, "Pronto")).join("")) + popItem('data-scroll="w-cierre"', "i-flag", "Cierre de semana"); }
     else { const t = TOP[curT]; h = `<div class="pop-title">En ${t.title.toLowerCase()}</div>` + popItem('data-scroll="t-top"', "i-target", "Avance") + popItem('data-scroll="t-apartados"', "i-grid", "Apartados") + popItem('data-scroll="t-lectura"', "i-hl", "Lectura y glosario") + popItem('data-scroll="t-algo"', "i-branch", "Algoritmos") + popItem('data-scroll="t-casos"', "i-case", "Casos clínicos") + popItem('data-scroll="t-cierre"', "i-link", "Fuentes y temas conectados") + `<div class="pop-sep"></div>` + t.mods.map((m, i) => popItem(`data-mod="${t.id}:${i + 1}"`, "i-book", `${i + 1}. ${m.t}`, LBL[modStatus(t.id, i + 1)])).join(""); }
     openPop(e.currentTarget, h);
@@ -3916,21 +4041,85 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
 
   /* Salud */
   const H = S.health;
-  const MENU = [["m-des", "Desayuno", "Huevo a la mexicana, dos tortillas de maíz y una taza de papaya", 360], ["m-col", "Colación", "Una manzana y 10 almendras", 160], ["m-com", "Comida", "Pechuga de pollo a la plancha, media taza de arroz, ensalada y una tortilla", 500], ["m-cen", "Cena", "Dos tostadas horneadas con frijoles, queso panela y lechuga", 350]];
+  const KCAL_GOAL = 1000, PROT_GOAL = 90, TALLA = 1.70;
+  const DISH = {
+    hm: ["Huevos a la mexicana con 1 tortilla", 280, 14, "huevo"], hn: ["Huevos con nopales y 1 tortilla", 270, 14, "huevo"], hv: ["Huevos en salsa verde con 1 tortilla", 275, 14, "huevoV"], hc: ["Huevos con calabacita y 1 tortilla", 270, 14, "huevo"], ov: ["Omelette con verdura y 1 tortilla", 270, 14, "omelette"],
+    ep: ["Ensalada de pollo con pepino, jitomate y limón, más 1 naranja", 380, 47, "ensalada"], pv: ["Pollo en salsa verde con calabacita", 330, 47, "polloV"], tp: ["Tinga de pollo con nopales", 340, 47, "tinga"], pp: ["Pechuga a la plancha con nopales asados", 330, 47, "plancha"], pt: ["Pollo en tiras con verduras asadas, más 1 naranja", 390, 47, "tiras"],
+    at: ["Atún con jitomate, pepino y 2 tostadas de comal", 270, 26, "atun"], oc: ["Omelette de 3 huevos con calabacita", 280, 19, "omelette"], o3n: ["3 huevos con nopales", 280, 19, "huevo"], o3v: ["3 huevos en salsa verde", 285, 19, "huevoV"], o3m: ["3 huevos a la mexicana", 285, 19, "huevo"], oj: ["Omelette con jitomate y cebolla", 280, 19, "omelette"]
+  };
+  const SLOTS = [["des", "Desayuno"], ["com", "Comida"], ["cen", "Cena"]];
+  const OPTS = { des: ["hm", "hn", "hv", "hc", "ov"], com: ["ep", "pv", "tp", "pp", "pt"], cen: ["at", "oc", "o3n", "o3v", "o3m", "oj"] };
+  const WEEKMENU = { "2026-10-26": ["hm", "ep", "at"], "2026-10-27": ["hn", "pv", "oc"], "2026-10-28": ["hv", "tp", "at"], "2026-10-29": ["hm", "ep", "o3n"], "2026-10-30": ["hc", "pp", "oj"], "2026-10-31": ["hn", "pt", "o3v"], "2026-11-01": ["ov", "pv", "o3m"] };
+  const ALARMS = [["mareo", "Mareo"], ["palp", "Palpitaciones"], ["dolor", "Dolor arriba a la derecha al comer"]];
+  function menuFor(t) {
+    let base = WEEKMENU[t];
+    if (!base) { const dow = parse(t).getDay(), k = Object.keys(WEEKMENU).find(x => parse(x).getDay() === dow); base = WEEKMENU[k].slice(); if (isGuard(t) && !["ep", "pt"].includes(base[1])) base[1] = "ep"; }
+    const sw = (H.swap && H.swap[t]) || {};
+    return SLOTS.map(([k], i) => sw[k] || base[i]);
+  }
+  function mealTime(t, slot) {
+    const dow = parse(t).getDay();
+    if (slot === "des") return dow === 0 ? "8:00" : "5:30";
+    if (slot === "cen") return "21:00";
+    if (isGuard(t)) return "13:00";
+    return dow === 6 ? "13:40" : dow === 0 ? "15:00" : "15:40";
+  }
+  function dayTotals(t) {
+    const m = menuFor(t), done = H.meals[t] || [], oth = (H.other && H.other[t]) || {};
+    let kcal = 0, prot = 0, n = 0;
+    SLOTS.forEach(([k], i) => { if (!done.includes(k)) return; n++; if (oth[k]) { kcal += oth[k]; prot += Math.round(oth[k] * .04); } else { kcal += DISH[m[i]][1]; prot += DISH[m[i]][2]; } });
+    return { kcal, prot, done: n };
+  }
+  const moveGoal = t => { const w = Math.floor((parse(t) - parse(START)) / (7 * 864e5)); return t < START ? 10 : Math.min(30, 10 + 5 * w); };
+  function dayType(t) {
+    const h = new Date().getHours(), dow = parse(t).getDay();
+    if (isGuard(t)) return h >= 19 ? "noche" : "guardia";
+    if (dow === 2 || dow === 5) return "cocina";
+    return dow === 0 ? "domingo" : "normal";
+  }
+  function scenePeriod() { const h = new Date().getHours(); return h >= 5 && h < 11 ? "manana" : h >= 11 && h < 17 ? "dia" : h >= 17 && h < 20 ? "tarde" : "noche"; }
+  function sceneSVG(p) {
+    const P = { manana: ["#fde7d3", "#fbd2ad", "#ffb347", "#a8d8a8", "#72bf86", "Amanecer"], dia: ["#d6ecff", "#bfe0ff", "#ffd43b", "#9bd6a5", "#5db574", "Mediodía"], tarde: ["#ffd6bd", "#ffb08a", "#ff7a45", "#c9a3d9", "#9c7bb8", "Tarde"], noche: ["#1d2747", "#273358", "#f4f1de", "#33446f", "#24315a", "Noche"] }[p];
+    const stars = p === "noche" ? [[60, 30], [140, 55], [230, 25], [330, 48], [420, 22], [520, 40], [560, 70], [95, 80]].map(([x, y], i) => `<circle class="sc-star" cx="${x}" cy="${y}" r="${i % 3 ? 1.6 : 2.4}" fill="#fff" style="animation-delay:${i * .3}s"/>`).join("") : "";
+    const body = p === "noche" ? `<g class="sc-sun"><circle cx="470" cy="62" r="26" fill="${P[2]}"/><circle cx="482" cy="54" r="24" fill="${P[0]}"/></g>` : `<g class="sc-sun"><circle cx="${p === "tarde" ? 470 : p === "manana" ? 130 : 300}" cy="${p === "dia" ? 52 : 92}" r="30" fill="${P[2]}"/><circle cx="${p === "tarde" ? 470 : p === "manana" ? 130 : 300}" cy="${p === "dia" ? 52 : 92}" r="44" fill="${P[2]}" opacity=".22"/></g>`;
+    const cloud = (x, y, c) => `<g class="sc-cloud ${c}"><ellipse cx="${x}" cy="${y}" rx="34" ry="12" fill="#fff" opacity="${p === "noche" ? .12 : .85}"/><ellipse cx="${x + 18}" cy="${y - 9}" rx="20" ry="12" fill="#fff" opacity="${p === "noche" ? .12 : .85}"/></g>`;
+    return `<svg class="hz-scene" viewBox="0 0 600 170" role="img" aria-label="${P[5]}"><rect width="600" height="170" fill="${P[0]}"/><rect y="96" width="600" height="74" fill="${P[1]}"/>${stars}${body}${cloud(210, 48, "")}${cloud(400, 70, "b")}
+      <path d="M0 132 C 90 100, 190 104, 280 126 S 470 150, 600 112 L600 170 L0 170 Z" fill="${P[3]}"/><path d="M0 150 C 120 128, 260 136, 360 150 S 520 160, 600 144 L600 170 L0 170 Z" fill="${P[4]}"/></svg>`;
+  }
+  function dishArt(kind, hot = true) {
+    const plate = `<ellipse cx="60" cy="56" rx="54" ry="30" fill="#ffffff" stroke="#dcdce2"/><ellipse cx="60" cy="56" rx="41" ry="21" fill="#f3f3f6"/>`;
+    const egg = (x, y) => `<ellipse class="food" cx="${x}" cy="${y}" rx="15" ry="10" fill="#fff" stroke="#e6e6ea"/><circle class="food" cx="${x + 2}" cy="${y - 1}" r="5.5" fill="#ffb627"/>`;
+    const dots = (arr, c, r = 2.4) => arr.map(([x, y]) => `<circle class="food" cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`).join("");
+    const F = {
+      huevo: egg(46, 54) + egg(74, 57) + dots([[60, 46], [33, 62], [86, 48], [62, 66]], "#e5484d") + dots([[54, 63], [80, 66], [38, 48]], "#3fa34d", 2),
+      huevoV: `<ellipse class="food" cx="60" cy="57" rx="37" ry="18" fill="#8cc56b"/>` + egg(47, 55) + egg(73, 58) + dots([[60, 66], [36, 61]], "#e5484d", 2),
+      omelette: `<path class="food" d="M26 60 Q60 26 94 60 Z" fill="#ffd166" stroke="#f0b443"/>` + dots([[48, 52], [62, 47], [72, 54], [56, 57]], "#3fa34d", 2) + dots([[42, 57], [66, 55]], "#e5484d", 2),
+      ensalada: [[42, 50, -20], [58, 46, 15], [74, 52, 35], [50, 62, 60], [70, 63, -35]].map(([x, y, r]) => `<ellipse class="food" cx="${x}" cy="${y}" rx="13" ry="7" fill="${r > 0 ? "#6cc24a" : "#4fa83d"}" transform="rotate(${r} ${x} ${y})"/>`).join("") + [[48, 54], [66, 56], [58, 64]].map(([x, y]) => `<rect class="food" x="${x - 5}" y="${y - 4}" width="10" height="8" rx="2" fill="#e9c38f"/>`).join("") + dots([[40, 60], [78, 47]], "#e5484d", 3.4) + `<circle class="food" cx="84" cy="62" r="5" fill="#d7f0c2" stroke="#5ba34a"/>`,
+      polloV: `<ellipse class="food" cx="60" cy="57" rx="37" ry="18" fill="#8cc56b"/>` + [[46, 54], [62, 50], [74, 59], [54, 63]].map(([x, y]) => `<rect class="food" x="${x - 8}" y="${y - 5}" width="16" height="10" rx="4" fill="#e8bf8a" stroke="#c99a5f"/>`).join("") + dots([[38, 62], [84, 54], [66, 66]], "#b9de8a", 3.4),
+      tinga: [[38, 52], [46, 60], [56, 48], [64, 58], [74, 50], [82, 60], [52, 66], [68, 66]].map(([x, y], i) => `<path class="food" d="M${x - 7} ${y} q7 ${i % 2 ? -6 : 6} 14 0" fill="none" stroke="#d9643a" stroke-width="3.2" stroke-linecap="round"/>`).join("") + `<rect class="food" x="80" y="44" width="12" height="6" rx="3" fill="#4fa83d"/><rect class="food" x="28" y="62" width="12" height="6" rx="3" fill="#4fa83d"/>`,
+      plancha: `<path class="food" d="M30 58 Q36 40 60 42 Q82 44 80 58 Q76 70 52 70 Q32 70 30 58 Z" fill="#e3b47c" stroke="#b9854b"/><path d="M40 50 L50 66 M50 46 L62 68 M62 45 L72 64" stroke="#a56f3a" stroke-width="2.4" stroke-linecap="round"/><rect class="food" x="80" y="48" width="16" height="9" rx="4" fill="#4fa83d"/><rect class="food" x="82" y="60" width="14" height="8" rx="4" fill="#6cc24a"/>`,
+      tiras: [[40, 50], [52, 56], [64, 50], [46, 62]].map(([x, y]) => `<rect class="food" x="${x - 9}" y="${y - 3}" width="22" height="7" rx="3.5" fill="#e3b47c" stroke="#b9854b"/>`).join("") + dots([[76, 52], [84, 60]], "#e5484d", 4) + dots([[72, 64], [84, 48]], "#a8d672", 4) + `<circle class="food" cx="30" cy="62" r="5" fill="#ff9f1c"/>`,
+      atun: `<circle class="food" cx="46" cy="56" r="17" fill="#f2b25c" stroke="#d9953c"/><circle class="food" cx="76" cy="56" r="17" fill="#f2b25c" stroke="#d9953c"/>` + [[46, 56], [76, 56]].map(([x, y]) => `<ellipse class="food" cx="${x}" cy="${y}" rx="11" ry="8" fill="#e9d8cb"/>`).join("") + dots([[43, 53], [50, 59], [73, 52], [80, 59]], "#e5484d", 2.2) + dots([[47, 52], [77, 60]], "#3fa34d", 2)
+    };
+    const steam = hot && !["ensalada", "atun"].includes(kind) ? `<g class="steam" fill="none" stroke="#b9b9c3" stroke-width="2" stroke-linecap="round"><path d="M46 30 q-4 -6 0 -12"/><path d="M60 26 q-4 -6 0 -12"/><path d="M74 30 q-4 -6 0 -12"/></g>` : "";
+    return `<svg class="dish" viewBox="0 0 120 90" aria-hidden="true">${steam}${plate}${F[kind] || ""}</svg>`;
+  }
+  function dayArt(type) {
+    const A = {
+      guardia: `<rect x="22" y="34" width="76" height="44" rx="10" fill="#3a86ff"/><path d="M44 34 V24 Q44 18 50 18 H70 Q76 18 76 24 V34" fill="none" stroke="#2563c9" stroke-width="5"/><rect x="30" y="44" width="26" height="14" rx="4" fill="#9ad7ff"/><rect x="64" y="44" width="26" height="14" rx="4" fill="#9ad7ff"/><path d="M43 47 v8 M39 51 h8 M77 47 v8 M73 51 h8" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round"/><rect x="22" y="64" width="76" height="4" fill="#2563c9"/>`,
+      noche: `<circle cx="64" cy="40" r="22" fill="#f4e3a1"/><circle cx="74" cy="33" r="20" fill="var(--surface)"/><circle cx="28" cy="22" r="2" fill="#f4e3a1"/><circle cx="96" cy="18" r="2.6" fill="#f4e3a1"/><circle cx="100" cy="52" r="1.8" fill="#f4e3a1"/><path d="M26 66 H94 Q90 84 60 84 Q30 84 26 66 Z" fill="#8e8e93"/><g class="steam" fill="none" stroke="#b9b9c3" stroke-width="2" stroke-linecap="round"><path d="M48 60 q-4 -6 0 -12"/><path d="M60 58 q-4 -6 0 -12"/><path d="M72 60 q-4 -6 0 -12"/></g>`,
+      cocina: `<path d="M40 74 L46 64 L52 74 Z M56 74 L62 62 L68 74 Z M72 74 L78 64 L84 74 Z" fill="#ff7a45"/><rect x="26" y="38" width="68" height="28" rx="6" fill="#8e8e93"/><rect x="22" y="34" width="76" height="7" rx="3.5" fill="#6e6e73"/><rect x="54" y="27" width="12" height="7" rx="3" fill="#6e6e73"/><g class="steam" fill="none" stroke="#b9b9c3" stroke-width="2" stroke-linecap="round"><path d="M44 22 q-4 -6 0 -12"/><path d="M60 18 q-4 -6 0 -12"/><path d="M76 22 q-4 -6 0 -12"/></g>`,
+      normal: `<circle cx="92" cy="22" r="11" fill="#ffd43b"/><path d="M24 48 L56 24 L88 48 Z" fill="#e8743b"/><rect x="30" y="46" width="52" height="34" rx="3" fill="#ffd7a8"/><rect x="50" y="58" width="13" height="22" rx="2" fill="#b9854b"/><rect x="36" y="54" width="10" height="10" rx="2" fill="#9ad7ff"/><rect x="66" y="54" width="10" height="10" rx="2" fill="#9ad7ff"/>`,
+      domingo: `<rect x="26" y="40" width="68" height="40" rx="8" fill="#f2b25c"/><path d="M36 40 Q36 20 60 20 Q84 20 84 40" fill="none" stroke="#c98a32" stroke-width="5"/><circle cx="44" cy="40" r="9" fill="#e5484d"/><circle cx="62" cy="36" r="10" fill="#6cc24a"/><circle cx="78" cy="40" r="8" fill="#ff9f1c"/>`
+    };
+    return `<svg class="dish" viewBox="0 0 120 90" aria-hidden="true">${A[type]}</svg>`;
+  }
   const PLATE = [["vf", "Verduras y frutas", "Muchas", "Incluye verduras en cada comida y fruta de temporada, de preferencia con cáscara.", "#34c759", -90, 30], ["ce", "Cereales", "Suficientes", "De preferencia integrales, como tortilla de maíz o avena, combinados con leguminosas.", "#ffb340", 30, 150], ["le", "Leguminosas", "Combínalas", "Frijol, lenteja, haba o garbanzo junto con los cereales.", "#ff8a65", 150, 210], ["oa", "Origen animal", "Pocos", "Prefiere pescado, pollo sin piel, huevo y lácteos bajos en grasa.", "#ff453a", 210, 270]];
   function arcPath(a0, a1, r) {
     const rad = a => a * Math.PI / 180, x0 = 160 + r * Math.cos(rad(a0)), y0 = 160 + r * Math.sin(rad(a0)), x1 = 160 + r * Math.cos(rad(a1)), y1 = 160 + r * Math.sin(rad(a1));
     return `M160 160 L${x0.toFixed(1)} ${y0.toFixed(1)} A${r} ${r} 0 ${a1 - a0 > 180 ? 1 : 0} 1 ${x1.toFixed(1)} ${y1.toFixed(1)} Z`;
   }
   function initHealth() {
-    $("#health-rings").innerHTML = `<div class="hr-card"><svg class="rings big" viewBox="0 0 112 112" aria-hidden="true">
-        <circle cx="56" cy="56" r="49" stroke-width="12" stroke="var(--surface-2)"/><circle id="hr1" cx="56" cy="56" r="49" stroke-width="12" stroke="var(--green)" stroke-dasharray="307.9" stroke-dashoffset="307.9"/>
-        <circle cx="56" cy="56" r="35" stroke-width="12" stroke="var(--surface-2)"/><circle id="hr2" cx="56" cy="56" r="35" stroke-width="12" stroke="var(--ring-2)" stroke-dasharray="219.9" stroke-dashoffset="219.9"/>
-        <circle cx="56" cy="56" r="21" stroke-width="12" stroke="var(--surface-2)"/><circle id="hr3" cx="56" cy="56" r="21" stroke-width="12" stroke="#ff9f0a" stroke-dasharray="131.9" stroke-dashoffset="131.9"/></svg>
-      <div class="legend"><div><i style="background:var(--green)"></i>Caminata<b id="hl1"></b></div><div><i style="background:var(--ring-2)"></i>Agua<b id="hl2"></b></div><div><i style="background:#ff9f0a"></i>Kilocalorías<b id="hl3"></b></div></div></div>
-      <div class="btn-pair"><button class="btn-primary" type="button" data-h="walk" id="h-walk">Caminé con Figo</button><button class="btn-secondary" type="button" data-h="water+">${ico("i-water", "ico", "width:16px;height:16px")}Vaso de agua</button><button class="btn-secondary" type="button" data-h="water-">Quitar un vaso</button></div>`;
-    $("#menu-list").innerHTML = MENU.map(m => `<button class="row meal" type="button" data-meal="${m[0]}"><span class="check">${ico("i-checkmark")}</span><div class="tx"><b>${m[1]}</b><span>${m[2]}</span></div><span class="chip">aprox. ${m[3]} kcal</span></button>`).join("") +
-      `<div class="row" style="cursor:default"><span></span><div class="tx"><b>Total del menú</b><span>Meta del plan: 1,500 kilocalorías al día</span></div><span class="chip" id="menu-total"></span></div>`;
     const plate = $("#plate"); plate.classList.add("plate");
     plate.innerHTML = `<circle cx="160" cy="160" r="154" fill="var(--surface-2)"/>` + PLATE.map(([k, n, , , c, a0, a1], i) => {
       const mid = (a0 + a1) / 2 * Math.PI / 180, lr = a1 - a0 > 90 ? 82 : 100;
@@ -3950,33 +4139,130 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     const X = i => ws.length === 1 ? 300 : 40 + i * (520 / (ws.length - 1)), Y = v => 140 - (v - mn) / (mx - mn) * 110;
     return `<svg class="wc" viewBox="0 0 600 172" aria-label="Peso registrado">${[30, 85, 140].map(y => `<line x1="20" x2="580" y1="${y}" y2="${y}" stroke="var(--hair)"/>`).join("")}<polyline points="${ws.map((w, i) => `${X(i)},${Y(w[1])}`).join(" ")}" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>${ws.map((w, i) => `<circle cx="${X(i)}" cy="${Y(w[1])}" r="5" fill="var(--surface)" stroke="var(--primary)" stroke-width="2.5"/><text x="${X(i)}" y="${Y(w[1]) - 12}" text-anchor="middle" class="wc-v">${w[1]} kg</text><text x="${X(i)}" y="166" text-anchor="middle" class="wc-d">${parse(w[0]).getDate()} ${MESES[parse(w[0]).getMonth()].slice(0, 3)}</text>`).join("")}</svg>`;
   }
+  const nf = n => Math.round(n).toLocaleString("es-MX");
+  const TYPE = { guardia: ["Día de guardia", "#3a86ff"], noche: ["Noche de guardia", "#5e5ce6"], cocina: ["Día de cocina", "#ff7a45"], domingo: ["Domingo de compras", "#f5a524"], normal: ["Día normal", "#34c759"] };
+  let hzPeriod = "", crI = null;
+  function initHealthUI() {
+    const tabs = [["sa-metas", "Metas", "i-target", "#ff6b4a"], ["sa-next", "Siguiente", "i-bowl", "#f5a524"], ["sa-menu", "Comidas", "i-bowl", "#34c759"], ["sa-peso", "Peso", "i-scale", "#32ade6"], ["sa-cierre", "Cierre", "i-heart", "#ff2d55"], ["sa-alarma", "Alarmas", "i-shield", "#ff453a"], ["sa-plato", "Plato", "i-grid", "#5e5ce6"]];
+    $("#hz-tabs").innerHTML = tabs.map(([id, n, ic, c]) => `<button class="hz-tab" type="button" data-hz="go:${id}"><span class="bub" style="background:${c}">${ico(ic)}</span>${n}</button>`).join("");
+    const rows = [["kcal", "Kilocalorías", "var(--hb-kcal)"], ["pro", "Proteína", "var(--hb-pro)"], ["agua", "Agua", "var(--hb-agua)"], ["mov", "Movimiento", "var(--hb-mov)"]];
+    $("#hz-bars").innerHTML = rows.map(([k, n, c], i) => `<div class="hb-row" id="hbr-${k}" style="--c:${c}"><div class="hb-top"><span class="hb-name"><i></i>${n}</span><b id="hbv-${k}"></b></div><div class="hb-track"><span class="hb-fill" id="hbf-${k}" style="--d:${i * .12}s"></span></div><div class="hb-note" id="hbn-${k}"></div></div>`).join("");
+  }
+  function weightInfo() {
+    const ws = Object.entries(H.weights).sort((a, b) => a[0] < b[0] ? -1 : 1);
+    if (!ws.length) return { stats: `<span>Registra tu primer peso para ver la tendencia</span>`, warn: "" };
+    const [ld, lw] = ws[ws.length - 1], last7 = ws.filter(([d]) => d > addDays(ld, -7)).map(w => w[1]), avg = last7.reduce((a, b) => a + b, 0) / last7.length;
+    const st = [`<span>Último: <b>${lw.toFixed(1)} kilogramos</b></span>`, `<span>Índice de masa corporal: <b>${(lw / (TALLA * TALLA)).toFixed(1)}</b></span>`, `<span>Promedio de 7 días: <b>${avg.toFixed(1)} kilogramos</b></span>`];
+    if (ws.length > 1) { const d0 = ws[0][1] - lw; st.push(`<span>${d0 >= 0 ? "Llevas" : "Subiste"} <b>${Math.abs(d0).toFixed(1)} kilogramos</b> ${d0 >= 0 ? "menos" : ""}</span>`); }
+    let warn = "";
+    const old = ws.filter(([d]) => d <= addDays(ld, -7)).pop();
+    if (old) { const days = (parse(ld) - parse(old[0])) / 864e5, rate = (old[1] - lw) / (days / 7); if (rate > 1.4) warn = `<div class="hz-warn">Bajas unos ${rate.toFixed(1)} kilogramos por semana, más de 1.4. Agrega una tortilla o una fruta al día para cuidar tu vesícula y tu músculo.</div>`; }
+    return { stats: st.join(""), warn };
+  }
   function paintHealth() {
-    const t = realToday(), meals = H.meals[t] || [], kcal = MENU.filter(m => meals.includes(m[0])).reduce((a, m) => a + m[3], 0), walk = H.walk[t] ? 30 : 0, water = H.water[t] || 0;
-    const set = (id, len, v) => $("#" + id).setAttribute("stroke-dashoffset", len * (1 - Math.min(v, 1)));
-    requestAnimationFrame(() => requestAnimationFrame(() => { set("hr1", 307.9, walk / 30); set("hr2", 219.9, water / H.waterGoal); set("hr3", 131.9, kcal / 1500); }));
-    $("#hl1").textContent = `${walk} de 30 min`; $("#hl2").textContent = `${water} de ${H.waterGoal} vasos`; $("#hl3").textContent = `${kcal.toLocaleString("es-MX")} de 1,500`;
-    const hw = $("#h-walk"); hw.textContent = walk ? "Caminata hecha" : "Caminé con Figo"; hw.className = walk ? "btn-secondary" : "btn-primary";
-    $$("#menu-list [data-meal]").forEach(r => r.classList.toggle("done", meals.includes(r.dataset.meal)));
-    $("#menu-total").textContent = `aprox. ${MENU.reduce((a, m) => a + m[3], 0).toLocaleString("es-MX")} kcal`;
-    const started = t >= START, days = started ? Math.round((parse(t) - parse(START)) / 864e5) + 1 : 0, walkDays = Object.keys(H.walk).filter(k => H.walk[k]).length;
-    $("#habits").innerHTML = `<div class="hab"><span class="w-title">${ico("i-flame")}Sin refresco ni dulces</span><div class="big-num" data-count="${days}">${days}</div><p class="w-sub">${started ? "días seguidos" : "Empiezas el lunes 26 de octubre"}</p><p class="w-sub">Solo el litro diario de refresco eran unas 420 kilocalorías${started ? `; llevas unas ${(days * 420).toLocaleString("es-MX")} menos` : ""}.</p></div>
-      <div class="hab"><span class="w-title">${ico("i-walk")}Caminata con Figo</span><div class="big-num" data-count="${walkDays}">${walkDays}</div><p class="w-sub">días con caminata · 5:00, 30 minutos</p></div>
-      <div class="hab"><span class="w-title">${ico("i-water")}Agua de hoy</span><div class="glasses">${Array.from({ length: H.waterGoal }, (_, i) => `<span class="${i < water ? "full" : ""}"></span>`).join("")}</div><p class="w-sub">${water} de ${H.waterGoal} vasos · meta ajustable</p></div>`;
+    const t = realToday(), m = menuFor(t), done = H.meals[t] || [], oth = H.other[t] || {}, tt = dayTotals(t);
+    const water = H.water[t] || 0, mv = H.move[t] || 0, mg = moveGoal(t), type = dayType(t), kit = H.kit[t] || [];
+    const per = scenePeriod(); if (per !== hzPeriod) { hzPeriod = per; $("#hz-scene").innerHTML = sceneSVG(per); }
+    $("#hz-date").innerHTML = `${cap(longDate(parse(t)))} <span class="hz-chip" style="--c:${TYPE[type][1]}"><i></i>${TYPE[type][0]}</span>`;
+    const bars = {
+      kcal: [tt.kcal, KCAL_GOAL, `${nf(tt.kcal)} <small>de ${nf(KCAL_GOAL)}</small>`, tt.kcal > KCAL_GOAL ? `${nf(tt.kcal - KCAL_GOAL)} por encima de la meta` : `Te quedan ${nf(KCAL_GOAL - tt.kcal)}`],
+      pro: [tt.prot, PROT_GOAL, `${tt.prot} <small>de ${PROT_GOAL} gramos</small>`, tt.prot >= PROT_GOAL ? "Meta cumplida" : `Faltan ${PROT_GOAL - tt.prot} gramos`],
+      agua: [water, H.waterGoal, `${(water / 4).toLocaleString("es-MX", { maximumFractionDigits: 2 })} <small>de ${(H.waterGoal / 4).toLocaleString("es-MX")} litros</small>`, `${water} de ${H.waterGoal} vasos`],
+      mov: [mv, mg, `${mv} <small>de ${mg} minutos</small>`, "La meta sube 5 minutos cada semana hasta llegar a 30"]
+    };
+    Object.entries(bars).forEach(([k, [v, g, lab, note]]) => {
+      $("#hbv-" + k).innerHTML = lab; $("#hbn-" + k).textContent = note;
+      $("#hbr-" + k).classList.toggle("over", k === "kcal" && v > g);
+      requestAnimationFrame(() => requestAnimationFrame(() => { $("#hbf-" + k).style.transform = `scaleX(${Math.min(v / g, 1)})`; }));
+    });
+    const hw = $("#hz-walk"); hw.textContent = mv >= mg ? "Caminata hecha" : "Caminé con Figo"; hw.className = mv >= mg ? "btn-secondary" : "btn-primary";
+    const tom = addDays(t, 1), extra = [];
+    if (isGuard(tom)) extra.push(["geles-m", "Congela los dos geles para la guardia de mañana"]);
+    if ([2, 5].includes(parse(tom).getDay()) && !isGuard(tom)) extra.push(["desc", "Pasa la pechuga del congelador al refrigerador para cocinar mañana"]);
+    let title, text, items = [];
+    if (type === "guardia") { title = "Día de guardia, de 7:00 a 19:00"; text = "Con dos geles congelados la comida se mantiene fría. Abre el recipiente o la lata al momento de comer."; items = [["geles", "Dos geles congelados en la lonchera"], ["comida", `Comida: ${DISH[m[1]][0]}`], ["agua", "Botella de agua"]]; }
+    else if (type === "noche") { title = "Noche de guardia"; text = `Cena rápida: ${DISH[m[2]][0].toLowerCase()}. Lista en 5 minutos o menos.`; }
+    else if (type === "cocina") { const next = [...new Set([0, 1, 2].map(i => menuFor(addDays(t, i))[1]))]; title = "Hoy cocinas"; text = "Cocina el pollo de los próximos días y repártelo en porciones de 150 gramos. Lo guisado dura de 3 a 4 días en el refrigerador."; items = next.map((k, i) => ["c" + i, DISH[k][0]]); }
+    else if (type === "domingo") { title = "Domingo de compras"; text = "Haz la lista de la semana con tu presupuesto de 500 pesos y deja listo lo del lunes."; }
+    else { title = "Día normal"; text = `Comida en casa a las ${mealTime(t, "com")}. Toma agua a media mañana.`; }
+    items = items.concat(extra);
+    $("#hz-day").innerHTML = `<div class="hz-day"><div>${dayArt(type === "noche" ? "noche" : type)}</div><div style="display:flex;flex-direction:column;gap:6px;min-width:0"><h3>${title}</h3><p>${text}</p>
+      ${items.length ? `<div class="hz-checks">${items.map(([k, n]) => `<button class="hz-check${kit.includes(k) ? " on" : ""}" type="button" data-hz="kit:${k}"><span class="check">${ico("i-checkmark")}</span><span>${n}</span></button>`).join("")}</div>` : ""}
+      ${type === "noche" ? `<button class="btn-secondary" type="button" data-toggle="night" style="align-self:flex-start">${ico("i-nightm")}Modo guardia nocturna</button>` : ""}</div></div>`;
+    const ni = SLOTS.findIndex(([k]) => !done.includes(k));
+    if (ni < 0) $("#hz-next").innerHTML = `<div class="hz-next"><div class="hz-dish">${dayArt("normal")}</div><div style="display:flex;flex-direction:column;gap:8px"><h3>Terminaste tus comidas de hoy.</h3><p>Llevas ${nf(tt.kcal)} kilocalorías y ${tt.prot} gramos de proteína.</p></div></div>`;
+    else {
+      const [sk, sn] = SLOTS[ni], dk = m[ni], D = DISH[dk], lonch = sk === "com" && isGuard(t);
+      $("#hz-next").innerHTML = `<div class="hz-next"><div class="hz-dish">${dishArt(D[3])}</div><div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span class="eyebrow">${sn} · ${mealTime(t, sk)}${lonch ? " · en lonchera" : ""}</span><h3>${D[0]}</h3>
+        <div class="hz-meta"><span>${D[1]} kilocalorías</span><span>${D[2]} gramos de proteína</span></div>
+        <div class="hz-btns"><button class="btn-primary" type="button" data-hz="done:${sk}">Hecho</button><button class="btn-secondary" type="button" data-hz="swap:${sk}">Cambiar</button><button class="btn-secondary" type="button" data-hz="other:${sk}">Comí otra cosa</button></div></div></div>`;
+    }
+    $("#hz-slots").innerHTML = SLOTS.map(([k, n], i) => { const D = DISH[m[i]], isD = done.includes(k), o = oth[k]; return `<button class="hz-slot${isD ? " done" : ""}" type="button" data-hz="done:${k}"><div class="hd"><b>${n}</b><span class="check">${ico("i-checkmark")}</span></div>${dishArt(D[3], false)}<span class="nm">${o && isD ? `Comí otra cosa` : D[0]}</span><span class="kc">${mealTime(t, k)} · ${o && isD ? `aprox. ${o}` : D[1]} kilocalorías</span></button>`; }).join("");
+    const wi = weightInfo(); $("#hz-wstats").innerHTML = wi.stats; $("#hz-wwarn").innerHTML = wi.warn;
+    const kgIn = $("#hz-kg"); if (kgIn && document.activeElement !== kgIn) kgIn.value = H.weights[t] || "";
     $("#weight-chart").innerHTML = weightChart();
+    const started = t >= START, days = started ? Math.round((parse(t) - parse(START)) / 864e5) + 1 : 0, walkDays = Object.keys(H.walk).filter(k => H.walk[k]).length, craves = Object.values(H.crave).reduce((a, b) => a + b, 0);
+    $("#habits").innerHTML = `<div class="hab"><span class="w-title">${ico("i-flame")}Sin refresco ni dulces</span><div class="big-num" data-count="${days}">${days}</div><p class="w-sub">${started ? "días seguidos" : "Empiezas el lunes 26 de octubre"}</p></div>
+      <div class="hab"><span class="w-title">${ico("i-walk")}Caminata con Figo</span><div class="big-num" data-count="${walkDays}">${walkDays}</div><p class="w-sub">días con la meta de movimiento cumplida</p></div>
+      <div class="hab"><span class="w-title">${ico("i-award")}Antojos superados</span><div class="big-num" data-count="${craves}">${craves}</div><p class="w-sub">con el botón Tengo antojo</p></div>`;
+    const f = H.feel[t] || {};
+    ["e", "h"].forEach(x => { $("#hz-" + x).innerHTML = [1, 2, 3, 4, 5].map(n => `<button type="button" class="${f[x] === n ? "on" : ""}" data-hz="feel:${x}:${n}" aria-label="${x === "e" ? "Energía" : "Hambre"} ${n} de 5">${n}</button>`).join(""); });
+    const al = H.alarm[t] || [];
+    $("#hz-alarms").innerHTML = ALARMS.map(([k, n]) => `<button type="button" class="${al.includes(k) ? "on" : ""}" data-hz="alarm:${k}" aria-pressed="${al.includes(k)}">${n}</button>`).join("");
+    $("#hz-alarm-msg").innerHTML = al.length ? `<div class="hz-warn red">Suspende hoy el plan de 1,000 kilocalorías y consulta a tu médico. Si el dolor es intenso, no se quita o hay fiebre, acude a urgencias.</div>` : "";
+  }
+  function healthSheet(kind, slot) {
+    const t = realToday(), head = (icon, title, text) => `<div class="grab"></div><div class="s-ic">${ico(icon)}</div><h3>${title}</h3>${text ? `<p>${text}</p>` : ""}`;
+    const cancel = `<button class="btn-secondary done" type="button" data-close>Cancelar</button>`;
+    if (kind === "swap") {
+      const i = SLOTS.findIndex(x => x[0] === slot), cur = menuFor(t)[i];
+      return head("i-bowl", `Cambiar ${SLOTS[i][1].toLowerCase()}`, slot === "com" && isGuard(t) ? "Hoy es guardia: todas estas opciones van en la lonchera." : "Opciones con calorías y proteína parecidas.") +
+        `<div class="list" style="display:flex;flex-direction:column;gap:8px">${OPTS[slot].map(k => `<button class="hz-opt${k === cur ? " cur" : ""}" type="button" data-hz="pick:${slot}:${k}">${dishArt(DISH[k][3], false)}<div><b>${DISH[k][0]}</b><br><span>${DISH[k][1]} kilocalorías · ${DISH[k][2]} gramos de proteína</span></div><span>${k === cur ? "Actual" : ""}</span></button>`).join("")}</div>` + cancel;
+    }
+    if (kind === "other") {
+      const sizes = [["Ligera", 300], ["Normal", 500], ["Abundante", 800], ["Botana o dulce", 250]];
+      return head("i-pen", "¿Qué tan grande fue?", "Es una estimación rápida. El resto del día se ajusta solo con lo que te queda.") +
+        `<div style="display:flex;flex-direction:column;gap:8px">${sizes.map(([n, k]) => `<button class="btn-secondary" type="button" data-hz="oth:${slot}:${k}">${n} · unas ${k} kilocalorías</button>`).join("")}</div>` + cancel;
+    }
+    return head("i-flame", "Tengo antojo", "Muchos antojos bajan si esperas 10 minutos. Mientras, prueba algo de esta lista.") +
+      `<div style="display:flex;flex-direction:column;gap:8px">${[["Agua mineral con limón", "0 kilocalorías"], ["Gelatina sin azúcar", "unas 10 kilocalorías"], ["Pepino con limón y chile en polvo", "unas 30 kilocalorías"], ["Té o café sin azúcar", "unas 5 kilocalorías"]].map(([n, k]) => `<div class="hz-opt" style="grid-template-columns:minmax(0,1fr) auto"><b>${n}</b><span>${k}</span></div>`).join("")}</div>
+      <div class="cr-t" id="cr-t">10:00</div><div class="hz-btns"><button class="btn-secondary" type="button" data-hz="crave-go">Empezar 10 minutos</button><button class="btn-primary" type="button" data-hz="crave-ok">Ya se me pasó</button></div>`;
+  }
+  function hzAct(a) {
+    const t = realToday(), [k, x, y] = a.split(":");
+    const tog = (obj, key) => { const arr = obj[t] = obj[t] || [], i = arr.indexOf(key); if (i >= 0) arr.splice(i, 1); else arr.push(key); return i < 0; };
+    if (k === "go") return scrollToId(x);
+    if (k === "swap" || k === "other") return openSheet("h-" + k, x);
+    if (k === "crave") return openSheet("h-crave");
+    if (k === "crave-go") {
+      clearInterval(crI); const end = Date.now() + 600000;
+      crI = setInterval(() => { const el = $("#cr-t"); if (!el) { clearInterval(crI); return; } const s = Math.max(0, Math.round((end - Date.now()) / 1000)); el.textContent = s ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}` : "¿Ya pasó?"; if (!s) clearInterval(crI); }, 1000);
+      return;
+    }
+    if (k === "crave-ok") { clearInterval(crI); H.crave[t] = (H.crave[t] || 0) + 1; closeSheet(); toast("Antojo superado", "i-award"); }
+    if (k === "water+") H.water[t] = Math.min(20, (H.water[t] || 0) + 1);
+    if (k === "water-") H.water[t] = Math.max(0, (H.water[t] || 0) - 1);
+    if (k === "move+") { H.move[t] = Math.min(180, (H.move[t] || 0) + 10); H.walk[t] = H.move[t] >= moveGoal(t); }
+    if (k === "walk") { const g = moveGoal(t); if ((H.move[t] || 0) >= g) { H.move[t] = 0; H.walk[t] = false; } else { H.move[t] = g; H.walk[t] = true; toast("Caminata con Figo registrada", "i-walk"); } }
+    if (k === "done") { const on = tog(H.meals, x); if (!on && H.other[t]) delete H.other[t][x]; if (on) toast(`${SLOTS.find(s => s[0] === x)[1]} marcado`, "i-check"); }
+    if (k === "pick") { H.swap[t] = H.swap[t] || {}; H.swap[t][x] = y; closeSheet(); toast("Platillo cambiado", "i-bowl"); }
+    if (k === "oth") { H.other[t] = H.other[t] || {}; H.other[t][x] = +y; const arr = H.meals[t] = H.meals[t] || []; if (!arr.includes(x)) arr.push(x); closeSheet(); toast("Registrado: el resto del día se ajusta", "i-check"); }
+    if (k === "kit") tog(H.kit, x);
+    if (k === "kg") { const v = parseFloat($("#hz-kg").value); if (!(v > 30 && v < 250)) { toast("Escribe tu peso en kilogramos", "i-scale"); return; } H.weights[t] = v; toast("Peso guardado", "i-scale"); }
+    if (k === "feel") { H.feel[t] = H.feel[t] || {}; H.feel[t][x] = +y; }
+    if (k === "alarm") tog(H.alarm, x);
+    save("health"); paintHealth();
   }
   $("#s-health").addEventListener("click", e => {
-    const h = e.target.closest("[data-h]"), ml = e.target.closest("[data-meal]"), pl = e.target.closest("[data-pl]"), t = realToday();
-    if (h) {
-      const k = h.dataset.h;
-      if (k === "walk") { H.walk[t] = !H.walk[t]; if (H.walk[t]) toast("Caminata con Figo registrada", "i-walk"); }
-      if (k === "water+") H.water[t] = Math.min(20, (H.water[t] || 0) + 1);
-      if (k === "water-") H.water[t] = Math.max(0, (H.water[t] || 0) - 1);
-      save("health"); paintHealth(); return;
-    }
-    if (ml) { const arr = H.meals[t] = H.meals[t] || [], i = arr.indexOf(ml.dataset.meal); if (i >= 0) arr.splice(i, 1); else arr.push(ml.dataset.meal); save("health"); paintHealth(); return; }
+    const hz = e.target.closest("[data-hz]"), pl = e.target.closest("[data-pl]");
+    if (hz) return hzAct(hz.dataset.hz);
     if (pl) selectPlate(pl.dataset.pl);
   });
+  $("#sheet-body").addEventListener("click", e => { const hz = e.target.closest("[data-hz]"); if (hz) hzAct(hz.dataset.hz); });
+  $("#hz-kg").addEventListener("keydown", e => { if (e.key === "Enter") hzAct("kg"); });
   $("#plate").addEventListener("keydown", e => { const g = e.target.closest("[data-pl]"); if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); selectPlate(g.dataset.pl); } });
+  initHealthUI();
+  setInterval(paintHealth, 5 * 60000);
 
   /* Kit de guardia */
   const kit = $("#kit");
@@ -4042,7 +4328,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     L.push(`Preguntas para repasar: ${S.review.length ? S.review.map(r => `${r.q} (${r.tag}, ${r.kind})`).join("; ") : "ninguna"}.`);
     L.push(`Notas: ${S.notes.length ? S.notes.slice(0, 10).map(n => n.text).join(" | ") : "ninguna"}.`);
     L.push(`Bitácora de la consulta: ${S.log.length ? S.log.map(l => `${l.m} (${l.tema})`).join("; ") : "sin registros"}.`);
-    L.push(`Salud hoy: caminata ${H.walk[t] ? "hecha" : "pendiente"}, ${H.water[t] || 0} vasos de agua, ${(H.meals[t] || []).length} de 4 comidas marcadas.`);
+    { const tt = dayTotals(t); L.push(`Salud hoy: ${tt.kcal} de ${KCAL_GOAL} kilocalorías, ${tt.prot} de ${PROT_GOAL} g de proteína, ${H.water[t] || 0} vasos de agua, ${H.move[t] || 0} min de movimiento, ${tt.done} de 3 comidas marcadas.`); }
     L.push(`Peso: ${ws.length ? ws.map(([d, v]) => `${d}: ${v} kg`).join(", ") : "sin registros"}.`);
     L.push("Por favor actualiza Notion y mi Google Calendar con esto.");
     return L.join("\n");
@@ -4167,7 +4453,11 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     if ("serviceWorker" in navigator) {
       addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
       let had = !!navigator.serviceWorker.controller;
-      navigator.serviceWorker.addEventListener("controllerchange", () => { if (had) toast("Hay una versión nueva: se aplica al volver a abrir", "i-down"); had = true; });
+      navigator.serviceWorker.addEventListener("controllerchange", () => { if (had) $("#upd").classList.add("on"); had = true; });
+      const checkUpd = () => navigator.serviceWorker.getRegistration().then(r => r && r.update()).catch(() => {});
+      document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") checkUpd(); });
+      setInterval(checkUpd, 30 * 60000);
+      $("#upd-go").addEventListener("click", () => location.reload());
     }
   })();
 
