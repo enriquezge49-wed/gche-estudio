@@ -917,6 +917,73 @@ body.rv-on .plate-wrap:not(.in) .pl-lbl { opacity: 0; }
   .hz-scene *, .dish *, .hb-fill { animation: none !important; transition: none !important; }
 }
 
+
+.hz-tab.on { background: var(--ink); color: var(--canvas); }
+.hz-h { margin: 0; font-family: var(--f-display); font-size: 22px; font-weight: 600; text-wrap: balance; }
+.hz-sub { margin: 4px 0 0; color: var(--ink-2); font-size: 15px; }
+.hz-err { margin: 0; color: var(--red); font-size: 14px; min-height: 1em; }
+.lnk { color: var(--link); font-weight: 600; font-size: 14px; padding: 4px 6px; }
+.lnk.red { color: var(--red); }
+.wk-scroll { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(200px, 1fr); gap: 12px; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+.wk-day { scroll-snap-align: start; display: flex; flex-direction: column; gap: 8px; padding: 12px; border-radius: 20px; background: var(--canvas); border: 1px solid var(--hair); }
+.wk-day.today { border-color: var(--primary); box-shadow: 0 0 0 1px var(--primary); }
+.wk-h { display: flex; justify-content: space-between; align-items: center; gap: 6px; }
+.hz-b { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 980px; color: #fff; }
+.hz-b.g { background: #3a86ff; } .hz-b.c { background: #ff7a45; }
+.wk-cell { display: grid; grid-template-columns: 52px minmax(0, 1fr); grid-template-rows: auto auto auto; column-gap: 8px; text-align: left; padding: 8px; border-radius: 14px; background: var(--surface); transition: transform .3s var(--spring), box-shadow .2s; cursor: grab; }
+.wk-cell small { grid-column: 1 / -1; font-size: 12px; font-weight: 600; color: var(--ink-3); }
+.wk-cell svg { grid-row: 2 / 4; width: 52px; height: auto; }
+.wk-cell span { font-size: 13px; font-weight: 600; line-height: 1.25; }
+.wk-cell em { font-style: normal; font-size: 12px; color: var(--ink-2); }
+.wk-cell.drag { opacity: .4; } .wk-cell.over { box-shadow: 0 0 0 2px var(--primary); transform: scale(1.03); }
+.wk-tot { font-size: 13px; font-weight: 600; color: var(--ink-2); text-align: right; font-variant-numeric: tabular-nums; }
+.wk-tot.over { color: var(--hb-over); }
+.bank-g { display: flex; flex-direction: column; gap: 8px; }
+.bank-g > b { margin-top: 6px; }
+.bank-r { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 8px 10px; border-radius: 16px; background: var(--canvas); text-align: left; }
+.bank-r svg { width: 56px; height: auto; }
+.bank-r span { display: block; font-size: 13px; color: var(--ink-2); }
+.bank-a { display: flex; flex-wrap: wrap; justify-content: flex-end; }
+.shop { display: flex; flex-direction: column; gap: 8px; }
+.shop-r { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 10px 12px; border-radius: 16px; background: var(--canvas); }
+.shop-r.on b { text-decoration: line-through; text-decoration-color: var(--ink-3); }
+.shop-r small { color: var(--ink-2); font-size: 13px; }
+.paid { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; font-size: 12px; color: var(--ink-2); }
+.paid input, .hz-kg input[type=text], .cfg input, .cfg select, .cfg textarea, .dz-ing select, .dz-ing input { font: inherit; font-size: 15px; padding: 9px 12px; border-radius: 12px; border: 1px solid var(--hair); background: var(--surface); color: var(--ink); min-width: 0; }
+.paid input { width: 90px; text-align: right; }
+.shop.market .shop-r { padding: 16px; } .shop.market b { font-size: 22px; } .shop.market small { font-size: 16px; } .shop.market .check { width: 34px; height: 34px; }
+.steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; font-size: 16px; }
+.tmr { display: inline-flex; align-items: center; gap: 4px; margin-left: 6px; padding: 3px 10px; border-radius: 980px; background: var(--surface-2); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.tmr .ico { width: 14px; height: 14px; }
+.fr-r { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; border-radius: 16px; background: var(--canvas); border-left: 0; }
+.fr-r span { display: block; font-size: 13px; color: var(--ink-2); }
+.fr-r.amb { background: rgba(255,159,10,.15); } .fr-r.red { background: rgba(255,69,58,.15); } .fr-r.red span { color: var(--red); }
+.mbars { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; align-items: end; }
+.mb { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.mb-t { width: 100%; max-width: 34px; height: 90px; border-radius: 10px; background: var(--surface-2); display: flex; align-items: flex-end; overflow: hidden; }
+.mb-t i { display: block; width: 100%; border-radius: 10px; animation: mbGrow .9s var(--spring) both; animation-delay: var(--d); transform-origin: bottom; }
+@keyframes mbGrow { from { transform: scaleY(0); } }
+.mb-v { font-size: 12px; font-weight: 600; min-height: 1.2em; font-variant-numeric: tabular-nums; }
+.mb-l { font-size: 12px; color: var(--ink-2); }
+.hb-mark { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--ink-3); }
+.hz-stats span.cur { background: var(--primary); color: #fff; }
+.ach { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.ach-i { display: flex; align-items: center; gap: 10px; padding: 12px; border-radius: 16px; background: var(--canvas); color: var(--ink-3); font-size: 14px; font-weight: 600; }
+.ach-i.on { background: rgba(255,214,10,.18); color: var(--ink); }
+.ach-i.on .ico { color: #ff9f0a; }
+.labs { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+.lab { display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 16px; background: var(--canvas); }
+.lab small { color: var(--ink-2); }
+.lab input { width: 110px; }
+.cfgs { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+.cfg { display: flex; flex-direction: column; gap: 6px; font-size: 14px; color: var(--ink-2); }
+.cfg textarea { resize: vertical; }
+.hz-alarms button.on.blue { background: var(--primary); }
+.dz-ing { display: grid; grid-template-columns: minmax(0, 1fr) 90px auto; gap: 8px; align-items: center; }
+#print .paper table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
+#print .paper td { border-bottom: 1px solid #ddd; padding: 6px 4px; }
+@media (max-width: 640px) { .shop-r { grid-template-columns: 1fr; } .paid { flex-direction: row; align-items: center; justify-content: flex-end; } }
+
 /* Kit de guardia */
 .kit-wrap { width: min(900px, 100%); display: flex; flex-direction: column; gap: 26px; }
 .kit-group { display: flex; flex-direction: column; gap: 12px; }
@@ -1375,6 +1442,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     <button class="ib hide-sm" id="btn-calc" type="button" aria-label="Calculadoras"><svg class="ico"><use href="#i-calc"/></svg></button>
     <button class="ib hide-sm" id="btn-pharma" type="button" aria-label="Fármacos"><svg class="ico"><use href="#i-pill"/></svg></button>
     <button class="ib" id="btn-index" type="button" aria-label="Índice de esta pantalla"><svg class="ico"><use href="#i-index"/></svg></button>
+    <button class="ib hide-sm" id="btn-kg" type="button" aria-label="Registrar peso"><svg class="ico"><use href="#i-scale"/></svg></button>
     <button class="ib" id="btn-theme" type="button" aria-label="Cambiar entre modo claro y oscuro"><svg class="ico"><use href="#i-moon"/></svg></button>
     <button class="ib" id="btn-full" type="button" aria-label="Pantalla completa"><svg class="ico"><use href="#i-full"/></svg></button>
     <button class="ib" id="btn-more" type="button" aria-label="Más opciones"><svg class="ico"><use href="#i-more"/></svg></button>
@@ -1543,6 +1611,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
           <p class="sub" id="hz-date"></p>
           <div class="hz-tabs" id="hz-tabs"></div>
         </div>
+        <div class="hz-panel" data-panel="hoy">
         <div class="section" id="sa-metas">
           <div class="section-head rv"><h2>Tus metas de hoy.</h2><p>Se llenan solas al marcar tus comidas, el agua y la caminata.</p></div>
           <div class="hz-card rv"><div class="hb" id="hz-bars"></div>
@@ -1585,6 +1654,14 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
           <div class="section-head rv"><h2>El Plato del Bien Comer.</h2><p>Toca un grupo para ver cómo usarlo al armar cada comida.</p></div>
           <div class="plate-wrap rv"><svg id="plate" viewBox="0 0 320 320" role="group" aria-label="Plato del Bien Comer"></svg><div class="plate-info" id="plate-info"></div></div>
         </div>
+        </div>
+        <div class="hz-panel" data-panel="menu" hidden></div>
+        <div class="hz-panel" data-panel="compras" hidden></div>
+        <div class="hz-panel" data-panel="cocina" hidden></div>
+        <div class="hz-panel" data-panel="progreso" hidden></div>
+        <div class="hz-panel" data-panel="mov" hidden></div>
+        <div class="hz-panel" data-panel="clinica" hidden></div>
+        <div class="hz-panel" data-panel="ajustes" hidden></div>
         <button class="crave-fab" type="button" data-hz="crave"><svg class="ico" style="width:18px;height:18px"><use href="#i-flame"/></svg>Tengo antojo</button>
       </div>
     </section>
@@ -2822,6 +2899,14 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   ENT["s-health"] = { g: "Salud", icon: "i-leaf", title: "Hoy en salud", sub: "Metas, comidas y peso", kw: "dieta comida peso agua caminata figo kilocalorias", open: () => nav(["home", "health"]) };
   ENT["s-menu"] = { g: "Salud", icon: "i-bowl", title: "Menú de hoy", sub: "Salud", kw: "comida desayuno cena dieta", open: () => { nav(["home", "health"]); setTimeout(() => scrollToId("sa-menu"), 640); } };
   ENT["s-plato"] = { g: "Salud", icon: "i-grid", title: "Plato del Bien Comer", sub: "Salud", kw: "verduras frutas cereales leguminosas", open: () => { nav(["home", "health"]); setTimeout(() => scrollToId("sa-plato"), 640); } };
+  ENT["s-hz-menu"] = { g: "Salud", icon: "i-cal", title: "Menú de la semana", sub: "Salud", kw: "plan editable arrastrar platillos banco", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("menu"), 450); } };
+  ENT["s-hz-compras"] = { g: "Salud", icon: "i-chart", title: "Compras y presupuesto", sub: "Salud", kw: "lista súper mercado pesos precios", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("compras"), 450); } };
+  ENT["s-hz-cocina"] = { g: "Salud", icon: "i-flame", title: "Cocina en lote y recetas", sub: "Salud", kw: "refrigerador receta pasos temporizador", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("cocina"), 450); } };
+  ENT["s-hz-progreso"] = { g: "Salud", icon: "i-scale", title: "Progreso y reporte", sub: "Salud", kw: "peso cintura logros pdf reporte", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("progreso"), 450); } };
+  ENT["s-hz-mov"] = { g: "Salud", icon: "i-walk", title: "Movimiento y sueño", sub: "Salud", kw: "caminata dormir horas", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("mov"), 450); } };
+  ENT["s-hz-clinica"] = { g: "Salud", icon: "i-shield", title: "Clínica y laboratorios", sub: "Salud", kw: "glucosa colesterol triglicéridos alarmas revaluación", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("clinica"), 450); } };
+  ENT["s-hz-ajustes"] = { g: "Salud", icon: "i-gear", title: "Ajustes de salud", sub: "Salud", kw: "metas calorías presupuesto horarios porción", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("ajustes"), 450); } };
+  ENT["s-hz-peso"] = { g: "Salud", icon: "i-scale", title: "Registrar peso", sub: "Salud", kw: "peso kilogramos báscula", open: () => $("#btn-kg").click() };
   ENT["h-kit"] = { g: "Herramientas", icon: "i-kit", title: "Kit de guardia", sub: "Herramienta", kw: "urgencias", open: () => openKit() };
   ENT["h-sunday"] = { g: "Herramientas", icon: "i-sum", title: "Revisión del domingo", sub: "Herramienta", open: () => openSunday() };
   ENT["h-bitacora"] = { g: "Herramientas", icon: "i-log", title: "Bitácora de la consulta", sub: "Herramienta", kw: "pacientes consulta escuela", open: () => openSheet("bitacora") };
@@ -3250,6 +3335,8 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
       case "h-swap": return healthSheet("swap", arg);
       case "h-other": return healthSheet("other", arg);
       case "h-crave": return healthSheet("crave", arg);
+      case "h-dish": return dishForm(arg === "new" ? null : arg);
+      case "h-recipe": return recipeSheet(arg);
       case "case": { const [tid, i] = arg.split(":"); return head("i-case", TOP[tid].cases[+i].t, "") + caseHTML(arg) + done; }
       case "pharma": {
         const list = arg === "topic" ? TOP[curT].drugs : Object.keys(DRUG);
@@ -3286,7 +3373,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
           (S.review.length ? `<div class="list">${S.review.map(r => `<div class="row" style="cursor:default"><div class="ic">${ico("i-bolt")}</div><div class="tx"><b>${escapeHTML(r.q)}</b><span>${r.tag} · ${r.kind} · ${r.due <= t ? "toca hoy" : "regresa el " + longDate(parse(r.due))}</span></div><span></span></div>`).join("")}</div>` : "") + done;
       }
       case "summary": return head("i-sum", "Resumen semanal", "Cada domingo llega solo, como el tiempo en pantalla.") +
-        `<div class="stats">${stat(weekMinutes(), "minutos estudiados")}${stat(weekApproved(1), "módulos de la Semana 1")}${stat(Object.keys(S.qday).filter(k => k >= addDays(t, -6)).reduce((a, k) => a + S.qday[k], 0), "preguntas respondidas")}${stat(S.review.length, "preguntas por repasar")}</div><p>${S.review.length ? `Lo que más fallaste: ${escapeHTML(S.review[0].q)}` : "Sin errores registrados todavía."}</p>` + done;
+        `<div class="stats">${stat(weekMinutes(), "minutos estudiados")}${stat(weekApproved(1), "módulos de la Semana 1")}${stat(Object.keys(S.qday).filter(k => k >= addDays(t, -6)).reduce((a, k) => a + S.qday[k], 0), "preguntas respondidas")}${stat(S.review.length, "preguntas por repasar")}</div><p>${S.review.length ? `Lo que más fallaste: ${escapeHTML(S.review[0].q)}` : "Sin errores registrados todavía."}</p>` + healthSummary() + done;
       case "downloads": return head("i-down", "Sin internet", "Toda la app, con las 12 semanas, se guarda en tu tablet al instalarla. El contenido nuevo se descarga solo cuando hay conexión.") +
         `<div class="list"><div class="row" style="cursor:default"><div class="ic">${ico("i-check")}</div><div class="tx"><b>Estado en este dispositivo</b><span id="dl-state">Revisando…</span></div><span></span></div></div>` +
         dots(["Tu avance se guarda en el dispositivo y funciona sin conexión", "Usa Respaldo para copiar tu avance de vez en cuando", "El clima necesita internet; todo lo demás no"]) + done;
@@ -3415,7 +3502,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   $("#btn-index").addEventListener("click", e => {
     const top = stack[stack.length - 1]; let h;
     if (top === "home") h = `<div class="pop-title">En Hoy</div>` + popItem('data-scroll="h-hoy"', "i-home", "Saludo y plan") + popItem('data-scroll="h-widgets"', "i-grid", "Widgets") + popItem('data-scroll="h-favs"', "i-star", "Favoritos") + popItem('data-scroll="h-tools"', "i-chart", "Herramientas") + popItem('data-scroll="h-weeks"', "i-cal", "Semanas", "12") + popItem('data-act="panel-open"', "i-clock", "Mi día", "Panel");
-    else if (top === "health") h = `<div class="pop-title">En Salud</div>` + popItem('data-scroll="sa-metas"', "i-target", "Metas de hoy") + popItem('data-scroll="sa-next"', "i-bowl", "Siguiente comida") + popItem('data-scroll="sa-menu"', "i-bowl", "Comidas de hoy") + popItem('data-scroll="sa-habits"', "i-flame", "Hábitos") + popItem('data-scroll="sa-peso"', "i-scale", "Peso") + popItem('data-scroll="sa-plato"', "i-grid", "Plato del Bien Comer");
+    else if (top === "health") h = `<div class="pop-title">En Salud</div>` + popItem('data-hzp="hoy"', "i-heart", "Hoy en salud") + popItem('data-hzp="menu"', "i-cal", "Menú de la semana") + popItem('data-hzp="compras"', "i-chart", "Compras y presupuesto") + popItem('data-hzp="cocina"', "i-flame", "Cocina en lote y recetas") + popItem('data-hzp="progreso"', "i-scale", "Progreso y reporte") + popItem('data-hzp="mov"', "i-walk", "Movimiento y sueño") + popItem('data-hzp="clinica"', "i-shield", "Clínica y laboratorios") + popItem('data-hzp="ajustes"', "i-gear", "Ajustes de salud");
     else if (top === "week") { const w = WEEKS[curW - 1]; h = `<div class="pop-title">En la Semana ${curW}</div>` + popItem('data-scroll="w-top"', "i-cal", "Portada") + (w.topics ? weekTopics(curW).map(t => popItem(`data-topic="${t.id}"`, t.icon, t.title, `${approved(t.id)}/${t.mods.length}`)).join("") : w.list.map(l => popItem('data-scroll="w-temas"', w.icon, l, "Pronto")).join("")) + popItem('data-scroll="w-cierre"', "i-flag", "Cierre de semana"); }
     else { const t = TOP[curT]; h = `<div class="pop-title">En ${t.title.toLowerCase()}</div>` + popItem('data-scroll="t-top"', "i-target", "Avance") + popItem('data-scroll="t-apartados"', "i-grid", "Apartados") + popItem('data-scroll="t-lectura"', "i-hl", "Lectura y glosario") + popItem('data-scroll="t-algo"', "i-branch", "Algoritmos") + popItem('data-scroll="t-casos"', "i-case", "Casos clínicos") + popItem('data-scroll="t-cierre"', "i-link", "Fuentes y temas conectados") + `<div class="pop-sep"></div>` + t.mods.map((m, i) => popItem(`data-mod="${t.id}:${i + 1}"`, "i-book", `${i + 1}. ${m.t}`, LBL[modStatus(t.id, i + 1)])).join(""); }
     openPop(e.currentTarget, h);
@@ -3428,7 +3515,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
       popItem('data-act="panel"', "i-cal", "Fijar reloj y calendario", on("pinned") ? "Fijo" : "") + popItem('data-act="kit"', "i-kit", "Kit de guardia") + popItem('data-act="sunday"', "i-sum", "Revisión del domingo") + popItem('data-sheet="bitacora"', "i-log", "Bitácora de la consulta") + popItem('data-act="sync"', "i-sync", "Copiar para sincronizar") + `<div class="pop-sep"></div>` +
       popItem('data-sheet="calclist"', "i-calc", "Calculadoras", "", "hide-wide") + popItem('data-sheet="pharma"', "i-pill", "Fármacos", "", "hide-wide") + popItem('data-sheet="downloads"', "i-down", "Sin internet") + popItem('data-sheet="backup"', "i-backup", "Respaldo y restauración"));
   });
-  pop.addEventListener("click", e => { const s = e.target.closest("[data-scroll]"); if (s) { closePop(); scrollToId(s.dataset.scroll); } });
+  pop.addEventListener("click", e => { const hp = e.target.closest("[data-hzp]"); if (hp) { closePop(); showPanel(hp.dataset.hzp); return; } const s = e.target.closest("[data-scroll]"); if (s) { closePop(); scrollToId(s.dataset.scroll); } });
 
   /* Buscador */
   const spot = $("#spot"), sIn = $("#spot-input");
@@ -3643,6 +3730,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     n.push(["i-bolt", due ? `${due} pregunta${due === 1 ? "" : "s"} por repasar` : "Sin preguntas por repasar", due ? "Abre Repaso rápido." : "Las que falles aparecerán aquí.", 'data-sheet="quick"']);
     if (!S.qod[t]) n.push(["i-check", "Pregunta del día", "Todavía no la respondes.", 'data-act="scroll-qod"']);
     if (new Date().getDay() === 0) n.push(["i-sum", "Revisión del domingo", "Cinco minutos para cerrar la semana.", 'data-act="sunday"']);
+    try { n.push(...healthNotifs()); } catch (e) {}
     n.push(["i-sync", "Google Calendar y Notion", "Copia tu avance y pégamelo en el chat para sincronizar.", 'data-act="sync"']);
     $("#notifs").innerHTML = n.map(([ic, b, s, attr], i) => `<button class="notif" type="button" ${attr} style="animation-delay:${i * .06}s">${ico(ic)}<div><b>${b}</b>${s}</div></button>`).join("");
   }
@@ -4030,7 +4118,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     return [...base, ["7:00", "i-flag", "Escuela", "Hasta las 15:00", ""], ["15:40", "i-bowl", "Comida", "", "salud"], ["16:30", "i-moon", "Siesta", "Una hora", ""], ["18:00", "i-timer", "Bloque de estudio", st, "estudio"], ["21:00", "i-bowl", "Cena", "", "salud"], ["21:30", "i-bolt", "Repaso rápido", "Preguntas pendientes", "estudio"], ["23:30", "i-moon", "Dormir", "", ""]];
   }
   function renderMyDay(d = realToday()) {
-    const items = dayPlan(d), now = new Date(), nm = now.getHours() * 60 + now.getMinutes();
+    const items = mealsInDay(d, dayPlan(d)), now = new Date(), nm = now.getHours() * 60 + now.getMinutes();
     const mins = t => { const [h, m] = t.split(":").map(Number); return h * 60 + m; };
     let cur = -1; items.forEach((it, i) => { if (mins(it[0]) <= nm) cur = i; });
     const hhmm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
@@ -4041,7 +4129,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
 
   /* Salud */
   const H = S.health;
-  const KCAL_GOAL = 1000, PROT_GOAL = 90, TALLA = 1.70;
+  let KCAL_GOAL = 1000, PROT_GOAL = 90, TALLA = 1.70;
   const DISH = {
     hm: ["Huevos a la mexicana con 1 tortilla", 280, 14, "huevo"], hn: ["Huevos con nopales y 1 tortilla", 270, 14, "huevo"], hv: ["Huevos en salsa verde con 1 tortilla", 275, 14, "huevoV"], hc: ["Huevos con calabacita y 1 tortilla", 270, 14, "huevo"], ov: ["Omelette con verdura y 1 tortilla", 270, 14, "omelette"],
     ep: ["Ensalada de pollo con pepino, jitomate y limón, más 1 naranja", 380, 47, "ensalada"], pv: ["Pollo en salsa verde con calabacita", 330, 47, "polloV"], tp: ["Tinga de pollo con nopales", 340, 47, "tinga"], pp: ["Pechuga a la plancha con nopales asados", 330, 47, "plancha"], pt: ["Pollo en tiras con verduras asadas, más 1 naranja", 390, 47, "tiras"],
@@ -4052,6 +4140,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   const WEEKMENU = { "2026-10-26": ["hm", "ep", "at"], "2026-10-27": ["hn", "pv", "oc"], "2026-10-28": ["hv", "tp", "at"], "2026-10-29": ["hm", "ep", "o3n"], "2026-10-30": ["hc", "pp", "oj"], "2026-10-31": ["hn", "pt", "o3v"], "2026-11-01": ["ov", "pv", "o3m"] };
   const ALARMS = [["mareo", "Mareo"], ["palp", "Palpitaciones"], ["dolor", "Dolor arriba a la derecha al comer"]];
   function menuFor(t) {
+    if (H.plan && H.plan[t]) return H.plan[t].map((id, i) => DISH[id] ? id : (WEEKMENU[t] || OPTS[SLOTS[i][0]])[i] || OPTS[SLOTS[i][0]][0]);
     let base = WEEKMENU[t];
     if (!base) { const dow = parse(t).getDay(), k = Object.keys(WEEKMENU).find(x => parse(x).getDay() === dow); base = WEEKMENU[k].slice(); if (isGuard(t) && !["ep", "pt"].includes(base[1])) base[1] = "ep"; }
     const sw = (H.swap && H.swap[t]) || {};
@@ -4059,10 +4148,10 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   }
   function mealTime(t, slot) {
     const dow = parse(t).getDay();
-    if (slot === "des") return dow === 0 ? "8:00" : "5:30";
-    if (slot === "cen") return "21:00";
+    if (slot === "des") return dow === 0 ? "8:00" : H.cfg.tDes;
+    if (slot === "cen") return H.cfg.tCen;
     if (isGuard(t)) return "13:00";
-    return dow === 6 ? "13:40" : dow === 0 ? "15:00" : "15:40";
+    return dow === 6 ? "13:40" : dow === 0 ? "15:00" : H.cfg.tCom;
   }
   function dayTotals(t) {
     const m = menuFor(t), done = H.meals[t] || [], oth = (H.other && H.other[t]) || {};
@@ -4074,7 +4163,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   function dayType(t) {
     const h = new Date().getHours(), dow = parse(t).getDay();
     if (isGuard(t)) return h >= 19 ? "noche" : "guardia";
-    if (dow === 2 || dow === 5) return "cocina";
+    if (H.cfg.cook.includes(dow)) return "cocina";
     return dow === 0 ? "domingo" : "normal";
   }
   function scenePeriod() { const h = new Date().getHours(); return h >= 5 && h < 11 ? "manana" : h >= 11 && h < 17 ? "dia" : h >= 17 && h < 20 ? "tarde" : "noche"; }
@@ -4143,8 +4232,8 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   const TYPE = { guardia: ["Día de guardia", "#3a86ff"], noche: ["Noche de guardia", "#5e5ce6"], cocina: ["Día de cocina", "#ff7a45"], domingo: ["Domingo de compras", "#f5a524"], normal: ["Día normal", "#34c759"] };
   let hzPeriod = "", crI = null;
   function initHealthUI() {
-    const tabs = [["sa-metas", "Metas", "i-target", "#ff6b4a"], ["sa-next", "Siguiente", "i-bowl", "#f5a524"], ["sa-menu", "Comidas", "i-bowl", "#34c759"], ["sa-peso", "Peso", "i-scale", "#32ade6"], ["sa-cierre", "Cierre", "i-heart", "#ff2d55"], ["sa-alarma", "Alarmas", "i-shield", "#ff453a"], ["sa-plato", "Plato", "i-grid", "#5e5ce6"]];
-    $("#hz-tabs").innerHTML = tabs.map(([id, n, ic, c]) => `<button class="hz-tab" type="button" data-hz="go:${id}"><span class="bub" style="background:${c}">${ico(ic)}</span>${n}</button>`).join("");
+    const tabs = [["hoy", "Hoy", "i-heart", "#ff2d55"], ["menu", "Menú", "i-cal", "#f5a524"], ["compras", "Compras", "i-chart", "#34c759"], ["cocina", "Cocina", "i-flame", "#ff7a45"], ["progreso", "Progreso", "i-scale", "#32ade6"], ["mov", "Movimiento", "i-walk", "#30b0c7"], ["clinica", "Clínica", "i-shield", "#ff453a"], ["ajustes", "Ajustes", "i-gear", "#8e8e93"]];
+    $("#hz-tabs").innerHTML = tabs.map(([id, n, ic, c]) => `<button class="hz-tab${id === "hoy" ? " on" : ""}" type="button" data-hz="tab:${id}"><span class="bub" style="background:${c}">${ico(ic)}</span>${n}</button>`).join("");
     const rows = [["kcal", "Kilocalorías", "var(--hb-kcal)"], ["pro", "Proteína", "var(--hb-pro)"], ["agua", "Agua", "var(--hb-agua)"], ["mov", "Movimiento", "var(--hb-mov)"]];
     $("#hz-bars").innerHTML = rows.map(([k, n, c], i) => `<div class="hb-row" id="hbr-${k}" style="--c:${c}"><div class="hb-top"><span class="hb-name"><i></i>${n}</span><b id="hbv-${k}"></b></div><div class="hb-track"><span class="hb-fill" id="hbf-${k}" style="--d:${i * .12}s"></span></div><div class="hb-note" id="hbn-${k}"></div></div>`).join("");
   }
@@ -4152,11 +4241,11 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     const ws = Object.entries(H.weights).sort((a, b) => a[0] < b[0] ? -1 : 1);
     if (!ws.length) return { stats: `<span>Registra tu primer peso para ver la tendencia</span>`, warn: "" };
     const [ld, lw] = ws[ws.length - 1], last7 = ws.filter(([d]) => d > addDays(ld, -7)).map(w => w[1]), avg = last7.reduce((a, b) => a + b, 0) / last7.length;
-    const st = [`<span>Último: <b>${lw.toFixed(1)} kilogramos</b></span>`, `<span>Índice de masa corporal: <b>${(lw / (TALLA * TALLA)).toFixed(1)}</b></span>`, `<span>Promedio de 7 días: <b>${avg.toFixed(1)} kilogramos</b></span>`];
-    if (ws.length > 1) { const d0 = ws[0][1] - lw; st.push(`<span>${d0 >= 0 ? "Llevas" : "Subiste"} <b>${Math.abs(d0).toFixed(1)} kilogramos</b> ${d0 >= 0 ? "menos" : ""}</span>`); }
+    const st = [`<span>Último: <b>${lw.toFixed(1)} kg</b></span>`, `<span>Índice de masa corporal: <b>${(lw / (TALLA * TALLA)).toFixed(1)}</b></span>`, `<span>Promedio de 7 días: <b>${avg.toFixed(1)} kg</b></span>`];
+    if (ws.length > 1) { const d0 = ws[0][1] - lw; st.push(`<span>${d0 >= 0 ? "Llevas" : "Subiste"} <b>${Math.abs(d0).toFixed(1)} kg</b> ${d0 >= 0 ? "menos" : ""}</span>`); }
     let warn = "";
     const old = ws.filter(([d]) => d <= addDays(ld, -7)).pop();
-    if (old) { const days = (parse(ld) - parse(old[0])) / 864e5, rate = (old[1] - lw) / (days / 7); if (rate > 1.4) warn = `<div class="hz-warn">Bajas unos ${rate.toFixed(1)} kilogramos por semana, más de 1.4. Agrega una tortilla o una fruta al día para cuidar tu vesícula y tu músculo.</div>`; }
+    if (old) { const days = (parse(ld) - parse(old[0])) / 864e5, rate = (old[1] - lw) / (days / 7); if (rate > 1.4) warn = `<div class="hz-warn">Bajas unos ${rate.toFixed(1)} kg por semana, más de 1.4. Agrega una tortilla o una fruta al día para cuidar tu vesícula y tu músculo.</div>`; }
     return { stats: st.join(""), warn };
   }
   function paintHealth() {
@@ -4166,9 +4255,9 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     $("#hz-date").innerHTML = `${cap(longDate(parse(t)))} <span class="hz-chip" style="--c:${TYPE[type][1]}"><i></i>${TYPE[type][0]}</span>`;
     const bars = {
       kcal: [tt.kcal, KCAL_GOAL, `${nf(tt.kcal)} <small>de ${nf(KCAL_GOAL)}</small>`, tt.kcal > KCAL_GOAL ? `${nf(tt.kcal - KCAL_GOAL)} por encima de la meta` : `Te quedan ${nf(KCAL_GOAL - tt.kcal)}`],
-      pro: [tt.prot, PROT_GOAL, `${tt.prot} <small>de ${PROT_GOAL} gramos</small>`, tt.prot >= PROT_GOAL ? "Meta cumplida" : `Faltan ${PROT_GOAL - tt.prot} gramos`],
+      pro: [tt.prot, PROT_GOAL, `${tt.prot} <small>de ${PROT_GOAL} g</small>`, tt.prot >= PROT_GOAL ? "Meta cumplida" : `Faltan ${PROT_GOAL - tt.prot} g`],
       agua: [water, H.waterGoal, `${(water / 4).toLocaleString("es-MX", { maximumFractionDigits: 2 })} <small>de ${(H.waterGoal / 4).toLocaleString("es-MX")} litros</small>`, `${water} de ${H.waterGoal} vasos`],
-      mov: [mv, mg, `${mv} <small>de ${mg} minutos</small>`, "La meta sube 5 minutos cada semana hasta llegar a 30"]
+      mov: [mv, mg, `${mv} <small>de ${mg} min</small>`, "La meta sube 5 minutos cada semana hasta llegar a 30"]
     };
     Object.entries(bars).forEach(([k, [v, g, lab, note]]) => {
       $("#hbv-" + k).innerHTML = lab; $("#hbn-" + k).textContent = note;
@@ -4178,7 +4267,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     const hw = $("#hz-walk"); hw.textContent = mv >= mg ? "Caminata hecha" : "Caminé con Figo"; hw.className = mv >= mg ? "btn-secondary" : "btn-primary";
     const tom = addDays(t, 1), extra = [];
     if (isGuard(tom)) extra.push(["geles-m", "Congela los dos geles para la guardia de mañana"]);
-    if ([2, 5].includes(parse(tom).getDay()) && !isGuard(tom)) extra.push(["desc", "Pasa la pechuga del congelador al refrigerador para cocinar mañana"]);
+    if (H.cfg.cook.includes(parse(tom).getDay()) && !isGuard(tom)) extra.push(["desc", "Pasa la pechuga del congelador al refrigerador para cocinar mañana"]);
     let title, text, items = [];
     if (type === "guardia") { title = "Día de guardia, de 7:00 a 19:00"; text = "Con dos geles congelados la comida se mantiene fría. Abre el recipiente o la lata al momento de comer."; items = [["geles", "Dos geles congelados en la lonchera"], ["comida", `Comida: ${DISH[m[1]][0]}`], ["agua", "Botella de agua"]]; }
     else if (type === "noche") { title = "Noche de guardia"; text = `Cena rápida: ${DISH[m[2]][0].toLowerCase()}. Lista en 5 minutos o menos.`; }
@@ -4194,10 +4283,10 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     else {
       const [sk, sn] = SLOTS[ni], dk = m[ni], D = DISH[dk], lonch = sk === "com" && isGuard(t);
       $("#hz-next").innerHTML = `<div class="hz-next"><div class="hz-dish">${dishArt(D[3])}</div><div style="display:flex;flex-direction:column;gap:10px;min-width:0"><span class="eyebrow">${sn} · ${mealTime(t, sk)}${lonch ? " · en lonchera" : ""}</span><h3>${D[0]}</h3>
-        <div class="hz-meta"><span>${D[1]} kilocalorías</span><span>${D[2]} gramos de proteína</span></div>
+        <div class="hz-meta"><span>${D[1]} kcal</span><span>${D[2]} g de proteína</span></div>
         <div class="hz-btns"><button class="btn-primary" type="button" data-hz="done:${sk}">Hecho</button><button class="btn-secondary" type="button" data-hz="swap:${sk}">Cambiar</button><button class="btn-secondary" type="button" data-hz="other:${sk}">Comí otra cosa</button></div></div></div>`;
     }
-    $("#hz-slots").innerHTML = SLOTS.map(([k, n], i) => { const D = DISH[m[i]], isD = done.includes(k), o = oth[k]; return `<button class="hz-slot${isD ? " done" : ""}" type="button" data-hz="done:${k}"><div class="hd"><b>${n}</b><span class="check">${ico("i-checkmark")}</span></div>${dishArt(D[3], false)}<span class="nm">${o && isD ? `Comí otra cosa` : D[0]}</span><span class="kc">${mealTime(t, k)} · ${o && isD ? `aprox. ${o}` : D[1]} kilocalorías</span></button>`; }).join("");
+    $("#hz-slots").innerHTML = SLOTS.map(([k, n], i) => { const D = DISH[m[i]], isD = done.includes(k), o = oth[k]; return `<button class="hz-slot${isD ? " done" : ""}" type="button" data-hz="done:${k}"><div class="hd"><b>${n}</b><span class="check">${ico("i-checkmark")}</span></div>${dishArt(D[3], false)}<span class="nm">${o && isD ? `Comí otra cosa` : D[0]}</span><span class="kc">${mealTime(t, k)} · ${o && isD ? `aprox. ${o}` : D[1]} kcal</span></button>`; }).join("");
     const wi = weightInfo(); $("#hz-wstats").innerHTML = wi.stats; $("#hz-wwarn").innerHTML = wi.warn;
     const kgIn = $("#hz-kg"); if (kgIn && document.activeElement !== kgIn) kgIn.value = H.weights[t] || "";
     $("#weight-chart").innerHTML = weightChart();
@@ -4209,15 +4298,17 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     ["e", "h"].forEach(x => { $("#hz-" + x).innerHTML = [1, 2, 3, 4, 5].map(n => `<button type="button" class="${f[x] === n ? "on" : ""}" data-hz="feel:${x}:${n}" aria-label="${x === "e" ? "Energía" : "Hambre"} ${n} de 5">${n}</button>`).join(""); });
     const al = H.alarm[t] || [];
     $("#hz-alarms").innerHTML = ALARMS.map(([k, n]) => `<button type="button" class="${al.includes(k) ? "on" : ""}" data-hz="alarm:${k}" aria-pressed="${al.includes(k)}">${n}</button>`).join("");
+    if (curPanel !== "hoy") paintModule(curPanel);
     $("#hz-alarm-msg").innerHTML = al.length ? `<div class="hz-warn red">Suspende hoy el plan de 1,000 kilocalorías y consulta a tu médico. Si el dolor es intenso, no se quita o hay fiebre, acude a urgencias.</div>` : "";
   }
   function healthSheet(kind, slot) {
     const t = realToday(), head = (icon, title, text) => `<div class="grab"></div><div class="s-ic">${ico(icon)}</div><h3>${title}</h3>${text ? `<p>${text}</p>` : ""}`;
     const cancel = `<button class="btn-secondary done" type="button" data-close>Cancelar</button>`;
     if (kind === "swap") {
-      const i = SLOTS.findIndex(x => x[0] === slot), cur = menuFor(t)[i];
-      return head("i-bowl", `Cambiar ${SLOTS[i][1].toLowerCase()}`, slot === "com" && isGuard(t) ? "Hoy es guardia: todas estas opciones van en la lonchera." : "Opciones con calorías y proteína parecidas.") +
-        `<div class="list" style="display:flex;flex-direction:column;gap:8px">${OPTS[slot].map(k => `<button class="hz-opt${k === cur ? " cur" : ""}" type="button" data-hz="pick:${slot}:${k}">${dishArt(DISH[k][3], false)}<div><b>${DISH[k][0]}</b><br><span>${DISH[k][1]} kilocalorías · ${DISH[k][2]} gramos de proteína</span></div><span>${k === cur ? "Actual" : ""}</span></button>`).join("")}</div>` + cancel;
+      const [sl, dd] = slot.split("|"), d = dd || t; slot = sl;
+      const i = SLOTS.findIndex(x => x[0] === slot), cur = menuFor(d)[i];
+      return head("i-bowl", `Cambiar ${SLOTS[i][1].toLowerCase()}${dd ? " del " + longDate(parse(d)) : ""}`, slot === "com" && isGuard(d) ? "Hoy es guardia: todas estas opciones van en la lonchera." : "Opciones con calorías y proteína parecidas.") +
+        `<div class="list" style="display:flex;flex-direction:column;gap:8px">${OPTS[slot].map(k => `<button class="hz-opt${k === cur ? " cur" : ""}" type="button" data-hz="pick:${slot}:${k}:${d}">${dishArt(DISH[k][3], false)}<div><b>${DISH[k][0]}</b><br><span>${DISH[k][1]} kcal · ${DISH[k][2]} g de proteína</span></div><span>${k === cur ? "Actual" : ""}</span></button>`).join("")}</div>` + cancel;
     }
     if (kind === "other") {
       const sizes = [["Ligera", 300], ["Normal", 500], ["Abundante", 800], ["Botana o dulce", 250]];
@@ -4225,14 +4316,16 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
         `<div style="display:flex;flex-direction:column;gap:8px">${sizes.map(([n, k]) => `<button class="btn-secondary" type="button" data-hz="oth:${slot}:${k}">${n} · unas ${k} kilocalorías</button>`).join("")}</div>` + cancel;
     }
     return head("i-flame", "Tengo antojo", "Muchos antojos bajan si esperas 10 minutos. Mientras, prueba algo de esta lista.") +
-      `<div style="display:flex;flex-direction:column;gap:8px">${[["Agua mineral con limón", "0 kilocalorías"], ["Gelatina sin azúcar", "unas 10 kilocalorías"], ["Pepino con limón y chile en polvo", "unas 30 kilocalorías"], ["Té o café sin azúcar", "unas 5 kilocalorías"]].map(([n, k]) => `<div class="hz-opt" style="grid-template-columns:minmax(0,1fr) auto"><b>${n}</b><span>${k}</span></div>`).join("")}</div>
+      `<div style="display:flex;flex-direction:column;gap:8px">${[["Agua mineral con limón", "0 kcal"], ["Gelatina sin azúcar", "unas 10 kcal"], ["Pepino con limón y chile en polvo", "unas 30 kcal"], ["Té o café sin azúcar", "unas 5 kcal"]].map(([n, k]) => `<div class="hz-opt" style="grid-template-columns:minmax(0,1fr) auto"><b>${n}</b><span>${k}</span></div>`).join("")}</div>
       <div class="cr-t" id="cr-t">10:00</div><div class="hz-btns"><button class="btn-secondary" type="button" data-hz="crave-go">Empezar 10 minutos</button><button class="btn-primary" type="button" data-hz="crave-ok">Ya se me pasó</button></div>`;
   }
   function hzAct(a) {
-    const t = realToday(), [k, x, y] = a.split(":");
+    const t = realToday(), [k, x, y, z] = a.split(":");
+    if (modAct(k, x, y, a, t)) return;
     const tog = (obj, key) => { const arr = obj[t] = obj[t] || [], i = arr.indexOf(key); if (i >= 0) arr.splice(i, 1); else arr.push(key); return i < 0; };
     if (k === "go") return scrollToId(x);
-    if (k === "swap" || k === "other") return openSheet("h-" + k, x);
+    if (k === "swap") return openSheet("h-swap", y ? `${x}|${y}` : x);
+    if (k === "other") return openSheet("h-other", x);
     if (k === "crave") return openSheet("h-crave");
     if (k === "crave-go") {
       clearInterval(crI); const end = Date.now() + 600000;
@@ -4245,7 +4338,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     if (k === "move+") { H.move[t] = Math.min(180, (H.move[t] || 0) + 10); H.walk[t] = H.move[t] >= moveGoal(t); }
     if (k === "walk") { const g = moveGoal(t); if ((H.move[t] || 0) >= g) { H.move[t] = 0; H.walk[t] = false; } else { H.move[t] = g; H.walk[t] = true; toast("Caminata con Figo registrada", "i-walk"); } }
     if (k === "done") { const on = tog(H.meals, x); if (!on && H.other[t]) delete H.other[t][x]; if (on) toast(`${SLOTS.find(s => s[0] === x)[1]} marcado`, "i-check"); }
-    if (k === "pick") { H.swap[t] = H.swap[t] || {}; H.swap[t][x] = y; closeSheet(); toast("Platillo cambiado", "i-bowl"); }
+    if (k === "pick") { const d = z || t, i = SLOTS.findIndex(s2 => s2[0] === x); H.plan[d] = menuFor(d).slice(); H.plan[d][i] = y; closeSheet(); toast("Platillo cambiado", "i-bowl"); }
     if (k === "oth") { H.other[t] = H.other[t] || {}; H.other[t][x] = +y; const arr = H.meals[t] = H.meals[t] || []; if (!arr.includes(x)) arr.push(x); closeSheet(); toast("Registrado: el resto del día se ajusta", "i-check"); }
     if (k === "kit") tog(H.kit, x);
     if (k === "kg") { const v = parseFloat($("#hz-kg").value); if (!(v > 30 && v < 250)) { toast("Escribe tu peso en kilogramos", "i-scale"); return; } H.weights[t] = v; toast("Peso guardado", "i-scale"); }
@@ -4263,6 +4356,259 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   $("#plate").addEventListener("keydown", e => { const g = e.target.closest("[data-pl]"); if (g && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); selectPlate(g.dataset.pl); } });
   initHealthUI();
   setInterval(paintHealth, 5 * 60000);
+
+  /* Módulos de salud: menú, compras, cocina, progreso, movimiento, clínica y ajustes */
+  const CFG0 = { kcal: 1000, prot: 90, budget: 500, reset: 6, cook: [2, 5], talla: 1.70, pollo: 150, tDes: "5:30", tCom: "15:40", tCen: "21:00" };
+  H.cfg = Object.assign({}, CFG0, H.cfg || {});
+  ["plan", "dishes", "prices", "spent", "bought", "fridge", "waist", "sleep", "labs"].forEach(k => { if (!H[k]) H[k] = k === "fridge" ? [] : {}; });
+  const INGR = {
+    pechuga: ["Pechuga de pollo", "g", 1.65, .31, .19, "Se compra cruda: unos 200 gramos crudos dan 150 cocidos"], huevo: ["Huevo", "pieza", 70, 6, 3.1], atun: ["Atún en agua", "lata", 110, 25, 22],
+    jitomate: ["Jitomate", "g", .18, .009, .03], cebolla: ["Cebolla", "g", .4, .011, .025], calabacita: ["Calabacita", "g", .17, .012, .025], nopales: ["Nopales", "g", .16, .013, .025],
+    pepino: ["Pepino", "g", .15, .007, .02], tverde: ["Tomate verde", "g", .32, .01, .03], zanahoria: ["Zanahoria", "g", .41, .009, .02], chile: ["Chile serrano", "pieza", 2, .1, .5],
+    limon: ["Limón", "pieza", 10, 0, 1], naranja: ["Naranja", "pieza", 60, 1.2, 3], tortilla: ["Tortilla", "pieza", 65, 1.5, 0, "Ya la tienes en casa"], aceite: ["Aceite", "cucharadita", 40, 0, 0, "Ya lo tienes en casa"]
+  };
+  const HOME = ["tortilla", "aceite"];
+  const RECIPE = {
+    hm: [[["huevo", 2], ["jitomate", 80], ["cebolla", 20], ["chile", 1], ["aceite", 1], ["tortilla", 1]], [["Pica el jitomate, la cebolla y el chile.", 0], ["Sofríe la verdura en el aceite.", 180], ["Agrega los huevos batidos y mueve hasta que cuajen.", 120], ["Sirve con la tortilla caliente.", 0]]],
+    hn: [[["huevo", 2], ["nopales", 100], ["cebolla", 20], ["aceite", 1], ["tortilla", 1]], [["Corta los nopales en tiras y cuécelos.", 300], ["Escúrrelos y sofríelos con la cebolla.", 120], ["Agrega los huevos y mueve hasta que cuajen.", 120]]],
+    hv: [[["huevo", 2], ["tverde", 80], ["chile", 1], ["cebolla", 15], ["aceite", 1], ["tortilla", 1]], [["Cuece el tomate verde y el chile.", 480], ["Licúalos con la cebolla y una pizca de sal.", 0], ["Haz los huevos estrellados o revueltos y báñalos con la salsa.", 180]]],
+    hc: [[["huevo", 2], ["calabacita", 100], ["cebolla", 20], ["aceite", 1], ["tortilla", 1]], [["Pica la calabacita y la cebolla.", 0], ["Sofríelas hasta que estén suaves.", 240], ["Agrega los huevos y mueve hasta que cuajen.", 120]]],
+    ov: [[["huevo", 2], ["calabacita", 60], ["jitomate", 50], ["cebolla", 15], ["aceite", 1], ["tortilla", 1]], [["Pica la verdura y sofríela.", 180], ["Bate los huevos, viértelos encima y tapa a fuego bajo.", 180], ["Dobla el omelette a la mitad y sirve.", 0]]],
+    ep: [[["pechuga", 150], ["pepino", 100], ["jitomate", 100], ["limon", 1], ["aceite", 1], ["naranja", 1]], [["Deshebra o corta en cubos la pechuga cocida.", 0], ["Corta el pepino y el jitomate.", 0], ["Mezcla con limón, sal y el aceite en el recipiente de la lonchera.", 0], ["Lleva la naranja entera.", 0]]],
+    pv: [[["pechuga", 150], ["tverde", 100], ["calabacita", 100], ["cebolla", 20], ["chile", 1], ["aceite", 1]], [["Cuece el tomate verde y el chile y licúalos con la cebolla.", 480], ["Sofríe la calabacita en el aceite.", 240], ["Agrega la salsa y el pollo cocido y deja hervir.", 300]]],
+    tp: [[["pechuga", 150], ["jitomate", 120], ["cebolla", 40], ["nopales", 80], ["aceite", 1]], [["Rebana la cebolla y acitrónala.", 180], ["Agrega el jitomate licuado y cocina.", 300], ["Incorpora el pollo deshebrado y deja que se impregne.", 300], ["Sirve con los nopales cocidos.", 0]]],
+    pp: [[["pechuga", 150], ["nopales", 150], ["cebolla", 20], ["limon", 1], ["aceite", 1]], [["Sazona la pechuga con sal, pimienta y limón.", 0], ["Ásala en sartén caliente por cada lado.", 360], ["Asa los nopales y la cebolla en el mismo sartén.", 300]]],
+    pt: [[["pechuga", 150], ["calabacita", 80], ["cebolla", 30], ["jitomate", 60], ["naranja", 1], ["aceite", 1]], [["Corta el pollo y la verdura en tiras.", 0], ["Saltea el pollo hasta dorar.", 360], ["Agrega la verdura y saltea.", 240], ["Guárdalo en la lonchera con la naranja entera.", 0]]],
+    at: [[["atun", 1], ["jitomate", 80], ["pepino", 80], ["limon", 1], ["tortilla", 2]], [["Dora las tortillas en el comal hasta que truenen.", 300], ["Pica el jitomate y el pepino.", 0], ["Escurre el atún, mézclalo con la verdura y el limón y sirve sobre las tostadas.", 0]]],
+    oc: [[["huevo", 3], ["calabacita", 100], ["cebolla", 15], ["aceite", 1]], [["Sofríe la calabacita y la cebolla.", 240], ["Agrega los huevos batidos y tapa a fuego bajo.", 180], ["Dobla y sirve.", 0]]],
+    o3n: [[["huevo", 3], ["nopales", 100], ["aceite", 1]], [["Cuece y escurre los nopales.", 300], ["Sofríelos y agrega los huevos.", 180]]],
+    o3v: [[["huevo", 3], ["tverde", 80], ["chile", 1], ["aceite", 1]], [["Cuece y licúa el tomate verde con el chile.", 480], ["Cocina los huevos y báñalos con la salsa.", 180]]],
+    o3m: [[["huevo", 3], ["jitomate", 80], ["cebolla", 20], ["chile", 1], ["aceite", 1]], [["Pica y sofríe la verdura.", 180], ["Agrega los huevos y mueve hasta que cuajen.", 120]]],
+    oj: [[["huevo", 3], ["jitomate", 60], ["cebolla", 30], ["aceite", 1]], [["Sofríe el jitomate y la cebolla.", 180], ["Agrega los huevos batidos y tapa a fuego bajo.", 180], ["Dobla y sirve.", 0]]]
+  };
+  const ARTS = [["huevo", "Huevos"], ["huevoV", "Huevos en salsa"], ["omelette", "Omelette"], ["ensalada", "Ensalada"], ["polloV", "Pollo en salsa"], ["tinga", "Tinga"], ["plancha", "A la plancha"], ["tiras", "En tiras"], ["atun", "Tostadas"]];
+  const ingQty = (it, q) => it === "pechuga" ? q * H.cfg.pollo / 150 : q;
+  function ingTotals(ing) { let k = 0, p = 0; ing.forEach(([it, q]) => { const I = INGR[it]; if (!I) return; const qq = ingQty(it, q); k += qq * I[2]; p += qq * I[3]; }); return [Math.round(k / 5) * 5, Math.round(p)]; }
+  const recipeOf = id => H.dishes[id] ? [H.dishes[id].ing, H.dishes[id].steps] : RECIPE[id];
+  function syncDishes() {
+    Object.entries(RECIPE).forEach(([id, [ing]]) => { const [k, p] = ingTotals(ing); DISH[id][1] = k; DISH[id][2] = p; });
+    ["des", "com", "cen"].forEach(sl => { OPTS[sl] = OPTS[sl].filter(id => !id.startsWith("u") || H.dishes[id]); });
+    Object.entries(H.dishes).forEach(([id, d]) => { const [k, p] = ingTotals(d.ing); DISH[id] = [d.n, k, p, d.art]; if (!OPTS[d.slot].includes(id)) OPTS[d.slot].push(id); });
+  }
+  function applyCfg() { KCAL_GOAL = H.cfg.kcal; PROT_GOAL = H.cfg.prot; TALLA = H.cfg.talla; syncDishes(); }
+  applyCfg();
+  const budgetStart = t => { let d = t; while (parse(d).getDay() !== H.cfg.reset) d = addDays(d, -1); return d; };
+  const monday = t => { if (parse(t).getDay() === 0) return addDays(t, 1); let d = t; while (parse(d).getDay() !== 1) d = addDays(d, -1); return d; };
+  const shortDay = s => `${cap(DIAS[parse(s).getDay()].slice(0, 3))} ${parse(s).getDate()}`;
+  const fmtQty = (it, q) => { const u = INGR[it][1]; if (u === "g") return q >= 1000 ? `${(q / 1000).toLocaleString("es-MX", { maximumFractionDigits: 2 })} kilogramos` : `${Math.round(q / 10) * 10} gramos`; const n = Math.ceil(q); return `${n} ${u}${n === 1 ? "" : "s"}`; };
+  let curPanel = "hoy", hzWeek = 0, dragSrc = null, rtI = null, market = false;
+  function showPanel(p) {
+    curPanel = p; $$("#s-health .hz-panel").forEach(el => { el.hidden = el.dataset.panel !== p; });
+    $$("#hz-tabs .hz-tab").forEach(b => b.classList.toggle("on", b.dataset.hz === "tab:" + p));
+    if (p !== "hoy") paintModule(p);
+    $("#s-health").scrollTo({ top: $("#hz-tabs").offsetTop - 70, behavior: reduce ? "auto" : "smooth" });
+  }
+  const card = (title, sub, body, id = "") => `<div class="hz-card"${id ? ` id="${id}"` : ""}>${title ? `<div><h3 class="hz-h">${title}</h3>${sub ? `<p class="hz-sub">${sub}</p>` : ""}</div>` : ""}${body}</div>`;
+  const miniBars = (vals, max, labels, color, unit) => `<div class="mbars">${vals.map((v, i) => `<div class="mb"><span class="mb-v">${v ? v + (unit || "") : ""}</span><div class="mb-t"><i style="height:${Math.min(100, (v / max) * 100)}%;background:${color};--d:${i * .05}s"></i></div><span class="mb-l">${labels[i]}</span></div>`).join("")}</div>`;
+  function paintModule(p) {
+    const t = realToday(), el = $(`#s-health .hz-panel[data-panel="${p}"]`); if (!el) return;
+    if (p === "menu") {
+      const w0 = addDays(monday(t), hzWeek * 7), days = [0, 1, 2, 3, 4, 5, 6].map(i => addDays(w0, i));
+      const cols = days.map(d => { const m = menuFor(d), k = m.reduce((a, id) => a + DISH[id][1], 0), badge = isGuard(d) ? `<span class="hz-b g">Guardia</span>` : H.cfg.cook.includes(parse(d).getDay()) ? `<span class="hz-b c">Cocina</span>` : "";
+        return `<div class="wk-day${d === t ? " today" : ""}"><div class="wk-h"><b>${shortDay(d)}</b>${badge}</div>${SLOTS.map(([sk, sn], i) => `<button class="wk-cell" type="button" draggable="true" data-cell="${d}|${i}" data-hz="swap:${sk}:${d}"><small>${sn}</small>${dishArt(DISH[m[i]][3], false)}<span>${DISH[m[i]][0]}</span><em>${DISH[m[i]][1]} kilocalorías</em></button>`).join("")}<div class="wk-tot${k > KCAL_GOAL ? " over" : ""}">${nf(k)} kilocalorías</div></div>`; }).join("");
+      const bank = SLOTS.map(([sk, sn]) => `<div class="bank-g"><b>${sn}</b>${OPTS[sk].map(id => `<div class="bank-r">${dishArt(DISH[id][3], false)}<div><b>${DISH[id][0]}</b><span>${DISH[id][1]} kilocalorías · ${DISH[id][2]} gramos de proteína</span></div><div class="bank-a"><button type="button" class="lnk" data-hz="recipe:${id}">Receta</button>${H.dishes[id] ? `<button type="button" class="lnk" data-hz="dish:${id}">Editar</button><button type="button" class="lnk red" data-hz="dishdel:${id}">Borrar</button>` : ""}</div></div>`).join("")}</div>`).join("");
+      el.innerHTML = `<div class="section">${card(`Semana del ${longDate(parse(w0))}`, "Toca un platillo para cambiarlo. Arrástralo sobre otro para intercambiarlos.", `<div class="hz-btns" style="justify-content:flex-start"><button class="btn-secondary" type="button" data-hz="wk:-1">Semana anterior</button><button class="btn-secondary" type="button" data-hz="wk:0">Esta semana</button><button class="btn-secondary" type="button" data-hz="wk:1">Semana siguiente</button></div><div class="wk-scroll">${cols}</div>`)}</div>
+        <div class="section">${card("Banco de platillos", "Las calorías se calculan con los ingredientes y la porción de pollo de Ajustes.", `<button class="btn-primary" type="button" data-hz="dish:new" style="align-self:flex-start">Crear platillo</button>${bank}`)}</div>`;
+      $$(".wk-cell", el).forEach(c => {
+        c.addEventListener("dragstart", e => { dragSrc = c.dataset.cell; c.classList.add("drag"); try { e.dataTransfer.setData("text/plain", dragSrc); } catch (er) {} });
+        c.addEventListener("dragend", () => c.classList.remove("drag"));
+        c.addEventListener("dragover", e => { e.preventDefault(); c.classList.add("over"); });
+        c.addEventListener("dragleave", () => c.classList.remove("over"));
+        c.addEventListener("drop", e => { e.preventDefault(); c.classList.remove("over"); if (dragSrc && dragSrc !== c.dataset.cell) swapCells(dragSrc, c.dataset.cell); dragSrc = null; });
+      });
+    }
+    if (p === "compras") {
+      const b0 = budgetStart(t), b1 = addDays(b0, 6), from = t > b0 ? t : b0, need = {};
+      for (let d = from; d <= b1; d = addDays(d, 1)) menuFor(d).forEach(id => (recipeOf(id) || [[]])[0].forEach(([it, q]) => { if (!HOME.includes(it)) need[it] = (need[it] || 0) + (it === "pechuga" ? ingQty(it, q) / .75 : q); }));
+      const bought = H.bought[b0] || [], sp = H.spent[b0] || { items: {}, extra: [] }, est = it => Math.round(need[it] * (H.prices[it] || INGR[it][4]) / (it === "pechuga" ? 1 : 1));
+      const spent = Object.values(sp.items).reduce((a, b) => a + b, 0) + sp.extra.reduce((a, e) => a + e[1], 0), estTot = Object.keys(need).reduce((a, it) => a + est(it), 0), pct = spent / H.cfg.budget;
+      el.innerHTML = `<div class="section">${card("Presupuesto de la semana", `Del ${longDate(parse(b0))} al ${longDate(parse(b1))}. Se reinicia cada ${DIAS[H.cfg.reset]}.`, `<div class="hb-row${pct >= .8 ? " over" : ""}" style="--c:var(--hb-mov)"><div class="hb-top"><span class="hb-name"><i></i>Gastado</span><b>${nf(spent)} <small>de ${nf(H.cfg.budget)} pesos</small></b></div><div class="hb-track"><span class="hb-fill" style="transform:scaleX(${Math.min(pct, 1)})"></span></div><div class="hb-note">${pct >= 1 ? "Ya usaste todo el presupuesto." : pct >= .8 ? `Vas al ${Math.round(pct * 100)} %: te quedan ${nf(H.cfg.budget - spent)} pesos.` : `Te quedan ${nf(H.cfg.budget - spent)} pesos. La lista de abajo cuesta unos ${nf(estTot)}.`}</div></div>`)}</div>
+        <div class="section">${card("Lista del súper", `Sale de tu menú del ${longDate(parse(from))} al ${longDate(parse(b1))}. Tortillas y aceite no entran porque ya los tienes.`, `<button class="btn-secondary" type="button" data-hz="market" style="align-self:flex-start">${market ? "Salir del modo mercado" : "Modo mercado"}</button>
+          <div class="shop${market ? " market" : ""}">${Object.keys(need).sort((a, b) => INGR[a][0] < INGR[b][0] ? -1 : 1).map(it => `<div class="shop-r${bought.includes(it) ? " on" : ""}"><button type="button" class="hz-check${bought.includes(it) ? " on" : ""}" data-hz="buy:${it}"><span class="check">${ico("i-checkmark")}</span><span><b>${INGR[it][0]}</b><br><small>${fmtQty(it, need[it])} · unos ${nf(est(it))} pesos${INGR[it][5] && it === "pechuga" ? " · " + INGR[it][5] : ""}</small></span></button><label class="paid"><span>Pagué</span><input type="number" inputmode="decimal" min="0" step="1" data-paid="${it}" value="${sp.items[it] != null ? sp.items[it] : ""}" placeholder="0" aria-label="Pesos pagados por ${INGR[it][0]}"></label></div>`).join("") || `<p class="hz-sub">No hay ingredientes pendientes en tu menú.</p>`}</div>
+          <div class="hz-kg"><input id="hz-ex-n" type="text" placeholder="Otro gasto, por ejemplo lonchera" aria-label="Concepto del gasto"><input id="hz-ex-v" type="number" inputmode="decimal" min="0" placeholder="Pesos" aria-label="Pesos"><button class="btn-secondary" type="button" data-hz="extra">Agregar</button></div>
+          ${sp.extra.length ? `<div class="hz-stats">${sp.extra.map((e, i) => `<span>${escapeHTML(e[0])}: ${nf(e[1])} pesos <button type="button" class="lnk red" data-hz="exdel:${i}">Quitar</button></span>`).join("")}</div>` : ""}`)}</div>
+        <div class="section">${card("Historial de precios de tu mercado", "Cada que anotas lo que pagaste, la aplicación aprende el precio y estima mejor la siguiente semana.", `<div class="hz-stats">${Object.keys(INGR).filter(it => !HOME.includes(it)).map(it => `<span>${INGR[it][0]}: ${H.prices[it] ? `${(H.prices[it] * (INGR[it][1] === "g" ? 1000 : 1)).toLocaleString("es-MX", { maximumFractionDigits: 0 })} pesos por ${INGR[it][1] === "g" ? "kilogramo" : INGR[it][1]}` : `aprox. ${(INGR[it][4] * (INGR[it][1] === "g" ? 1000 : 1)).toLocaleString("es-MX", { maximumFractionDigits: 0 })} pesos por ${INGR[it][1] === "g" ? "kilogramo" : INGR[it][1]}`}</span>`).join("")}</div>`)}</div>`;
+    }
+    if (p === "cocina") {
+      let cd = t; while (!H.cfg.cook.includes(parse(cd).getDay())) cd = addDays(cd, 1);
+      let end = addDays(cd, 1); while (!H.cfg.cook.includes(parse(end).getDay())) end = addDays(end, 1);
+      const rng = []; for (let d = cd; d < end; d = addDays(d, 1)) rng.push(d);
+      const coms = rng.map(d => [d, menuFor(d)[1]]), pollo = coms.reduce((a, [, id]) => a + ((recipeOf(id) || [[]])[0].find(x => x[0] === "pechuga") ? ingQty("pechuga", 150) : 0), 0);
+      const fr = H.fridge.map((f, i) => { const age = Math.round((parse(t) - parse(f.d)) / 864e5); const st = age >= 4 ? "red" : age >= 3 ? "amb" : ""; return `<div class="fr-r ${st}"><div><b>${escapeHTML(f.n)}</b><span>Cocinado el ${longDate(parse(f.d))} · día ${age + 1}${age >= 4 ? " · ya no lo comas" : age >= 3 ? " · cómelo hoy" : ""}</span></div><button type="button" class="lnk" data-hz="frdel:${i}">Ya se acabó</button></div>`; }).join("");
+      el.innerHTML = `<div class="section">${card(`Plan de cocina del ${longDate(parse(cd))}`, `Cubre del ${longDate(parse(cd))} al ${longDate(parse(addDays(end, -1)))}.`, `<div class="hz-day"><div>${dayArt("cocina")}</div><ol class="steps">
+          <li>Un día antes, pasa ${nf(pollo / .75)} gramos de pechuga cruda del congelador al refrigerador.</li>
+          <li>Cocina ${nf(pollo)} gramos de pechuga: cuécela en agua con sal, ajo y cebolla, unos 25 minutos.</li>
+          <li>Prepara las salsas y las verduras de: ${[...new Set(coms.map(c => DISH[c[1]][0]))].join("; ")}.</li>
+          <li>Reparte en recipientes de ${H.cfg.pollo} gramos y anota la fecha.</li></ol></div>
+          <button class="btn-primary" type="button" data-hz="cooked:${cd}" style="align-self:flex-start">Ya cociné: guardar en el refrigerador</button>`)}</div>
+        <div class="section">${card("Refrigerador", "Lo guisado dura de 3 a 4 días. Te aviso el día 3 y lo marco en rojo el día 4.", `${fr || `<p class="hz-sub">Vacío. Al marcar "Ya cociné" aparece aquí lo que guardaste.</p>`}<div class="hz-kg"><input id="hz-fr-n" type="text" placeholder="Agregar a mano, por ejemplo frijoles" aria-label="Nombre del guisado"><button class="btn-secondary" type="button" data-hz="fradd">Agregar</button></div>`)}</div>
+        <div class="section">${card("Recetas de la semana", "Paso a paso, con temporizador en cada paso.", `<div class="bank-g">${[...new Set([0, 1, 2, 3, 4, 5, 6].flatMap(i => menuFor(addDays(monday(t), i))))].map(id => `<button class="bank-r" type="button" data-hz="recipe:${id}">${dishArt(DISH[id][3], false)}<div><b>${DISH[id][0]}</b><span>${(recipeOf(id) || [[], []])[1].length} pasos</span></div><span class="lnk">Abrir</span></button>`).join("")}</div>`)}</div>`;
+    }
+    if (p === "progreso") {
+      const ws = Object.entries(H.weights).sort((a, b) => a[0] < b[0] ? -1 : 1), wsx = Object.entries(H.waist).sort((a, b) => a[0] < b[0] ? -1 : 1);
+      let chart = `<p class="hz-sub">Registra tu peso en Hoy para ver la gráfica.</p>`;
+      if (ws.length) {
+        const vals = ws.map(w => w[1]), mn = Math.min(...vals) - 1, mx = Math.max(...vals) + 1, X = i => ws.length === 1 ? 300 : 40 + i * (520 / (ws.length - 1)), Y = v => 150 - (v - mn) / (mx - mn) * 120;
+        const avg = ws.map(([d], i) => { const win = ws.filter(([d2]) => d2 <= d && d2 > addDays(d, -7)).map(x => x[1]); return win.reduce((a, b) => a + b, 0) / win.length; });
+        chart = `<svg class="wc" viewBox="0 0 600 180" role="img" aria-label="Peso y promedio de 7 días">${[30, 90, 150].map(y => `<line x1="20" x2="580" y1="${y}" y2="${y}" stroke="var(--hair)"/>`).join("")}<polyline class="draw" points="${avg.map((v, i) => `${X(i)},${Y(v)}`).join(" ")}" fill="none" stroke="var(--primary)" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round"/>${ws.map(([d, v], i) => `<circle cx="${X(i)}" cy="${Y(v)}" r="4" fill="var(--surface)" stroke="var(--ink-3)" stroke-width="2"/>`).join("")}<text class="wc-v" x="${X(ws.length - 1)}" y="${Y(avg[avg.length - 1]) - 12}" text-anchor="end">${avg[avg.length - 1].toFixed(1)} kilogramos</text><text class="wc-d" x="40" y="174">${shortDay(ws[0][0])}</text><text class="wc-d" x="560" y="174" text-anchor="end">${shortDay(ws[ws.length - 1][0])}</text></svg><p class="hz-sub">Línea azul: promedio de 7 días. Puntos: cada registro. Una subida de un día suele ser agua, no grasa.</p>`;
+      }
+      const w0 = ws.length ? ws[0][1] : null, wl = ws.length ? ws[ws.length - 1][1] : null, lostPct = w0 ? (w0 - wl) / w0 * 100 : 0;
+      const goal = w0 ? `<div class="hb-row" style="--c:var(--hb-mov)"><div class="hb-top"><span class="hb-name"><i></i>Hacia la meta de 5 a 10 %</span><b>${lostPct.toFixed(1)} %</b></div><div class="hb-track"><span class="hb-fill" style="transform:scaleX(${Math.min(Math.max(lostPct, 0) / 10, 1)})"></span><span class="hb-mark" style="left:50%"></span></div><div class="hb-note">El 5 % son ${(w0 * .05).toFixed(1)} kilogramos y el 10 %, ${(w0 * .1).toFixed(1)}. Bajar del 5 al 10 % ya mejora presión, glucosa y lípidos.</div></div>` : "";
+      const lw = wsx.length ? wsx[wsx.length - 1][1] : null;
+      const days = t >= START ? Math.round((parse(t) - parse(START)) / 864e5) + 1 : 0, craves = Object.values(H.crave).reduce((a, b) => a + b, 0), walks = Object.values(H.walk).filter(Boolean).length;
+      const ach = [["Primer día sin refresco", days >= 1], ["Una semana sin refresco", days >= 7], ["Un mes sin refresco", days >= 30], ["Primer kilogramo menos", w0 && w0 - wl >= 1], ["Meta del 5 %", lostPct >= 5], ["Meta del 10 %", lostPct >= 10], ["10 antojos superados", craves >= 10], ["7 días con movimiento", walks >= 7]];
+      el.innerHTML = `<div class="section">${card("Tu peso", "", chart + goal)}</div>
+        <div class="section">${card("Cintura", "Mídela a la altura del ombligo, al final de una exhalación.", `<div class="hz-kg"><input id="hz-waist" type="number" inputmode="decimal" step="0.5" min="40" max="200" placeholder="0" aria-label="Cintura en centímetros" value="${H.waist[t] || ""}"><span>centímetros</span><button class="btn-primary" type="button" data-hz="waist">Guardar</button></div>${lw ? `<div class="hz-stats"><span>Última: <b>${lw} centímetros</b></span><span>Índice cintura-talla: <b>${(lw / (TALLA * 100)).toFixed(2)}</b></span><span>${lw / (TALLA * 100) >= .6 ? "Riesgo alto" : lw / (TALLA * 100) >= .5 ? "Riesgo aumentado" : "Sin riesgo aumentado"}</span></div>` : ""}`)}</div>
+        <div class="section">${card("Logros", "", `<div class="ach">${ach.map(([n, ok]) => `<div class="ach-i${ok ? " on" : ""}">${ico(ok ? "i-award" : "i-star")}<span>${n}</span></div>`).join("")}</div>`)}</div>
+        <div class="section">${card("Reporte para consulta", "Peso, tendencia, cintura, laboratorios y adherencia en una hoja. Elige Guardar como PDF (documento portátil) al imprimir.", `<button class="btn-primary" type="button" data-hz="report" style="align-self:flex-start">${ico("i-print")}Crear reporte</button>`)}</div>`;
+    }
+    if (p === "mov") {
+      const last = [6, 5, 4, 3, 2, 1, 0].map(i => addDays(t, -i)), lbl = last.map(d => cap(DIAS[parse(d).getDay()].slice(0, 2)));
+      const plan = [0, 1, 2, 3, 4].map(w => [addDays(START, w * 7), Math.min(30, 10 + 5 * w)]);
+      el.innerHTML = `<div class="section">${card("Plan de caminata", "Empieza suave y sube 5 minutos cada semana hasta llegar a 30 diarios, unos 150 a la semana como marcan las guías. En guardia basta la mitad.", `<div class="hz-stats">${plan.map(([d, g]) => `<span class="${d <= t && t < addDays(d, 7) ? "cur" : ""}">Semana del ${parse(d).getDate()} de ${MESES[parse(d).getMonth()]}: <b>${g} minutos</b></span>`).join("")}</div>${miniBars(last.map(d => H.move[d] || 0), 30, lbl, "var(--hb-mov)", "")}<div class="hz-btns"><button class="btn-secondary" type="button" data-hz="move+">Sumar 10 minutos</button><button class="btn-primary" type="button" data-hz="walk">Caminé con Figo</button></div>`)}</div>
+        <div class="section">${card("Sueño", "Dormir poco, sobre todo después de guardia, aumenta el hambre al día siguiente.", `<div class="hz-kg"><input id="hz-sleep" type="number" inputmode="decimal" step="0.5" min="0" max="16" placeholder="0" aria-label="Horas dormidas" value="${H.sleep[t] || ""}"><span>horas anoche</span><button class="btn-primary" type="button" data-hz="sleep">Guardar</button></div>${miniBars(last.map(d => H.sleep[d] || 0), 9, lbl, "#5e5ce6", "")}${isGuard(addDays(t, -1)) ? `<div class="hz-warn">Ayer tuviste guardia: si dormiste menos de 6 horas, hoy espera más hambre y ten agua y verdura a la mano.</div>` : ""}`)}</div>`;
+    }
+    if (p === "clinica") {
+      const LABS = [["glu", "Glucosa en ayuno", "miligramos por decilitro"], ["col", "Colesterol total", "miligramos por decilitro"], ["tg", "Triglicéridos", "miligramos por decilitro"], ["ldl", "Colesterol de baja densidad (LDL)", "miligramos por decilitro"], ["hdl", "Colesterol de alta densidad (HDL)", "miligramos por decilitro"], ["na", "Sodio", "milimoles por litro"], ["k", "Potasio", "milimoles por litro"], ["hb", "Hemoglobina", "gramos por decilitro"]];
+      const rev = addDays(START, 56), left = Math.max(0, Math.round((parse(rev) - parse(t)) / 864e5)), last7 = [6, 5, 4, 3, 2, 1, 0].map(i => addDays(t, -i));
+      el.innerHTML = `<div class="section">${card("Revaluación de las 8 semanas", `El ${longDate(parse(rev))} revisamos las 1,000 kilocalorías con tu peso, tu energía y tus laboratorios.`, `<div class="big-num" data-count="${left}">${left}</div><p class="hz-sub">días restantes</p><div class="hb-track"><span class="hb-fill" style="--c:var(--primary);transform:scaleX(${Math.min(1, (56 - left) / 56)})"></span></div>`)}</div>
+        <div class="section">${card("Laboratorios", "Captura los iniciales y los de control para ver cómo cambian.", `<div class="labs">${LABS.map(([k, n, u]) => { const h = H.labs[k] || [], l = h[h.length - 1], pv = h[h.length - 2]; return `<div class="lab"><b>${n}</b><small>${u}</small><div class="hz-kg"><input type="number" inputmode="decimal" step="0.1" data-lab="${k}" placeholder="${l ? l[1] : "0"}" aria-label="${n}"><button class="btn-secondary" type="button" data-hz="lab:${k}">Guardar</button></div>${l ? `<span class="hz-sub">Último: ${l[1]} (${shortDay(l[0])})${pv ? ` · antes ${pv[1]}` : ""}</span>` : ""}</div>`; }).join("")}</div>`)}</div>
+        <div class="section">${card("Tus últimos 7 días", "Energía, hambre y señales de alarma que registraste en el cierre del día.", `<div class="hz-stats">${last7.map(d => { const f = H.feel[d] || {}, a = H.alarm[d] || []; return `<span>${shortDay(d)}: energía ${f.e || "sin dato"}, hambre ${f.h || "sin dato"}${a.length ? ` · <b style="color:var(--red)">${a.length} alarma${a.length > 1 ? "s" : ""}</b>` : ""}</span>`; }).join("")}</div>`)}</div>`;
+    }
+    if (p === "ajustes") {
+      const c = H.cfg, num = (k, l, step = 1) => `<label class="cfg"><span>${l}</span><input type="number" step="${step}" data-cfg="${k}" value="${c[k]}"></label>`, tm = (k, l) => `<label class="cfg"><span>${l}</span><input type="time" data-cfg="${k}" value="${c[k].padStart(5, "0")}"></label>`;
+      el.innerHTML = `<div class="section">${card("Metas", "Todo se recalcula al guardar.", `<div class="cfgs">${num("kcal", "Kilocalorías al día", 50)}${num("prot", "Proteína al día, en gramos")}${num("pollo", "Porción de pollo cocido, en gramos", 10)}<label class="cfg"><span>Vasos de agua al día (de 250 mililitros)</span><input type="number" data-cfg="waterGoal" value="${H.waterGoal}"></label>${num("talla", "Estatura, en metros", .01)}</div>`)}</div>
+        <div class="section">${card("Compras y cocina", "", `<div class="cfgs">${num("budget", "Presupuesto semanal, en pesos", 10)}<label class="cfg"><span>Día en que se reinicia</span><select data-cfg="reset">${DIAS.map((d, i) => `<option value="${i}"${i === c.reset ? " selected" : ""}>${cap(d)}</option>`).join("")}</select></label></div><b>Días de cocina</b><div class="hz-alarms">${DIAS.map((d, i) => `<button type="button" class="${c.cook.includes(i) ? "on blue" : ""}" data-hz="cookday:${i}">${cap(d)}</button>`).join("")}</div>`)}</div>
+        <div class="section">${card("Horarios de comida en días normales", "En guardia, la comida queda a las 13:00 en lonchera.", `<div class="cfgs">${tm("tDes", "Desayuno")}${tm("tCom", "Comida")}${tm("tCen", "Cena")}</div>`)}</div>
+        <div class="hz-btns" style="justify-content:flex-start"><button class="btn-primary" type="button" data-hz="cfgsave">Guardar ajustes</button><button class="btn-secondary" type="button" data-hz="cfgreset">Volver a los valores del plan</button><button class="btn-secondary" type="button" data-sheet="backup">${ico("i-backup")}Respaldo y restauración</button></div>`;
+    }
+    $$("[data-count]", el).forEach(countUp);
+  }
+  function swapCells(a, b) {
+    const [da, ia] = a.split("|"), [db, ib] = b.split("|");
+    const ma = H.plan[da] = menuFor(da).slice(), mb = da === db ? ma : (H.plan[db] = menuFor(db).slice());
+    const tmp = ma[+ia]; ma[+ia] = mb[+ib]; mb[+ib] = tmp; save("health"); paintHealth(); toast("Platillos intercambiados", "i-bowl");
+  }
+  function reportHTML() {
+    const t = realToday(), ws = Object.entries(H.weights).sort(), wx = Object.entries(H.waist).sort(), last7 = [6, 5, 4, 3, 2, 1, 0].map(i => addDays(t, -i));
+    const tots = last7.map(dayTotals).filter(x => x.done), avgK = tots.length ? Math.round(tots.reduce((a, x) => a + x.kcal, 0) / tots.length) : 0;
+    const row = (a, b) => `<tr><td>${a}</td><td>${b}</td></tr>`;
+    const labs = Object.entries(H.labs).map(([k, h]) => row(k.toUpperCase() === k ? k : ({ glu: "Glucosa en ayuno", col: "Colesterol total", tg: "Triglicéridos", ldl: "Colesterol de baja densidad", hdl: "Colesterol de alta densidad", na: "Sodio", k: "Potasio", hb: "Hemoglobina" }[k] || k), h.map(x => `${x[1]} (${x[0]})`).join(", "))).join("");
+    return `<div class="paper"><h1>Reporte de salud</h1><p>Dr. Genaro Chicatti Enríquez · ${cap(longDate(parse(t)))} · plan de ${H.cfg.kcal} kilocalorías desde el 26 de octubre de 2026</p>
+      <h2>Peso</h2><table>${ws.length ? row("Inicial", `${ws[0][1]} kilogramos (${ws[0][0]})`) + row("Actual", `${ws[ws.length - 1][1]} kilogramos (${ws[ws.length - 1][0]})`) + row("Índice de masa corporal actual", (ws[ws.length - 1][1] / (TALLA * TALLA)).toFixed(1)) + row("Cambio", `${(ws[0][1] - ws[ws.length - 1][1]).toFixed(1)} kilogramos`) : row("Sin registros", "")}${wx.length ? row("Cintura actual", `${wx[wx.length - 1][1]} centímetros`) : ""}</table>
+      <h2>Adherencia, últimos 7 días</h2><table>${row("Días con comidas registradas", `${tots.length} de 7`)}${row("Promedio de kilocalorías esos días", avgK)}${row("Días con movimiento cumplido", last7.filter(d => H.walk[d]).length)}${row("Antojos superados", Object.values(H.crave).reduce((a, b) => a + b, 0))}</table>
+      <h2>Laboratorios</h2><table>${labs || row("Sin registros", "")}</table>
+      <h2>Señales de alarma registradas</h2><p>${Object.entries(H.alarm).filter(([, a]) => a.length).map(([d, a]) => `${d}: ${a.map(k => ALARMS.find(x => x[0] === k)[1]).join(", ")}`).join("; ") || "Ninguna"}</p></div>`;
+  }
+  function printReport() {
+    $("#print").innerHTML = reportHTML(); document.body.classList.add("printing");
+    const done = () => { document.body.classList.remove("printing"); removeEventListener("afterprint", done); };
+    addEventListener("afterprint", done);
+    try { window.print(); } catch (e) { done(); toast("Este navegador no permitió imprimir", "i-print"); }
+    setTimeout(done, 60000);
+  }
+  function dishForm(id) {
+    const d = id && H.dishes[id] ? H.dishes[id] : { n: "", slot: "com", art: "plancha", ing: [["pechuga", 150], ["calabacita", 100], ["aceite", 1]], steps: [["", 0]] };
+    const ingRow = ([it, q]) => `<div class="dz-ing"><select data-dz="it">${Object.entries(INGR).map(([k, I]) => `<option value="${k}"${k === it ? " selected" : ""}>${I[0]} (${I[1] === "g" ? "gramos" : I[1]})</option>`).join("")}</select><input type="number" min="0" step="1" data-dz="q" value="${q}" aria-label="Cantidad"><button type="button" class="lnk red" data-hz="dzdel">Quitar</button></div>`;
+    return `<div class="grab"></div><div class="s-ic">${ico("i-pen")}</div><h3>${id && H.dishes[id] ? "Editar platillo" : "Crear platillo"}</h3>
+      <label class="cfg"><span>Nombre</span><input type="text" id="dz-n" value="${escapeHTML(d.n)}" placeholder="Por ejemplo, pollo con nopales"></label>
+      <div class="cfgs"><label class="cfg"><span>Tiempo de comida</span><select id="dz-slot">${SLOTS.map(([k, n]) => `<option value="${k}"${k === d.slot ? " selected" : ""}>${n}</option>`).join("")}</select></label><label class="cfg"><span>Ilustración</span><select id="dz-art">${ARTS.map(([k, n]) => `<option value="${k}"${k === d.art ? " selected" : ""}>${n}</option>`).join("")}</select></label></div>
+      <b>Ingredientes por porción</b><div id="dz-ings" style="display:flex;flex-direction:column;gap:8px">${d.ing.map(ingRow).join("")}</div><button type="button" class="btn-secondary" data-hz="dzadd" style="align-self:flex-start">Agregar ingrediente</button>
+      <div class="hz-meta" id="dz-tot"></div>
+      <label class="cfg"><span>Pasos, uno por línea</span><textarea id="dz-steps" rows="4">${escapeHTML(d.steps.map(s => s[0]).join("\n"))}</textarea></label>
+      <p class="hz-err" id="dz-err"></p>
+      <div class="hz-btns"><button class="btn-primary" type="button" data-hz="dzsave:${id && H.dishes[id] ? id : "new"}">Guardar platillo</button><button class="btn-secondary" type="button" data-close>Cancelar</button></div>
+      <template id="dz-row">${ingRow(["huevo", 1])}</template>`;
+  }
+  function dzRead() { return $$("#dz-ings .dz-ing").map(r => [$("[data-dz=it]", r).value, parseFloat($("[data-dz=q]", r).value) || 0]).filter(x => x[1] > 0); }
+  function dzTotals() { const el = $("#dz-tot"); if (!el) return; const [k, p] = ingTotals(dzRead()); el.innerHTML = `<span>${k} kilocalorías</span><span>${p} gramos de proteína</span>`; }
+  function recipeSheet(id) {
+    const r = recipeOf(id) || [[], []], D = DISH[id];
+    return `<div class="grab"></div><div style="max-width:200px">${dishArt(D[3])}</div><h3>${D[0]}</h3><div class="hz-meta"><span>${D[1]} kilocalorías</span><span>${D[2]} gramos de proteína</span></div>
+      <b>Ingredientes</b><div class="hz-stats">${r[0].map(([it, q]) => `<span>${fmtQty(it, ingQty(it, q))} de ${INGR[it][0].toLowerCase()}</span>`).join("")}</div>
+      <b>Pasos</b><ol class="steps">${r[1].map(([s, sec], i) => `<li><span>${escapeHTML(s)}</span>${sec ? ` <button type="button" class="tmr" data-hz="rt:${i}:${sec}" id="rt-${i}">${ico("i-timer")}${Math.round(sec / 60)} minutos</button>` : ""}</li>`).join("")}</ol>
+      <button class="btn-primary done" type="button" data-close>Listo</button>`;
+  }
+  function modAct(k, x, y, a, t) {
+    if (k === "tab") { showPanel(x); return true; }
+    if (k === "wk") { hzWeek = x === "0" ? 0 : hzWeek + +x; paintModule("menu"); return true; }
+    if (k === "recipe") { openSheet("h-recipe", x); return true; }
+    if (k === "dish") { openSheet("h-dish", x); setTimeout(dzTotals, 50); return true; }
+    if (k === "dzadd") { $("#dz-ings").insertAdjacentHTML("beforeend", $("#dz-row").innerHTML); dzTotals(); return true; }
+    if (k === "dzsave") {
+      const n = $("#dz-n").value.trim(), ing = dzRead();
+      if (!n) { $("#dz-err").textContent = "Escribe el nombre del platillo."; return true; }
+      if (!ing.length) { $("#dz-err").textContent = "Agrega al menos un ingrediente con cantidad."; return true; }
+      const id = x === "new" ? "u" + Date.now().toString(36) : x;
+      const steps = $("#dz-steps").value.split("\n").map(s => s.trim()).filter(Boolean).map(s => [s, 0]);
+      H.dishes[id] = { n, slot: $("#dz-slot").value, art: $("#dz-art").value, ing, steps: steps.length ? steps : [["Prepara los ingredientes y cocina al gusto.", 0]] };
+      syncDishes(); closeSheet(); toast("Platillo guardado", "i-bowl"); save("health"); paintHealth(); return true;
+    }
+    if (k === "dishdel") { delete H.dishes[x]; Object.keys(H.plan).forEach(d => { H.plan[d] = H.plan[d].map((id, i) => id === x ? (WEEKMENU[d] || OPTS[SLOTS[i][0]])[i] || OPTS[SLOTS[i][0]][0] : id); }); syncDishes(); toast("Platillo borrado", "i-trash"); save("health"); paintHealth(); return true; }
+    if (k === "rt") {
+      clearInterval(rtI); let s = +y; const b = $("#rt-" + x); if (!b) return true;
+      rtI = setInterval(() => { const el = $("#rt-" + x); if (!el) { clearInterval(rtI); return; } s--; el.lastChild.textContent = s > 0 ? `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}` : "Listo"; if (s <= 0) { clearInterval(rtI); toast("Paso terminado", "i-timer"); } }, 1000);
+      return true;
+    }
+    if (k === "market") { market = !market; paintModule("compras"); return true; }
+    if (k === "buy") { const b0 = budgetStart(t), arr = H.bought[b0] = H.bought[b0] || [], i = arr.indexOf(x); if (i >= 0) arr.splice(i, 1); else arr.push(x); save("health"); paintModule("compras"); return true; }
+    if (k === "extra") { const n = $("#hz-ex-n").value.trim(), v = parseFloat($("#hz-ex-v").value); if (!n || !(v > 0)) { toast("Escribe el concepto y los pesos", "i-pen"); return true; } const b0 = budgetStart(t), sp = H.spent[b0] = H.spent[b0] || { items: {}, extra: [] }; sp.extra.push([n, v]); save("health"); paintModule("compras"); return true; }
+    if (k === "exdel") { const sp = H.spent[budgetStart(t)]; if (sp) sp.extra.splice(+x, 1); save("health"); paintModule("compras"); return true; }
+    if (k === "cooked") { const end = []; let d = x; do { end.push(d); d = addDays(d, 1); } while (!H.cfg.cook.includes(parse(d).getDay())); [...new Set(end.map(dd => menuFor(dd)[1]))].forEach(id => H.fridge.push({ n: DISH[id][0], d: t })); save("health"); toast("Guardado en el refrigerador", "i-check"); paintModule("cocina"); return true; }
+    if (k === "frdel") { H.fridge.splice(+x, 1); save("health"); paintModule("cocina"); return true; }
+    if (k === "fradd") { const n = $("#hz-fr-n").value.trim(); if (!n) { toast("Escribe qué guardaste", "i-pen"); return true; } H.fridge.push({ n, d: t }); save("health"); paintModule("cocina"); return true; }
+    if (k === "waist") { const v = parseFloat($("#hz-waist").value); if (!(v > 40 && v < 200)) { toast("Escribe tu cintura en centímetros", "i-scale"); return true; } H.waist[t] = v; save("health"); toast("Cintura guardada", "i-scale"); paintModule("progreso"); return true; }
+    if (k === "report") { printReport(); return true; }
+    if (k === "sleep") { const v = parseFloat($("#hz-sleep").value); if (!(v >= 0 && v <= 16)) { toast("Escribe las horas que dormiste", "i-moon"); return true; } H.sleep[t] = v; save("health"); toast("Sueño guardado", "i-moon"); paintModule("mov"); return true; }
+    if (k === "lab") { const inp = $(`[data-lab="${x}"]`), v = parseFloat(inp.value); if (!(v > 0)) { toast("Escribe el resultado", "i-pen"); return true; } (H.labs[x] = H.labs[x] || []).push([t, v]); save("health"); toast("Resultado guardado", "i-check"); paintModule("clinica"); return true; }
+    if (k === "cookday") { const i = +x, c = H.cfg.cook, j = c.indexOf(i); if (j >= 0) c.splice(j, 1); else c.push(i); paintModule("ajustes"); return true; }
+    if (k === "cfgsave") {
+      $$("[data-cfg]").forEach(inp => { const key = inp.dataset.cfg, v = inp.value; if (key === "waterGoal") H.waterGoal = Math.max(1, parseInt(v) || 8); else if (["tDes", "tCom", "tCen"].includes(key)) H.cfg[key] = v.replace(/^0/, "") || CFG0[key]; else { const n = parseFloat(v); if (n > 0) H.cfg[key] = key === "reset" ? parseInt(v) : n; } });
+      if (!H.cfg.cook.length) H.cfg.cook = [2, 5];
+      applyCfg(); save("health"); toast("Ajustes guardados", "i-gear"); paintHealth(); return true;
+    }
+    if (k === "cfgreset") { H.cfg = Object.assign({}, CFG0); H.waterGoal = 8; applyCfg(); save("health"); toast("Valores del plan restaurados", "i-reset"); paintHealth(); return true; }
+    return false;
+  }
+  $("#s-health").addEventListener("input", e => { const pd = e.target.closest("[data-paid]"); if (!pd) return; const it = pd.dataset.paid, v = parseFloat(pd.value), b0 = budgetStart(realToday()), sp = H.spent[b0] = H.spent[b0] || { items: {}, extra: [] }; if (v >= 0 && pd.value !== "") sp.items[it] = v; else delete sp.items[it]; save("health"); });
+  $("#s-health").addEventListener("change", e => { const pd = e.target.closest("[data-paid]"); if (!pd) return; const it = pd.dataset.paid, v = parseFloat(pd.value), b0 = budgetStart(realToday()); if (v > 0) { const need = {}; for (let d = realToday(); d <= addDays(b0, 6); d = addDays(d, 1)) menuFor(d).forEach(id => (recipeOf(id) || [[]])[0].forEach(([i2, q]) => { if (i2 === it) need[it] = (need[it] || 0) + (it === "pechuga" ? ingQty(it, q) / .75 : q); })); if (need[it]) H.prices[it] = v / need[it]; const b = H.bought[b0] = H.bought[b0] || []; if (!b.includes(it)) b.push(it); save("health"); } paintModule("compras"); });
+  $("#sheet-body").addEventListener("click", e => { const d = e.target.closest('[data-hz="dzdel"]'); if (d) { e.stopPropagation(); d.closest(".dz-ing").remove(); dzTotals(); } }, true);
+  $("#sheet-body").addEventListener("input", e => { if (e.target.closest("#dz-ings")) dzTotals(); });
+  $("#btn-kg").addEventListener("click", () => { nav(["home", "health"]); setTimeout(() => { showPanel("hoy"); setTimeout(() => { scrollToId("sa-peso"); const i = $("#hz-kg"); if (i) i.focus({ preventScroll: true }); }, 350); }, 500); });
+  $("#sheet-body").addEventListener("change", e => { if (e.target.closest("#dz-ings")) dzTotals(); });
+  function healthNotifs() {
+    const t = realToday(), tom = addDays(t, 1), n = [];
+    if (isGuard(tom)) n.push(["i-flag", "Congela los geles hoy", "Mañana tienes guardia y llevas lonchera.", 'data-go="health"']);
+    if (H.cfg.cook.includes(parse(tom).getDay()) && !isGuard(tom)) n.push(["i-bowl", "Saca el pollo a descongelar", "Pásalo del congelador al refrigerador para cocinar mañana.", 'data-go="health"']);
+    H.fridge.forEach(f => { const age = Math.round((parse(t) - parse(f.d)) / 864e5); if (age >= 3) n.push(["i-bowl", age >= 4 ? `Ya no comas: ${f.n}` : `Cómelo hoy: ${f.n}`, age >= 4 ? "Lleva 4 días en el refrigerador." : "Es su día 3 en el refrigerador.", 'data-go="health"']); });
+    const sp = H.spent[budgetStart(t)]; if (sp) { const s = Object.values(sp.items).reduce((a, b) => a + b, 0) + sp.extra.reduce((a, e) => a + e[1], 0); if (s >= H.cfg.budget * .8) n.push(["i-chart", `Llevas ${nf(s)} de ${nf(H.cfg.budget)} pesos`, "Revisa la lista antes de comprar más.", 'data-go="health"']); }
+    if ((H.water[t] || 0) < H.waterGoal / 2 && new Date().getHours() >= 14) n.push(["i-water", "Toma agua", `Llevas ${H.water[t] || 0} de ${H.waterGoal} vasos.`, 'data-go="health"']);
+    return n;
+  }
+  function mealsInDay(d, items) {
+    try {
+      const m = menuFor(d), map = { "Baño y desayuno": 0, "Desayuno sin prisa": 0, "Comida": 1, "Cena": 2 };
+      const out = items.map(it => map[it[2]] != null ? [it[0], it[1], it[2], DISH[m[map[it[2]]]][0], it[4]] : it);
+      if (isGuard(d)) { const i = out.findIndex(it => it[0] === "19:40"); out.splice(i < 0 ? out.length : i, 0, ["13:00", "i-bowl", "Comida en lonchera", DISH[m[1]][0], "salud"]); }
+      return out;
+    } catch (e) { return items; }
+  }
+  function healthSummary() {
+    try {
+      const t = realToday(), last7 = [6, 5, 4, 3, 2, 1, 0].map(i => addDays(t, -i)), tots = last7.map(dayTotals).filter(x => x.done), ws = Object.entries(H.weights).filter(([d]) => d >= last7[0]).sort();
+      return `<h4 style="margin:8px 0 0">Salud</h4><div class="stats"><div class="stat"><b data-count="${tots.length}">0</b><span>días con comidas registradas</span></div><div class="stat"><b data-count="${tots.length ? Math.round(tots.reduce((a, x) => a + x.kcal, 0) / tots.length) : 0}">0</b><span>kilocalorías promedio</span></div><div class="stat"><b data-count="${last7.filter(d => H.walk[d]).length}">0</b><span>días con movimiento</span></div><div class="stat"><b data-count="${Object.entries(H.crave).filter(([d]) => d >= last7[0]).reduce((a, [, v]) => a + v, 0)}">0</b><span>antojos superados</span></div></div>${ws.length > 1 ? `<p>Tu peso cambió ${(ws[0][1] - ws[ws.length - 1][1]).toFixed(1)} kilogramos esta semana.</p>` : ""}`;
+    } catch (e) { return ""; }
+  }
 
   /* Kit de guardia */
   const kit = $("#kit");
