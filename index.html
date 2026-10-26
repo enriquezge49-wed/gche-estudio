@@ -1313,6 +1313,134 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
 .fz-wrap { width: min(1200px, 100%); background: #fff; border-radius: 18px; overflow: auto; touch-action: pan-x pan-y pinch-zoom; }
 .fz-wrap img { display: block; width: 100%; height: auto; }
 @media (max-width: 560px) { .lv-wrap { --lv-off: 360px; } .lv-ask b { font-size: 19px; } }
+
+/* ===== Botón flotante (como el toque asistido del iPhone) ===== */
+#fab { position: fixed; left: 0; top: 0; z-index: 82; width: 60px; height: 60px; border-radius: 18px; background: rgba(28,28,30,.62); -webkit-backdrop-filter: blur(18px) saturate(1.6); backdrop-filter: blur(18px) saturate(1.6); box-shadow: 0 8px 24px rgba(0,0,0,.22), inset 0 0 0 .5px rgba(255,255,255,.18); display: grid; place-items: center; touch-action: none; cursor: grab; opacity: .92; transition: opacity .4s, transform .3s var(--spring), left .38s var(--spring), top .38s var(--spring); -webkit-tap-highlight-color: transparent; user-select: none; -webkit-user-select: none; }
+#fab.idle { opacity: .42; }
+#fab.drag { transition: opacity .2s; cursor: grabbing; transform: scale(1.06); opacity: 1; }
+#fab:active { transform: scale(.94); }
+#fab i { position: absolute; border-radius: 50%; border: 2px solid rgba(255,255,255,.38); }
+#fab i:nth-child(1) { width: 40px; height: 40px; }
+#fab i:nth-child(2) { width: 30px; height: 30px; border-color: rgba(255,255,255,.62); }
+#fab i:nth-child(3) { width: 20px; height: 20px; background: rgba(255,255,255,.92); border: 0; }
+#fab.timer-on::after { content: ""; position: absolute; top: 7px; right: 7px; width: 8px; height: 8px; border-radius: 50%; background: #30d158; box-shadow: 0 0 0 2px rgba(28,28,30,.7); }
+#fab.timer-on.rest::after { background: #64d2ff; }
+body.pre #fab, #exam.on ~ #fab, #exam.on ~ .fab-card { display: none; }
+@media print { #fab, .fab-card { display: none !important; } }
+
+.fab-card { position: fixed; left: 0; top: 0; z-index: 81; color: #fff; background: rgba(28,28,30,.86); -webkit-backdrop-filter: blur(30px) saturate(1.8); backdrop-filter: blur(30px) saturate(1.8); border-radius: 30px; box-shadow: 0 24px 70px rgba(0,0,0,.38), inset 0 0 0 .5px rgba(255,255,255,.14); opacity: 0; transform: scale(.6); pointer-events: none; transition: opacity .22s, transform .38s var(--spring); }
+.fab-card.on { opacity: 1; transform: none; pointer-events: auto; }
+.fab-card:not(.on) { visibility: hidden; transition: opacity .22s, transform .38s var(--spring), visibility 0s linear .38s; }
+.fab-card .fc-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 14px 4px 20px; cursor: grab; touch-action: none; }
+.fab-card .fc-h b { font-size: 15px; font-weight: 600; color: rgba(255,255,255,.75); }
+.fab-card .fc-x { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.12); color: #fff; }
+.fab-card .fc-x .ico { width: 16px; height: 16px; }
+
+#fab-menu { width: 304px; padding: 16px; }
+.fm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fm-tile { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; min-height: 118px; border-radius: 22px; background: rgba(255,255,255,.08); color: #fff; padding: 12px 8px; transition: background .2s, transform .3s var(--spring); }
+.fm-tile:hover { background: rgba(255,255,255,.14); }
+.fm-tile:active { transform: scale(.95); }
+.fm-tile .fm-ic { width: 50px; height: 50px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.14); }
+.fm-tile .fm-ic .ico { width: 24px; height: 24px; }
+.fm-tile b { font-size: 14px; font-weight: 600; }
+.fm-tile small { font-size: 12px; color: rgba(255,255,255,.6); font-variant-numeric: tabular-nums; margin-top: -6px; }
+.fm-tile.t-note .fm-ic { background: linear-gradient(160deg, #ffd60a, #ff9f0a); color: #3a2a00; }
+.fm-tile.t-calc .fm-ic { background: linear-gradient(160deg, #ff9f0a, #ff6b00); }
+.fm-tile.t-time .fm-ic { background: linear-gradient(160deg, #30d158, #1a9e3d); }
+.fm-tile.t-time.rest .fm-ic { background: linear-gradient(160deg, #64d2ff, #0a84ff); }
+.fm-tile.t-kit .fm-ic { background: linear-gradient(160deg, #ff453a, #c9001b); }
+.fm-tile .fm-pp { position: absolute; top: 8px; right: 8px; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.16); }
+.fm-tile .fm-pp .ico { width: 14px; height: 14px; }
+
+/* Calculadora */
+#fab-calc { width: 320px; padding-bottom: 16px; }
+#fab-calc .seg { margin: 6px 16px 0; background: rgba(255,255,255,.1); }
+#fab-calc .seg button { color: rgba(255,255,255,.7); }
+#fab-calc .seg button.sel { background: rgba(255,255,255,.22); color: #fff; box-shadow: none; }
+.fc-disp { padding: 10px 22px 8px; text-align: right; min-height: 104px; display: flex; flex-direction: column; justify-content: flex-end; }
+.fc-expr { font-size: 16px; color: rgba(255,255,255,.5); min-height: 20px; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fc-num { font-size: 58px; font-weight: 300; line-height: 1.05; letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; overflow: hidden; }
+.fc-keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 0 16px; }
+.fc-keys button { display: grid; place-items: center; height: 62px; border-radius: 31px; background: #333336; color: #fff; font-size: 26px; font-weight: 400; transition: filter .15s, background .2s, color .2s; }
+.fc-keys button:active { filter: brightness(1.45); }
+.fc-keys .fn { background: #a5a5a5; color: #000; font-size: 21px; font-weight: 500; }
+.fc-keys .op { background: #ff9f0a; font-size: 30px; }
+.fc-keys .op.sel { background: #fff; color: #ff9f0a; }
+.fc-keys .zero { grid-column: span 2; justify-items: start; padding-left: 25px; }
+.fc-med { display: flex; flex-direction: column; gap: 6px; padding: 12px 16px 0; max-height: 440px; overflow: auto; }
+.fc-med button { display: flex; align-items: center; gap: 12px; text-align: left; padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.08); color: #fff; }
+.fc-med button:hover { background: rgba(255,255,255,.14); }
+.fc-med button .ico { width: 20px; height: 20px; color: #ff9f0a; flex: none; }
+.fc-med button span { display: flex; flex-direction: column; gap: 2px; font-size: 15px; font-weight: 600; }
+.fc-med button small { font-size: 12px; font-weight: 400; color: rgba(255,255,255,.6); }
+
+/* Cronómetro vinculado al temporizador de la app */
+#fab-time { width: 320px; padding-bottom: 18px; }
+.ft-body { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 6px 20px 0; }
+.ft-ring { position: relative; width: 196px; height: 196px; display: grid; place-items: center; }
+.ft-ring svg { position: absolute; inset: 0; transform: rotate(-90deg); }
+.ft-ring circle { fill: none; stroke-width: 9; stroke-linecap: round; }
+.ft-ring .bg { stroke: rgba(255,255,255,.1); }
+.ft-ring .fg { stroke: #30d158; transition: stroke-dashoffset 1s linear, stroke .3s; }
+#fab-time.rest .ft-ring .fg { stroke: #64d2ff; }
+.ft-time { font-size: 48px; font-weight: 300; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+.ft-lbl { font-size: 14px; color: rgba(255,255,255,.65); text-align: center; min-height: 18px; }
+.ft-row { display: flex; align-items: center; justify-content: center; gap: 22px; }
+.ft-row button { width: 54px; height: 54px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.14); color: #fff; }
+.ft-row .ft-play { width: 72px; height: 72px; background: rgba(48,209,88,.25); color: #30d158; }
+#fab-time.running .ft-row .ft-play { background: rgba(255,159,10,.22); color: #ff9f0a; }
+.ft-row .ico { width: 22px; height: 22px; }
+.ft-row .ft-play .ico { width: 28px; height: 28px; }
+.ft-pre { display: flex; gap: 8px; }
+.ft-pre button { padding: 7px 14px; border-radius: 980px; background: rgba(255,255,255,.1); color: rgba(255,255,255,.85); font-size: 14px; font-variant-numeric: tabular-nums; }
+.ft-pre button.sel { background: #fff; color: #000; }
+.ft-pre button:disabled { opacity: .4; }
+.ft-note { font-size: 12px; color: rgba(255,255,255,.5); text-align: center; margin: 0; }
+
+/* Libreta */
+#notepad { z-index: 74; }
+#notepad .ovl-body { padding: 0; overflow: hidden; align-items: stretch; gap: 0; }
+.np-wrap { flex: 1; }
+.np-wrap { flex: 1; min-height: 0; display: grid; grid-template-columns: 300px minmax(0, 1fr); height: 100%; }
+.np-list { border-right: 1px solid var(--hair); overflow: auto; padding: 14px 12px 40px; display: flex; flex-direction: column; gap: 6px; background: var(--canvas); }
+.np-list .np-new { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 16px; background: var(--primary); color: #fff; font-weight: 600; margin-bottom: 6px; }
+.np-list .np-new .ico { width: 18px; height: 18px; }
+.np-item { display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 12px 14px; border-radius: 16px; transition: background .2s; }
+.np-item:hover { background: var(--surface-2); }
+.np-item.sel { background: var(--surface); box-shadow: 0 1px 0 var(--hair), 0 4px 14px rgba(0,0,0,.05); }
+.np-item b { font-size: 16px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.np-item span { font-size: 13px; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; gap: 6px; align-items: center; }
+.np-item span .ico { width: 13px; height: 13px; flex: none; color: var(--ink-3); }
+.np-empty { color: var(--ink-2); font-size: 14px; text-align: center; padding: 20px 10px; }
+.np-ed { display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
+.np-bar { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; padding: 12px 18px; border-bottom: 1px solid var(--hair); }
+.np-bar .np-date { font-size: 13px; color: var(--ink-2); }
+.np-bar .np-l, .np-bar .np-r { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.np-back { display: none; align-items: center; gap: 2px; color: var(--link); font-size: 16px; }
+.np-back .ico { width: 18px; height: 18px; }
+.np-tools { display: flex; align-items: center; gap: 6px; }
+.np-tools[hidden] { display: none; }
+.np-sw { width: 28px; height: 28px; border-radius: 50%; box-shadow: inset 0 0 0 2px rgba(0,0,0,.08); transition: transform .25s var(--spring), box-shadow .2s; }
+.np-sw.sel { transform: scale(1.12); box-shadow: 0 0 0 2px var(--canvas), 0 0 0 4px var(--primary); }
+.np-tools .ib.sel { background: var(--primary); color: #fff; }
+.np-text { flex: 1; min-height: 0; width: 100%; resize: none; border: 0; outline: 0; background: transparent; color: var(--ink); font: inherit; font-size: 19px; line-height: 1.6; padding: 22px 26px 60px; }
+.np-text::placeholder { color: var(--ink-3); }
+.np-text[hidden], .np-paper[hidden] { display: none; }
+.np-paper { flex: 1; min-height: 0; overflow: auto; padding: 18px; background: var(--surface-2); }
+.np-sheet { position: relative; width: min(100%, 860px); margin: 0 auto; aspect-ratio: 1000 / 1400; border-radius: 14px; background-color: #fffef9; background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(100% / 28 - 1px), rgba(0,113,227,.13) calc(100% / 28 - 1px), rgba(0,113,227,.13) calc(100% / 28)); box-shadow: 0 1px 0 var(--hair), 0 10px 30px rgba(0,0,0,.08); overflow: hidden; }
+.np-sheet canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+.np-sheet.erase canvas { cursor: cell; }
+.np-hint { font-size: 12px; color: var(--ink-3); text-align: center; margin: 10px 0 0; }
+@media (max-width: 760px) {
+  .np-wrap { grid-template-columns: 1fr; }
+  .np-wrap.editing .np-list { display: none; }
+  .np-wrap:not(.editing) .np-ed { display: none; }
+  .np-back { display: inline-flex; }
+  .np-list { border-right: 0; }
+  .np-text { padding: 18px 18px 60px; }
+  .np-paper { padding: 10px; }
+}
 </style>
 </head>
 <body>
@@ -1479,6 +1607,8 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
       <rect x="196" y="74" width="208" height="162" rx="24" fill="#fff"/>
       <rect x="226" y="112" width="120" height="14" rx="7" fill="#d2e2f6"/><rect x="226" y="140" width="150" height="10" rx="5" fill="#e6eef9"/><rect x="226" y="162" width="130" height="10" rx="5" fill="#e6eef9"/><rect x="226" y="184" width="90" height="10" rx="5" fill="#e6eef9"/>
     </symbol>
+    <symbol id="i-eraser" viewBox="0 0 24 24"><path d="M8.5 19.5h11M4.6 14.9l9.9-9.9a2 2 0 0 1 2.8 0l2.2 2.2a2 2 0 0 1 0 2.8l-9.4 9.5H8.5l-3.9-3.8a.6.6 0 0 1 0-.8zM9.5 10l5 5"/></symbol>
+    <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 8.5H15a5 5 0 0 1 0 10h-4.5M9 8.5l3.5-3.5M9 8.5l3.5 3.5"/></symbol>
   </defs>
 </svg>
 
@@ -1852,6 +1982,16 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     <button class="in-start" id="in-start" type="button">Toca para empezar</button>
   </div>
 </div>
+<div class="ovl" id="notepad" role="dialog" aria-modal="true" aria-label="Libreta">
+  <div class="ovl-top"><button class="close" type="button" data-ovl-close>Cerrar</button><span class="t">Libreta</span><span class="r" id="np-count"></span></div>
+  <div class="ovl-body"><div class="np-wrap" id="np-wrap"></div></div>
+</div>
+
+<button id="fab" type="button" aria-label="Menú rápido: libreta, calculadora, cronómetro y kit de guardia" aria-haspopup="true"><i></i><i></i><i></i></button>
+<div class="fab-card" id="fab-menu" role="menu" aria-label="Menú rápido"></div>
+<div class="fab-card" id="fab-calc" role="dialog" aria-label="Calculadora"></div>
+<div class="fab-card" id="fab-time" role="dialog" aria-label="Cronómetro de estudio"></div>
+
 <div id="print" aria-hidden="true"></div>
 <div id="nightdim"></div><div id="nightveil"></div>
 
@@ -5066,6 +5206,285 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   const endDraw = () => { if (!drawing) return; drawing = null; try { store.set("draw", cv.toDataURL("image/png")); } catch (e) {} };
   cv.addEventListener("pointerup", endDraw); cv.addEventListener("pointercancel", endDraw);
   let rsT; addEventListener("resize", () => { clearTimeout(rsT); rsT = setTimeout(sizeCanvas, 200); });
+
+  /* Botón flotante: libreta, calculadora, cronómetro y kit de guardia */
+  const fab = $("#fab"), fabCards = ["fab-menu", "fab-calc", "fab-time"].map(id => document.getElementById(id));
+  const FP = Object.assign({ side: "r", y: .62 }, store.get("fabPos", {}));
+  let fabIdleT = null, fabDrag = null, fabOpen = null;
+    function fabPlace() {
+    const x = FP.side === "r" ? innerWidth - 60 - 10 : 10;
+    const y = Math.max(64, Math.min(innerHeight - 60 - 16, FP.y * innerHeight - 30));
+    fab.style.left = x + "px"; fab.style.top = y + "px";
+  }
+  function fabWake() { fab.classList.remove("idle"); clearTimeout(fabIdleT); fabIdleT = setTimeout(() => { if (!fabOpen) fab.classList.add("idle"); }, 3000); }
+  fabPlace(); fabWake(); addEventListener("resize", () => { fabPlace(); if (fabOpen) placeCard(document.getElementById(fabOpen)); });
+  fab.addEventListener("pointerdown", e => { fabWake(); fabDrag = { x: e.clientX, y: e.clientY, ox: fab.offsetLeft, oy: fab.offsetTop, moved: false }; try { fab.setPointerCapture(e.pointerId); } catch (err) {} });
+  fab.addEventListener("pointermove", e => {
+    if (!fabDrag) return; const dx = e.clientX - fabDrag.x, dy = e.clientY - fabDrag.y;
+    if (!fabDrag.moved && Math.hypot(dx, dy) < 7) return;
+    if (!fabDrag.moved) { fabDrag.moved = true; fab.classList.add("drag"); closeCards(); }
+    fab.style.left = Math.max(0, Math.min(innerWidth - 60, fabDrag.ox + dx)) + "px"; fab.style.top = Math.max(0, Math.min(innerHeight - 60, fabDrag.oy + dy)) + "px";
+  });
+  function fabUp(e) {
+    if (!fabDrag) return; const d = fabDrag; fabDrag = null; fab.classList.remove("drag");
+    if (d.moved) { FP.side = fab.offsetLeft + 30 < innerWidth / 2 ? "l" : "r"; FP.y = (fab.offsetTop + 30) / innerHeight; store.set("fabPos", FP); fabPlace(); fabWake(); fab._skip = true; return; }
+    fab._skip = true; fabOpen ? closeCards() : openCard("fab-menu");
+  }
+  fab.addEventListener("pointerup", fabUp); fab.addEventListener("pointercancel", () => { fabDrag = null; fab.classList.remove("drag"); fabPlace(); });
+  fab.addEventListener("click", e => { if (fab._skip) { fab._skip = false; return; } fabOpen ? closeCards() : openCard("fab-menu"); });
+
+  function placeCard(c) {
+    const fr = fab.getBoundingClientRect(), w = c.offsetWidth, h = c.offsetHeight, g = 12;
+    let left = FP.side === "r" ? fr.left - w - g : fr.right + g;
+    let top = fr.top + fr.height / 2 - h / 2;
+    if (left < 10 || left + w > innerWidth - 10) {
+      left = Math.max(10, Math.min(innerWidth - w - 10, (innerWidth - w) / 2));
+      top = fr.top + 30 > innerHeight / 2 ? fr.top - h - g : fr.bottom + g;
+    }
+    top = Math.max(12, Math.min(innerHeight - h - 12, top));
+    c.style.left = left + "px"; c.style.top = top + "px";
+    c.style.transformOrigin = `${fr.left + 30 - left}px ${fr.top + 30 - top}px`;
+  }
+  function openCard(id) {
+    fabCards.forEach(c => { if (c.id !== id) c.classList.remove("on"); });
+    const c = document.getElementById(id);
+    if (id === "fab-menu") paintFabMenu(); else if (id === "fab-calc") paintCalc(true); else if (id === "fab-time") paintFabTime(true);
+    placeCard(c); requestAnimationFrame(() => c.classList.add("on")); fabOpen = id; fabWake();
+  }
+  function closeCards() { fabCards.forEach(c => c.classList.remove("on")); fabOpen = null; fabWake(); }
+  document.addEventListener("pointerdown", e => { if (fabOpen && !e.target.closest(".fab-card") && !e.target.closest("#fab")) closeCards(); }, true);
+  addEventListener("keydown", e => { if (e.key === "Escape" && fabOpen) { closeCards(); e.stopPropagation(); } });
+  const cardHead = (t) => `<div class="fc-h" data-fc-drag><b>${t}</b><button class="fc-x" type="button" data-fc-close aria-label="Cerrar">${ico("i-x")}</button></div>`;
+  fabCards.forEach(c => {
+    c.addEventListener("click", e => { if (e.target.closest("[data-fc-close]")) closeCards(); if (e.target.closest("[data-fc-back]")) openCard("fab-menu"); });
+    let dr = null;
+    c.addEventListener("pointerdown", e => { const h = e.target.closest("[data-fc-drag]"); if (!h || e.target.closest("button")) return; dr = { x: e.clientX, y: e.clientY, l: c.offsetLeft, t: c.offsetTop }; try { h.setPointerCapture(e.pointerId); } catch (err) {} });
+    c.addEventListener("pointermove", e => { if (!dr) return; c.style.left = Math.max(0, Math.min(innerWidth - c.offsetWidth, dr.l + e.clientX - dr.x)) + "px"; c.style.top = Math.max(0, Math.min(innerHeight - 60, dr.t + e.clientY - dr.y)) + "px"; });
+    c.addEventListener("pointerup", () => { dr = null; }); c.addEventListener("pointercancel", () => { dr = null; });
+  });
+
+  /* Menú */
+  const timeLbl = () => { const r = remainNow(), ph = T.phase === "study" ? "estudio" : "descanso"; return `${fmt(r)} · ${T.running ? ph : r < phaseLen() ? "en pausa" : "listo"}`; };
+  function paintFabMenu() {
+    const n = NP.length;
+    $("#fab-menu").innerHTML = `<div class="fm-grid">
+      <button class="fm-tile t-note" type="button" data-fm="note"><span class="fm-ic">${ico("i-note")}</span><b>Libreta</b><small>${n ? `${n} ${n === 1 ? "nota" : "notas"}` : "Texto o S Pen"}</small></button>
+      <button class="fm-tile t-calc" type="button" data-fm="calc"><span class="fm-ic">${ico("i-calc")}</span><b>Calculadora</b><small>Normal y médicas</small></button>
+      <button class="fm-tile t-time${T.phase !== "study" ? " rest" : ""}" type="button" data-fm="time"><span class="fm-ic">${ico("i-timer")}</span><b>Cronómetro</b><small id="fm-time">${timeLbl()}</small><span class="fm-pp" data-fm="pp" aria-label="${T.running ? "Pausar" : "Iniciar"}">${ico(T.running ? "i-pause" : "i-play")}</span></button>
+      <button class="fm-tile t-kit" type="button" data-fm="kit"><span class="fm-ic">${ico("i-kit")}</span><b>Kit de guardia</b><small>Lo urgente</small></button></div>`;
+  }
+  $("#fab-menu").addEventListener("click", e => {
+    const b = e.target.closest("[data-fm]"); if (!b) return; const a = b.dataset.fm;
+    if (a === "pp") { e.stopPropagation(); $("#isl-play").click(); paintFabMenu(); return; }
+    if (a === "note") { closeCards(); return openNotepad(); }
+    if (a === "kit") { closeCards(); return openKit(); }
+    openCard(a === "calc" ? "fab-calc" : "fab-time");
+  });
+
+  /* Calculadora */
+  const CA = { cur: "0", acc: null, op: null, fresh: true, expr: "", tab: "normal", err: false };
+  const OPS = { "+": "+", "-": "−", "*": "×", "/": "÷" };
+  const calcFmt = v => { if (!isFinite(v)) return "Error"; const a = Math.abs(v); if (a !== 0 && (a >= 1e9 || a < 1e-7)) return v.toExponential(4).replace("e", "×10^").replace("+", ""); return (+v.toPrecision(10)).toLocaleString("es-MX", { maximumFractionDigits: 8 }); };
+  const curFmt = () => { if (CA.err) return "Error"; const [i, d] = CA.cur.split("."); const neg = i.startsWith("-"); const g = (+i.replace("-", "")).toLocaleString("es-MX"); return (neg ? "−" : "") + g + (d !== undefined ? "." + d : ""); };
+  const doOp = (a, op, b) => op === "+" ? a + b : op === "-" ? a - b : op === "*" ? a * b : b === 0 ? NaN : a / b;
+  function calcKey(k) {
+    if (CA.err && k !== "ac") calcKey("ac");
+    if (/^[0-9]$/.test(k)) { if (CA.fresh) { CA.cur = k; CA.fresh = false; } else if (CA.cur.replace(/[-.]/g, "").length < 9) CA.cur = CA.cur === "0" ? k : CA.cur === "-0" ? "-" + k : CA.cur + k; }
+    else if (k === ".") { if (CA.fresh) { CA.cur = "0."; CA.fresh = false; } else if (!CA.cur.includes(".")) CA.cur += "."; }
+    else if (k === "ac") { if (!CA.fresh && CA.cur !== "0") { CA.cur = "0"; CA.fresh = true; } else Object.assign(CA, { cur: "0", acc: null, op: null, fresh: true, expr: "", err: false }); }
+    else if (k === "neg") { CA.cur = CA.cur.startsWith("-") ? CA.cur.slice(1) : "-" + CA.cur; if (CA.fresh && CA.acc !== null && !CA.op) CA.acc = +CA.cur; }
+    else if (k === "%") { const v = +CA.cur, r = CA.acc !== null && (CA.op === "+" || CA.op === "-") ? CA.acc * v / 100 : v / 100; CA.cur = String(+r.toPrecision(12)); CA.fresh = false; }
+    else if (k === "back") { if (!CA.fresh) { CA.cur = CA.cur.slice(0, -1); if (!CA.cur || CA.cur === "-") { CA.cur = "0"; CA.fresh = true; } } }
+    else if (OPS[k]) {
+      if (CA.acc !== null && CA.op && !CA.fresh) { const r = doOp(CA.acc, CA.op, +CA.cur); if (!isFinite(r)) return calcErr(); CA.acc = r; CA.cur = String(+r.toPrecision(12)); }
+      else if (CA.acc === null || !CA.op || !CA.fresh) CA.acc = +CA.cur;
+      CA.op = k; CA.fresh = true; CA.expr = `${calcFmt(CA.acc)} ${OPS[k]}`;
+    }
+    else if (k === "=") {
+      if (CA.op && CA.acc !== null) { const b = +CA.cur, r = doOp(CA.acc, CA.op, b); CA.expr = `${calcFmt(CA.acc)} ${OPS[CA.op]} ${calcFmt(b)} =`; if (!isFinite(r)) return calcErr(); CA.cur = String(+r.toPrecision(12)); CA.acc = null; CA.op = null; CA.fresh = true; }
+    }
+    paintCalc();
+  }
+  function calcErr() { Object.assign(CA, { err: true, acc: null, op: null, fresh: true, cur: "0" }); paintCalc(); }
+  function paintCalc(full) {
+    const c = $("#fab-calc");
+    if (full || !$("#fc-num")) {
+      const k = (v, l, cls = "", al = "") => `<button type="button" data-ck="${v}" class="${cls}"${al ? ` aria-label="${al}"` : ""}>${l}</button>`;
+      c.innerHTML = cardHead("Calculadora") + `<div class="seg" id="fc-tab"><button type="button" data-ct="normal" class="${CA.tab === "normal" ? "sel" : ""}">Normal</button><button type="button" data-ct="med" class="${CA.tab === "med" ? "sel" : ""}">Médicas</button></div>` +
+        (CA.tab === "normal" ? `<div class="fc-disp" id="fc-disp" title="Desliza para borrar el último número"><div class="fc-expr" id="fc-expr"></div><div class="fc-num" id="fc-num">0</div></div>
+        <div class="fc-keys">${k("ac", "AC", "fn")}${k("neg", "+/−", "fn", "Cambiar signo")}${k("%", "%", "fn", "Porcentaje")}${k("/", "÷", "op", "Dividir")}${k("7", "7")}${k("8", "8")}${k("9", "9")}${k("*", "×", "op", "Multiplicar")}${k("4", "4")}${k("5", "5")}${k("6", "6")}${k("-", "−", "op", "Restar")}${k("1", "1")}${k("2", "2")}${k("3", "3")}${k("+", "+", "op", "Sumar")}${k("0", "0", "zero")}${k(".", ".", "", "Punto decimal")}${k("=", "=", "op", "Igual")}</div>`
+        : `<div class="fc-med">${Object.keys(CALC).map(x => `<button type="button" data-ent="c-${x}">${ico("i-calc")}<span>${CALC[x].t}<small>${CALC[x].s}</small></span></button>`).join("")}</div>`);
+      if (fabOpen === "fab-calc") placeCard(c);
+    }
+    if (CA.tab !== "normal") return;
+    const t = curFmt(), n = $("#fc-num"); n.textContent = t; n.style.fontSize = t.length > 11 ? "34px" : t.length > 8 ? "44px" : "";
+    $("#fc-expr").textContent = CA.expr;
+    $$('#fab-calc [data-ck="ac"]').forEach(b => b.textContent = !CA.fresh && CA.cur !== "0" ? "C" : "AC");
+    $$("#fab-calc .op").forEach(b => b.classList.toggle("sel", CA.fresh && CA.op === b.dataset.ck && b.dataset.ck !== "="));
+  }
+  $("#fab-calc").addEventListener("click", e => {
+    const t = e.target.closest("[data-ct]"); if (t) { CA.tab = t.dataset.ct; return paintCalc(true); }
+    const k = e.target.closest("[data-ck]"); if (k) { calcKey(k.dataset.ck); try { navigator.vibrate && navigator.vibrate(4); } catch (err) {} return; }
+    if (e.target.closest("[data-ent]")) closeCards();
+  });
+  let swX = null;
+  $("#fab-calc").addEventListener("pointerdown", e => { if (e.target.closest("#fc-disp")) swX = e.clientX; });
+  $("#fab-calc").addEventListener("pointerup", e => { if (swX !== null && Math.abs(e.clientX - swX) > 30) calcKey("back"); swX = null; });
+  addEventListener("keydown", e => {
+    if (fabOpen !== "fab-calc" || CA.tab !== "normal" || e.target.closest("input,textarea")) return;
+    const m = { Enter: "=", "=": "=", Backspace: "back", Escape: null, Delete: "ac", ",": ".", x: "*", X: "*" }, k = e.key in m ? m[e.key] : e.key;
+    if (k && (/^[0-9.%]$/.test(k) || OPS[k] || ["=", "back", "ac"].includes(k))) { e.preventDefault(); calcKey(k); }
+  });
+
+  /* Cronómetro: es el mismo temporizador de la isla */
+  function paintFabTime(full) {
+    const c = $("#fab-time");
+    if (full || !$("#ft-time")) {
+      c.innerHTML = cardHead("Cronómetro de estudio") + `<div class="ft-body"><div class="ft-ring"><svg viewBox="0 0 196 196" aria-hidden="true"><circle class="bg" cx="98" cy="98" r="88"/><circle class="fg" id="ft-fg" cx="98" cy="98" r="88" stroke-dasharray="552.9" stroke-dashoffset="0"/></svg><span class="ft-time" id="ft-time"></span></div>
+        <div class="ft-lbl" id="ft-lbl"></div>
+        <div class="ft-row"><button type="button" data-ft="reset" aria-label="Reiniciar">${ico("i-reset")}</button><button type="button" class="ft-play" data-ft="play" id="ft-play" aria-label="Iniciar">${ico("i-play")}</button><button type="button" data-ft="gear" aria-label="Ajustes del temporizador">${ico("i-gear")}</button></div>
+        <div class="ft-pre" id="ft-pre"></div>
+        <p class="ft-note">Es el mismo temporizador de arriba: lo que hagas aquí se ve en la isla y cuenta en tus minutos.</p></div>`;
+      if (fabOpen === "fab-time") placeCard(c);
+    }
+    const r = remainNow(), tot = phaseLen() || 1;
+    $("#ft-time").textContent = fmt(r); $("#ft-fg").setAttribute("stroke-dashoffset", (552.9 * (1 - r / tot)).toFixed(1));
+    $("#ft-lbl").textContent = $("#isl-state").textContent;
+    c.classList.toggle("running", T.running); c.classList.toggle("rest", T.phase !== "study");
+    $("#ft-play use").setAttribute("href", T.running ? "#i-pause" : "#i-play"); $("#ft-play").setAttribute("aria-label", T.running ? "Pausar" : "Iniciar");
+    $("#ft-pre").innerHTML = S.presets.slice(0, 3).map((p, i) => `<button type="button" data-fp="${i}" class="${p.s === T.study && p.r === T.rest ? "sel" : ""}"${T.running ? " disabled" : ""} title="${escapeHTML(p.n)}">${p.s}/${p.r}</button>`).join("");
+  }
+  $("#fab-time").addEventListener("click", e => {
+    const b = e.target.closest("[data-ft]"), p = e.target.closest("[data-fp]");
+    if (p) { $(`#isl-presets [data-ip="${p.dataset.fp}"]`)?.click(); return paintFabTime(); }
+    if (!b) return; const a = b.dataset.ft;
+    if (a === "play") $("#isl-play").click(); else if (a === "reset") $("#isl-reset").click(); else if (a === "gear") { closeCards(); return openSheet("timer"); }
+    paintFabTime();
+  });
+  setInterval(() => {
+    fab.classList.toggle("timer-on", T.running); fab.classList.toggle("rest", T.phase !== "study");
+    if (fabOpen === "fab-time") paintFabTime(); else if (fabOpen === "fab-menu" && $("#fm-time")) { $("#fm-time").textContent = timeLbl(); }
+  }, 1000);
+
+  /* Libreta: texto o escritura a mano con el S Pen */
+  const npv = $("#notepad"), NP = store.get("libreta", []);
+  const INK = ["#1d1d1f", "#0071e3", "#d70015", "#248a3d"];
+  const NPS = { sel: null, mode: "texto", color: 0, tool: "pen", undo: [], penSeen: false, armDel: 0 };
+  let npSaveT = null;
+  const npSave = (now) => { clearTimeout(npSaveT); const f = () => { store.set("libreta", NP); }; if (now) f(); else npSaveT = setTimeout(f, 400); };
+  const npCur = () => NP.find(n => n.id === NPS.sel);
+  const npTitle = n => (n.t.split("\n").find(l => l.trim()) || "").trim() || (n.s.length ? "Nota a mano" : "Nota nueva");
+  const npWhen = iso => { const d = new Date(iso), today = new Date(); const hm = d.toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit" }); return d.toDateString() === today.toDateString() ? `Hoy, ${hm}` : `${d.getDate()} ${MESES[d.getMonth()].slice(0, 3)}, ${hm}`; };
+  const npSorted = () => NP.slice().sort((a, b) => b.u.localeCompare(a.u));
+  function openNotepad(id) {
+    closeAllTransient();
+    if (id) NPS.sel = id; else if (!npCur()) NPS.sel = innerWidth > 760 && NP.length ? npSorted()[0].id : null;
+    renderNP(); npv.classList.add("on");
+    if (!NP.length) npNew();
+  }
+  npv._onClose = () => { npSave(true); };
+  function npNew() {
+    const now = new Date().toISOString(), n = { id: "n" + Date.now().toString(36), t: "", s: [], c: now, u: now };
+    NP.unshift(n); NPS.sel = n.id; NPS.undo = []; npSave(true); renderNP();
+    if (NPS.mode === "texto") setTimeout(() => $("#np-text")?.focus(), 350);
+  }
+  function npListHTML() {
+    return `<button class="np-new" type="button" data-np="new">${ico("i-plus")}Nueva nota</button>` + (NP.length ? npSorted().map(n => {
+      const sub = n.t.split("\n").filter(l => l.trim())[1];
+      return `<button class="np-item${n.id === NPS.sel ? " sel" : ""}" type="button" data-npi="${n.id}"><b>${escapeHTML(npTitle(n))}</b><span>${npWhen(n.u)}${n.s.length ? ` ${ico("i-pen")}` : ""}${sub ? ` · ${escapeHTML(sub.trim())}` : ""}</span></button>`;
+    }).join("") : `<p class="np-empty">Aún no tienes notas.</p>`);
+  }
+  function renderNP() {
+    const n = npCur(), W = $("#np-wrap");
+    $("#np-count").textContent = NP.length ? `${NP.length} ${NP.length === 1 ? "nota" : "notas"}` : "";
+    W.classList.toggle("editing", !!n);
+    W.innerHTML = `<div class="np-list" id="np-list">${npListHTML()}</div><div class="np-ed">${n ? `
+      <div class="np-bar"><div class="np-l"><button class="np-back" type="button" data-np="back">${ico("i-chev-l")}Notas</button><div class="seg"><button type="button" data-npm="texto" class="${NPS.mode === "texto" ? "sel" : ""}">Texto</button><button type="button" data-npm="mano" class="${NPS.mode === "mano" ? "sel" : ""}">A mano</button></div>
+        <div class="np-tools" id="np-tools"${NPS.mode === "mano" ? "" : " hidden"}>${INK.map((c, i) => `<button class="np-sw${NPS.tool === "pen" && NPS.color === i ? " sel" : ""}" type="button" data-npc="${i}" style="background:${c}" aria-label="Tinta ${["negra", "azul", "roja", "verde"][i]}"></button>`).join("")}
+          <button class="ib${NPS.tool === "erase" ? " sel" : ""}" type="button" data-np="erase" aria-label="Borrador de trazos">${ico("i-eraser")}</button><button class="ib" type="button" data-np="undo" aria-label="Deshacer">${ico("i-undo")}</button><button class="chip-btn" type="button" data-np="clear">Limpiar hoja</button></div></div>
+        <div class="np-r"><span class="np-date">${npWhen(n.u)}</span><button class="ib" type="button" data-np="del" aria-label="Borrar nota">${ico("i-trash")}</button></div></div>
+      <textarea class="np-text" id="np-text" placeholder="Escribe aquí: pendientes de la guardia, dudas para estudiar, datos de un paciente sin nombre…"${NPS.mode === "texto" ? "" : " hidden"}>${escapeHTML(n.t)}</textarea>
+      <div class="np-paper" id="np-paper"${NPS.mode === "mano" ? "" : " hidden"}><div class="np-sheet${NPS.tool === "erase" ? " erase" : ""}" id="np-sheet"><canvas id="np-cv"></canvas></div><p class="np-hint">Escribe con el S Pen. Con el dedo desplazas la hoja; si no usas el S Pen, el dedo también escribe.</p></div>`
+      : `<div class="np-empty" style="margin:auto">Elige una nota o crea una nueva.</div>`}</div>`;
+    if (n && NPS.mode === "mano") requestAnimationFrame(inkSize);
+  }
+  function npRefreshList() { const L = $("#np-list"); if (L) { const st = L.scrollTop; L.innerHTML = npListHTML(); L.scrollTop = st; } $("#np-count").textContent = `${NP.length} ${NP.length === 1 ? "nota" : "notas"}`; }
+  function npTouch() { const n = npCur(); if (!n) return; n.u = new Date().toISOString(); npSave(); npRefreshList(); const d = $(".np-date"); if (d) d.textContent = npWhen(n.u); }
+  npv.addEventListener("input", e => { if (e.target.id === "np-text") { const n = npCur(); if (n) { n.t = e.target.value; npTouch(); } } });
+  npv.addEventListener("click", e => {
+    const it = e.target.closest("[data-npi]"); if (it) { npSave(true); NPS.sel = it.dataset.npi; NPS.undo = []; NPS.armDel = 0; return renderNP(); }
+    const m = e.target.closest("[data-npm]"); if (m) { NPS.mode = m.dataset.npm; return renderNP(); }
+    const c = e.target.closest("[data-npc]"); if (c) { NPS.color = +c.dataset.npc; NPS.tool = "pen"; return renderNP(); }
+    const b = e.target.closest("[data-np]"); if (!b) return; const a = b.dataset.np, n = npCur();
+    if (a === "new") return npNew();
+    if (a === "back") { npSave(true); NPS.sel = null; return renderNP(); }
+    if (!n) return;
+    if (a === "erase") { NPS.tool = NPS.tool === "erase" ? "pen" : "erase"; return renderNP(); }
+    if (a === "undo") { if (!NPS.undo.length) return toast("No hay nada que deshacer", "i-pen"); n.s = NPS.undo.pop(); inkDraw(); return npTouch(); }
+    if (a === "clear") { if (!n.s.length) return; NPS.undo.push(n.s.slice()); n.s = []; inkDraw(); npTouch(); return toast("Hoja limpia. Puedes deshacerlo", "i-pen"); }
+    if (a === "del") {
+      if (Date.now() - NPS.armDel > 3000) { NPS.armDel = Date.now(); return toast("Toca otra vez el bote para borrar esta nota", "i-trash"); }
+      NP.splice(NP.indexOf(n), 1); NPS.armDel = 0; NPS.sel = innerWidth > 760 && NP.length ? npSorted()[0].id : null; npSave(true); renderNP(); toast("Nota borrada", "i-trash");
+    }
+  });
+
+  /* Tinta: trazos guardados como vectores para poder deshacer y borrar trazo por trazo */
+  let inkCtx = null, inkK = 1, inkStroke = null, inkPan = null;
+  function inkSize() {
+    const cv = $("#np-cv"); if (!cv) return; const w = cv.clientWidth; if (!w) return;
+    const dpr = window.devicePixelRatio || 1; cv.width = Math.round(w * dpr); cv.height = Math.round(w * 1.4 * dpr);
+    inkCtx = cv.getContext("2d"); inkK = w / 1000 * dpr; inkDraw();
+  }
+  function inkSeg(s, i) {
+    const p = s.p, x0 = p[i - 3], y0 = p[i - 2], x1 = p[i], y1 = p[i + 1], pr = (p[i + 2] + p[i - 1]) / 200;
+    inkCtx.lineWidth = s.w * (.35 + pr * 1.1); inkCtx.beginPath(); inkCtx.moveTo(x0, y0); inkCtx.lineTo(x1, y1); inkCtx.stroke();
+  }
+  function inkStrokeDraw(s) {
+    inkCtx.strokeStyle = INK[s.c] || INK[0]; inkCtx.fillStyle = INK[s.c] || INK[0];
+    if (s.p.length === 3) { inkCtx.beginPath(); inkCtx.arc(s.p[0], s.p[1], s.w * .6, 0, 7); inkCtx.fill(); return; }
+    for (let i = 3; i < s.p.length; i += 3) inkSeg(s, i);
+  }
+  function inkDraw() {
+    if (!inkCtx) return; const cv = inkCtx.canvas, n = npCur();
+    inkCtx.setTransform(1, 0, 0, 1, 0, 0); inkCtx.clearRect(0, 0, cv.width, cv.height);
+    inkCtx.setTransform(inkK, 0, 0, inkK, 0, 0); inkCtx.lineCap = "round"; inkCtx.lineJoin = "round";
+    if (n) n.s.forEach(inkStrokeDraw);
+  }
+  const inkPt = (e, cv) => { const r = cv.getBoundingClientRect(); return [Math.round((e.clientX - r.left) / r.width * 1000), Math.round((e.clientY - r.top) / r.width * 1000), Math.round((e.pointerType === "pen" ? (e.pressure || .5) : .5) * 100)]; };
+  function inkErase(e, cv) {
+    const n = npCur(), [x, y] = inkPt(e, cv), keep = n.s.filter(s => { for (let i = 0; i < s.p.length; i += 3) if (Math.hypot(s.p[i] - x, s.p[i + 1] - y) < 14) return false; return true; });
+    if (keep.length !== n.s.length) { n.s = keep; inkDraw(); }
+  }
+  npv.addEventListener("pointerdown", e => {
+    const cv = e.target.closest("#np-cv"); if (!cv || !npCur()) return;
+    if (e.pointerType === "pen") NPS.penSeen = true;
+    if (e.pointerType === "touch" && NPS.penSeen) { inkPan = { y: e.clientY, x: e.clientX, top: $("#np-paper").scrollTop, left: $("#np-paper").scrollLeft }; return; }
+    e.preventDefault(); try { cv.setPointerCapture(e.pointerId); } catch (err) {}
+    const n = npCur(); NPS.undo.push(n.s.slice()); if (NPS.undo.length > 40) NPS.undo.shift();
+    const eraser = NPS.tool === "erase" || (e.buttons & 32);
+    if (eraser) { inkStroke = { erase: true }; return inkErase(e, cv); }
+    inkStroke = { c: NPS.color, w: 4.2, p: inkPt(e, cv) }; n.s.push(inkStroke);
+    inkCtx.strokeStyle = INK[NPS.color]; inkCtx.fillStyle = INK[NPS.color];
+  });
+  npv.addEventListener("pointermove", e => {
+    if (inkPan) { const P = $("#np-paper"); P.scrollTop = inkPan.top - (e.clientY - inkPan.y); return; }
+    if (!inkStroke) return; const cv = $("#np-cv"); if (!cv) return;
+    const evs = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+    for (const ev of (evs.length ? evs : [e])) {
+      if (inkStroke.erase) { inkErase(ev, cv); continue; }
+      const [x, y, pr] = inkPt(ev, cv), p = inkStroke.p; if (Math.hypot(x - p[p.length - 3], y - p[p.length - 2]) < 1.5) continue;
+      p.push(x, y, pr); inkSeg(inkStroke, p.length - 3);
+    }
+  });
+  function inkEnd() {
+    if (inkPan) { inkPan = null; return; }
+    if (!inkStroke) return; const s = inkStroke; inkStroke = null;
+    if (!s.erase && s.p.length === 3) inkStrokeDraw(s);
+    if (s.erase && NPS.undo.length && NPS.undo[NPS.undo.length - 1].length === npCur().s.length) NPS.undo.pop();
+    npTouch();
+  }
+  npv.addEventListener("pointerup", inkEnd); npv.addEventListener("pointercancel", inkEnd);
+  let inkRsT; addEventListener("resize", () => { clearTimeout(inkRsT); inkRsT = setTimeout(() => { if (npv.classList.contains("on") && NPS.mode === "mano") inkSize(); }, 150); });
 
   /* Pantalla completa junto al modo oscuro */
   function toggleFull() { try { if (document.fullscreenElement) document.exitFullscreen().catch(() => {}); else root.requestFullscreen().catch(() => openSheet("full")); } catch (err) { openSheet("full"); } }
