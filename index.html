@@ -1241,6 +1241,78 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   body.printing #print { display: block !important; }
   body.printing #print .paper { box-shadow: none; transform: none; animation: none; padding: 0; font-size: 12pt; }
 }
+
+/* ===== Láminas y figuras ===== */
+.fig { margin: 6px 0 0; display: flex; flex-direction: column; gap: 10px; max-width: var(--rd-w, 60ch); }
+.fig-img { display: block; border-radius: 18px; overflow: hidden; background: #fff; box-shadow: 0 1px 0 var(--hair), 0 8px 24px rgba(0,0,0,.06); transition: transform .35s var(--spring); cursor: zoom-in; }
+.fig-img:active { transform: scale(.985); }
+.fig-img img { display: block; width: 100%; height: auto; }
+.fig figcaption { font-size: 15px; line-height: 1.4; color: var(--ink); }
+.fig figcaption small { display: block; margin-top: 4px; font-size: 12px; color: var(--ink-3); line-height: 1.35; }
+.fig figcaption a { color: var(--link); }
+.reading .fig figcaption { font-size: calc(var(--rd-size, 19px) * .8); }
+#t-fig:empty { display: none; }
+.lam-grid { width: min(1000px, 100%); display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.lam-card { display: flex; flex-direction: column; border-radius: 24px; background: var(--surface); overflow: hidden; text-align: left; transition: transform .35s var(--spring), box-shadow .25s; animation: nodeIn .55s var(--ease) both; -webkit-touch-callout: none; }
+.lam-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+.lam-card:active { transform: scale(.97); }
+.lam-thumb { display: grid; place-items: center; aspect-ratio: 4 / 3; background: #fff; overflow: hidden; }
+.lam-mini { position: relative; width: 100%; transition: transform .6s var(--ease); }
+.lam-mini img { display: block; width: 100%; height: auto; }
+.lam-mini .lb { border-radius: 3px; box-shadow: none; }
+.lam-card:hover .lam-mini { transform: scale(1.04); }
+.lam-tx { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px 16px; }
+.lam-tx b { font-size: 17px; font-weight: 600; }
+.lam-tx > span { font-size: 14px; color: var(--ink-2); }
+.lam-meta { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 6px; }
+.lam-meta i { font-style: normal; font-size: 12px; padding: 3px 9px; border-radius: 980px; background: var(--surface-2); color: var(--ink-2); }
+.lam-meta em { font-style: normal; font-size: 12px; color: var(--link); margin-left: auto; }
+.lv-wrap { --lv-off: 300px; width: min(1100px, 100%); display: flex; flex-direction: column; gap: 14px; }
+.lv-bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.lv-tools { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.lv-scroll { max-height: calc(100vh - var(--lv-off) + 12px); max-height: calc(100dvh - var(--lv-off) + 12px); overflow: auto; border-radius: 20px; background: #fff; box-shadow: 0 1px 0 var(--hair); -webkit-overflow-scrolling: touch; }
+.lv-stage { position: relative; margin: 0 auto; transition: width .35s var(--ease); user-select: none; -webkit-user-select: none; }
+.lv-stage img { display: block; width: 100%; height: auto; pointer-events: none; }
+.lv-stage.editar { touch-action: none; cursor: crosshair; }
+.lb { position: absolute; border-radius: 6px; display: grid; place-items: center; transition: background .25s, box-shadow .25s, transform .3s var(--spring); }
+.lb.mask { background: #fff; }
+.lb.hid { background: linear-gradient(160deg, #5ab0ff, #0071e3); box-shadow: 0 2px 6px rgba(0,113,227,.35); cursor: pointer; }
+.lb.hid i { font-style: normal; color: #fff; font-weight: 700; font-size: clamp(10px, 1.4vw, 15px); line-height: 1; }
+.lb.hid:hover { transform: scale(1.04); }
+.lb.cur { animation: lbPulse 1.1s ease-in-out infinite; background: linear-gradient(160deg, #ffb340, #ff9500); box-shadow: 0 0 0 3px rgba(255,149,0,.35); }
+@keyframes lbPulse { 50% { box-shadow: 0 0 0 7px rgba(255,149,0,.12); } }
+.lb.off { background: rgba(255,255,255,.0); }
+.lb.shown { background: #fff; animation: lbIn .35s var(--spring); z-index: 2; }
+@keyframes lbIn { from { transform: scale(.85); opacity: 0; } to { transform: none; opacity: 1; } }
+.lb em { font-style: normal; font-size: clamp(9px, 1.15vw, 14px); font-weight: 600; color: #1d1d1f; line-height: 1.1; text-align: center; padding: 0 3px; overflow: hidden; }
+.lb.shown em { position: absolute; left: 0; top: 50%; transform: translateY(-50%); white-space: nowrap; background: #fff; color: #0058b8; padding: 3px 7px; border-radius: 7px; font-size: clamp(11px, 1.25vw, 14px); box-shadow: inset 0 0 0 2px #0071e3, 0 4px 12px rgba(0,0,0,.12); }
+.lb.shown.rt em { left: auto; right: 0; }
+.lb.shown.ok em { color: #1b6b2f; box-shadow: inset 0 0 0 2px #248a3d, 0 4px 12px rgba(0,0,0,.12); }
+.lb.shown.ko em { color: #b0000f; box-shadow: inset 0 0 0 2px #d70015, 0 4px 12px rgba(0,0,0,.12); }
+.lb.ed { background: rgba(240,246,255,.96); box-shadow: inset 0 0 0 1.5px var(--primary); cursor: move; }
+.lb.ed em { color: #0058b8; font-size: clamp(9px, 1.05vw, 13px); white-space: nowrap; text-overflow: ellipsis; max-width: 100%; }
+.lb.ed.sel { background: #e3efff; box-shadow: inset 0 0 0 2.5px var(--primary); z-index: 2; }
+.lb.ghost { background: rgba(255,149,0,.18); box-shadow: inset 0 0 0 2px #ff9500; }
+.lh { position: absolute; right: -9px; bottom: -9px; width: 18px; height: 18px; border-radius: 50%; background: var(--primary); border: 3px solid #fff; cursor: nwse-resize; }
+.lv-panel { min-height: 64px; border-radius: 20px; background: var(--surface); padding: 14px 16px; display: flex; flex-direction: column; justify-content: center; }
+.lv-panel.nudge { animation: shake .4s ease; }
+.lv-hint { margin: 0; color: var(--ink-2); font-size: 15px; text-align: center; }
+.lv-ask { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; animation: nodeIn .4s var(--ease); }
+.lv-ask b { font-family: var(--f-display); font-size: 22px; }
+.lv-type { display: flex; flex-direction: column; gap: 8px; }
+.lv-row { display: flex; gap: 8px; }
+.lv-row .inp { flex: 1; min-width: 0; }
+.lv-fb { margin: 0; font-size: 16px; }
+.lv-fb.ok { color: #248a3d; } .lv-fb.ko { color: #d70015; }
+.lv-fb b { color: var(--ink); }
+.lv-sum { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; position: relative; }
+.lv-sum > b { font-family: var(--f-display); font-size: 34px; }
+.lv-sum > span { color: var(--ink-2); }
+.lv-cred { margin: 0; font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+.lv-cred a { color: var(--link); }
+.fz-wrap { width: min(1200px, 100%); background: #fff; border-radius: 18px; overflow: auto; touch-action: pan-x pan-y pinch-zoom; }
+.fz-wrap img { display: block; width: 100%; height: auto; }
+@media (max-width: 560px) { .lv-wrap { --lv-off: 360px; } .lv-ask b { font-size: 19px; } }
 </style>
 </head>
 <body>
@@ -1356,6 +1428,9 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
       <path d="M10 36 h-4" stroke="#9c9ca6" stroke-width="3" stroke-linecap="round"/>
       <rect x="16" y="29" width="22" height="4" rx="2" fill="#fff" opacity=".7"/>
     </symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="3"/><circle cx="9" cy="10" r="1.8"/><path d="M20.5 16l-5-5-8.5 8"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
     <symbol id="i-butterfly" viewBox="0 0 24 24"><path d="M12 7v10M12 9.5C10.5 6.5 6 5 4.6 7.2 3.4 9.3 5 13.6 8 14.6c1.7.6 3.2 0 4-1.4M12 9.5c1.5-3 6-4.5 7.4-2.3 1.2 2.1-.4 6.4-3.4 7.4-1.7.6-3.2 0-4-1.4"/></symbol>
     <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3.5l7 2.6v5.4c0 4.5-3 7.9-7 9-4-1.1-7-4.5-7-9V6.1z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
     <symbol id="i-lungs" viewBox="0 0 24 24"><path d="M12 4v7.5M12 11c-.8 1-1.8 1.5-2.8 1.6M12 11c.8 1 1.8 1.5 2.8 1.6"/><path d="M8.6 7.2C6.2 7.2 4 11 4 15.3c0 2.2 1.2 3.7 3 3.7 2 0 3-1.5 3-4V9.6c0-1.4-.5-2.4-1.4-2.4zM15.4 7.2c2.4 0 4.6 3.8 4.6 8.1 0 2.2-1.2 3.7-3 3.7-2 0-3-1.5-3-4V9.6c0-1.4.5-2.4 1.4-2.4z"/></symbol>
@@ -1496,6 +1571,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
             <button class="tool" type="button" data-sheet="downloads"><svg class="ico"><use href="#i-down"/></svg><b>Sin internet</b><span>Toda la app guardada en tu tablet.</span></button>
             <button class="tool" type="button" data-sheet="backup"><svg class="ico"><use href="#i-backup"/></svg><b>Respaldo</b><span>Copia y restaura tu avance.</span></button>
             <button class="tool" type="button" data-act="kit"><svg class="ico"><use href="#i-kit"/></svg><b>Kit de guardia</b><span>Lo urgente, a un toque.</span></button>
+            <button class="tool" type="button" data-act="lams"><svg class="ico"><use href="#i-image"/></svg><b>Láminas para tapar</b><span>Anatomía de OpenStax: toca, escribe o edita.</span></button>
             <button class="tool" type="button" data-act="sunday"><svg class="ico"><use href="#i-sum"/></svg><b>Revisión del domingo</b><span>Cinco minutos para cerrar la semana.</span></button>
             <button class="tool" type="button" data-sheet="bitacora"><svg class="ico"><use href="#i-log"/></svg><b>Bitácora de la consulta</b><span>Lo que viste, ligado a su tema.</span></button>
             <button class="tool" type="button" data-act="sync"><svg class="ico"><use href="#i-sync"/></svg><b>Copiar para sincronizar</b><span>Tu avance listo para pegarme en el chat.</span></button>
@@ -1571,6 +1647,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
           <div class="section-head rv"><h2>Lee, toca y resalta.</h2><p>Toca una palabra subrayada para ver su definición. Selecciona una frase para resaltarla.</p></div>
           <div class="reading readable rv" id="reading" data-where="">
             <p id="readable"></p>
+            <div id="t-fig"></div>
             <div class="read-foot"><span class="hint">Lo que resaltes se guarda en Mis notas.</span><button class="chip-btn" type="button" id="btn-aa" data-aa>Aa · Lectura cómoda</button></div>
           </div>
         </div>
@@ -1707,6 +1784,16 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
 <div class="ovl" id="modv" role="dialog" aria-modal="true" aria-label="Módulo">
   <div class="ovl-top"><button class="close" type="button" data-ovl-close>Cerrar</button><span class="t" id="mv-title">Módulo</span><span class="r" id="mv-step"></span></div>
   <div class="ovl-body"><div class="mv-wrap" id="mv-body"></div></div>
+</div>
+
+<div class="ovl" id="lamv" role="dialog" aria-modal="true" aria-label="Láminas">
+  <div class="ovl-top"><button class="close" type="button" data-ovl-close>Cerrar</button><span class="t" id="lv-title">Láminas</span><span class="r" id="lv-right"></span></div>
+  <div class="ovl-body" id="lv-body"></div>
+</div>
+
+<div class="ovl" id="figz" role="dialog" aria-modal="true" aria-label="Figura ampliada">
+  <div class="ovl-top"><button class="close" type="button" data-ovl-close>Cerrar</button><span class="t" id="fz-title">Figura</span><span class="r"></span></div>
+  <div class="ovl-body" id="fz-body"></div>
 </div>
 
 <div class="ovl" id="flash" role="dialog" aria-modal="true" aria-label="Tarjetas de memoria">
@@ -2796,6 +2883,46 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     sources: ["cdcnh", "jam15", "who68", "uspsdm", "uspsha", "uspsob", "uspsst", "nom015", "ada26"],
     related: [["Diabetes tipo 2", "dm2"], ["Obesidad y dislipidemia", "obdl"], ["Pruebas diagnósticas", 2], ["Vacunación", 3]]
   };
+  /* ===== Láminas para tapar y figuras (OpenStax) ===== */
+  const OS_BOOK = "https://openstax.org/details/books/anatomy-and-physiology-2e";
+  const OS_CRED = (sec, mod) => `Ilustración: OpenStax, Anatomía y Fisiología 2.ª edición, sección ${sec}. Licencia Creative Commons Reconocimiento-NoComercial-CompartirIgual 4.0.${mod ? " " + mod : ""}`;
+  /* Recuadros en pixeles de la imagen: [x0, y0, x1, y1, respuesta, otras respuestas aceptadas] */
+  const LAM = {
+    endocrino: { t: "Sistema endocrino", s: "Vista general de las glándulas", img: "img/lam-endocrino.jpg", w: 1300, h: 1213, tids: ["tir", "dm2"], cred: OS_CRED("17.1"),
+      masks: [[748, 290, 858, 323]],
+      b: [[492, 4, 632, 29, "Glándula pineal", ["pineal", "epifisis"]], [960, 123, 1126, 148, "Hipotálamo"], [961, 179, 1124, 204, "Hipófisis", ["glandula pituitaria", "pituitaria"]],
+        [0, 449, 93, 474, "Timo"], [1080, 318, 1273, 374, "Cartílago tiroides de la laringe", ["cartilago tiroides"]], [1080, 402, 1237, 427, "Glándula tiroides", ["tiroides"]],
+        [1081, 451, 1298, 539, "Glándulas paratiroides", ["paratiroides"]], [1080, 560, 1175, 580, "Tráquea"], [808, 651, 982, 676, "Glándulas suprarrenales", ["suprarrenales", "adrenales", "glandulas adrenales"]],
+        [810, 761, 918, 781, "Páncreas"], [810, 858, 885, 878, "Útero"], [809, 945, 1000, 970, "Ovarios"], [808, 1087, 964, 1112, "Testículos"]] },
+    tiroides: { t: "Tiroides y paratiroides", s: "Vistas anterior y posterior", img: "img/lam-tiroides.jpg", w: 737, h: 930, tids: ["tir"], cred: OS_CRED("17.4", "Modificada: se retiró la micrografía y los subtítulos."),
+      b: [[9, 8, 102, 26, "Hueso hioides", ["hioides"]], [529, 104, 667, 122, "Cartílago tiroides"], [9, 149, 139, 188, "Arteria tiroidea superior"], [529, 191, 645, 230, "Istmo de la tiroides", ["istmo"]],
+        [9, 319, 145, 354, "Arterias carótidas comunes", ["carotidas comunes", "carotida comun"]], [529, 343, 595, 357, "Tráquea"], [9, 531, 102, 549, "Hueso hioides", ["hioides"]], [529, 557, 667, 575, "Cartílago tiroides"],
+        [9, 617, 143, 635, "Cartílago cricoides"], [9, 697, 136, 736, "Glándulas paratiroides izquierdas", ["paratiroides izquierdas", "paratiroides"]], [529, 688, 670, 727, "Glándulas paratiroides derechas", ["paratiroides derechas", "paratiroides"]],
+        [9, 785, 162, 824, "Arteria tiroidea inferior izquierda", ["tiroidea inferior izquierda", "arteria tiroidea inferior"]], [529, 785, 694, 824, "Arteria tiroidea inferior derecha", ["tiroidea inferior derecha", "arteria tiroidea inferior"]],
+        [10, 866, 174, 905, "Arteria subclavia izquierda", ["subclavia izquierda", "subclavia"]], [529, 866, 706, 905, "Arteria subclavia derecha", ["subclavia derecha", "subclavia"]]] },
+    hipofisis: { t: "Hipotálamo e hipófisis", s: "Corte sagital del encéfalo", img: "img/lam-hipofisis.jpg", w: 1077, h: 626, tids: ["tir"], cred: OS_CRED("17.3"),
+      b: [[943, 349, 1033, 365, "Tálamo"], [944, 399, 1075, 418, "Hipotálamo"], [944, 456, 1060, 472, "Infundíbulo", ["tallo hipofisario"]],
+        [184, 481, 336, 501, "Adenohipófisis", ["hipofisis anterior", "lobulo anterior"]], [185, 535, 345, 555, "Neurohipófisis", ["hipofisis posterior", "lobulo posterior"]]] },
+    pancreas: { t: "Páncreas", s: "Porción exocrina y endocrina", img: "img/lam-pancreas.jpg", w: 1500, h: 757, tids: ["dm2"], cred: OS_CRED("17.9", "Modificada: se retiró la micrografía del islote."),
+      b: [[563, 3, 721, 28, "Arteria esplénica"], [699, 47, 824, 163, "Hormonas pancreáticas: insulina y glucagón", ["insulina y glucagon", "insulina glucagon", "hormonas pancreaticas"]], [1270, 57, 1348, 82, "Bazo"],
+        [193, 94, 298, 113, "Páncreas"], [866, 123, 1049, 142, "Islotes pancreáticos", ["islotes de langerhans", "islotes"]], [1, 243, 164, 299, "Conducto biliar", ["conducto cistico", "via biliar"]],
+        [1, 348, 207, 368, "Colédoco", ["conducto coledoco"]], [222, 408, 322, 460, "Enzimas digestivas"], [0, 573, 161, 623, "Duodeno"],
+        [140, 665, 315, 685, "Conducto pancreático", ["conducto de wirsung", "wirsung"]], [441, 665, 632, 752, "Células acinares", ["acinos", "celulas acinares"]]] }
+  };
+  /* Figuras dentro de las lecturas */
+  const FIG = {
+    glucosa: { src: "img/fig-glucosa.jpg", w: 1100, h: 1546, cap: "Regulación de la glucosa: con hiperglucemia, las células beta liberan insulina; con hipoglucemia, las células alfa liberan glucagón.", cred: OS_CRED("17.9", "Modificada: rótulos traducidos al español.") },
+    cetonas: { src: "img/fig-cetonas.jpg", w: 1100, h: 945, cap: "Oxidación de los cuerpos cetónicos: el beta-hidroxibutirato pasa a acetoacetato y después a acetil coenzima A, que entra al ciclo de Krebs. El beta-hidroxibutirato es el que se mide en la cetoacidosis.", cred: OS_CRED("24.3", "Modificada: rótulos traducidos al español.") },
+    quilomicron: { src: "img/fig-quilomicron.jpg", w: 1000, h: 799, cap: "Estructura de una lipoproteína (quilomicrón): núcleo de triglicéridos y colesterol, cubierta de fosfolípidos y apolipoproteínas.", cred: OS_CRED("24.3", "Modificada: rótulos traducidos al español.") },
+    ateroma: { src: "img/fig-aterosclerosis.jpg", w: 668, h: 655, cap: "Aterosclerosis: la placa de lípidos y calcio estrecha la luz de la arteria y altera el flujo.", cred: OS_CRED("20.2", "Modificada: se retiró la micrografía y se tradujeron los rótulos al español.") },
+    tiroides: { src: "img/fig-retro-tiroides.jpg", w: 1000, h: 978, cap: "Retroalimentación negativa: la hormona liberadora de tirotropina estimula la tirotropina, que estimula la liberación de triyodotironina y tiroxina; estas, a su vez, frenan a ambas.", cred: OS_CRED("17.4", "Modificada: rótulos traducidos al español.") },
+    presion: { src: "img/fig-presion.jpg", w: 1200, h: 748, cap: "Medición de la presión con esfigmomanómetro: la sistólica corresponde al primer ruido de Korotkoff y la diastólica, al último.", cred: OS_CRED("20.2", "Modificada: rótulos traducidos al español.") }
+  };
+  TOP.dm2.fig = "glucosa"; TOP.dm2.mods[4].fig = "cetonas";
+  TOP.obdl.mods[3].fig = "quilomicron"; TOP.obdl.mods[4].fig = "ateroma";
+  TOP.tir.mods[0].fig = "tiroides"; TOP.prev.mods[3].fig = "presion";
+  Object.values(TOP).forEach(t => { t.lams = Object.keys(LAM).filter(k => LAM[k].tids.includes(t.id)); });
+
   /* ===== Datos derivados del contenido ===== */
   const GLOSS = {};
   Object.values(TOP).forEach(t => Object.assign(GLOSS, t.gloss || {}));
@@ -2907,6 +3034,8 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
   ENT["s-hz-clinica"] = { g: "Salud", icon: "i-shield", title: "Clínica y laboratorios", sub: "Salud", kw: "glucosa colesterol triglicéridos alarmas revaluación", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("clinica"), 450); } };
   ENT["s-hz-ajustes"] = { g: "Salud", icon: "i-gear", title: "Ajustes de salud", sub: "Salud", kw: "metas calorías presupuesto horarios porción", open: () => { nav(["home", "health"]); setTimeout(() => showPanel("ajustes"), 450); } };
   ENT["s-hz-peso"] = { g: "Salud", icon: "i-scale", title: "Registrar peso", sub: "Salud", kw: "peso kilogramos báscula", open: () => $("#btn-kg").click() };
+  Object.keys(LAM).forEach(k => { const L = LAM[k]; ENT["lam-" + k] = { g: "Láminas", icon: "i-image", title: L.t, sub: "Lámina para tapar · " + L.tids.map(t => TOP[t].short).join(", "), desc: L.s + ". " + L.b.map(b => b[4]).join(", ") + ".", kw: L.b.map(b => b[4]).join(" ") + " anatomia lamina", open: () => { openLams(); openLam(k); } }; });
+  ENT["h-laminas"] = { g: "Herramientas", icon: "i-image", title: "Láminas para tapar", sub: "Anatomía con OpenStax", kw: "anatomia atlas imagenes", open: () => openLams() };
   ENT["h-kit"] = { g: "Herramientas", icon: "i-kit", title: "Kit de guardia", sub: "Herramienta", kw: "urgencias", open: () => openKit() };
   ENT["h-sunday"] = { g: "Herramientas", icon: "i-sum", title: "Revisión del domingo", sub: "Herramienta", open: () => openSunday() };
   ENT["h-bitacora"] = { g: "Herramientas", icon: "i-log", title: "Bitácora de la consulta", sub: "Herramienta", kw: "pacientes consulta escuela", open: () => openSheet("bitacora") };
@@ -3017,7 +3146,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     h += `</div><div class="sb-group"><span class="sb-label">Herramientas</span>`;
     const due = dueReviews().length;
     h += it('data-act="flash"', "i-cards", "Tarjetas de memoria") + it('data-act="exam"', "i-exam", "Modo examen") + it('data-sheet="compare"', "i-compare", "Comparador de fármacos") +
-      it('data-sheet="quick"', "i-bolt", "Repaso rápido", due ? `<span class="count">${due}</span>` : "") + it('data-act="timer"', "i-timer", "Temporizador") + it('data-act="kit"', "i-kit", "Kit de guardia") +
+      it('data-sheet="quick"', "i-bolt", "Repaso rápido", due ? `<span class="count">${due}</span>` : "") + it('data-act="lams"', "i-image", "Láminas") + it('data-act="timer"', "i-timer", "Temporizador") + it('data-act="kit"', "i-kit", "Kit de guardia") +
       it('data-sheet="bitacora"', "i-log", "Bitácora de la consulta") + it('data-sheet="dominio"', "i-target", "Mapa de dominio") + it('data-sheet="progress"', "i-chart", "Mi avance") +
       it('data-sheet="summary"', "i-sum", "Resumen semanal") + it('data-act="sunday"', "i-sum", "Revisión del domingo") + it('data-act="sync"', "i-sync", "Copiar para sincronizar") +
       it('data-sheet="downloads"', "i-down", "Sin internet") + it('data-sheet="backup"', "i-backup", "Respaldo");
@@ -3080,6 +3209,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     ["i-case", "Casos clínicos", `${t.cases.length} casos paso a paso.`, 'data-act="scroll:t-casos"'],
     ["i-branch", "Algoritmos", `${t.algos.length} camino${t.algos.length > 1 ? "s" : ""} de sí o no.`, 'data-act="scroll:t-algo"'],
     ["i-cards", "Tarjetas de memoria", `${t.cards.length} tarjetas.`, 'data-act="flash:topic"'],
+    (t.lams || []).length ? ["i-image", "Láminas", `${t.lams.length} lámina${t.lams.length > 1 ? "s" : ""} para tapar y nombrar.`, `data-act="lams:${t.id}"`] : null,
     t.cmp ? ["i-compare", "Comparador", "Dos fármacos lado a lado.", `data-sheet="compare" data-arg="${t.cmp.join(",")}"`] : null,
     ["i-exam", "Examen del tema", `${BANK.filter(q => q.tid === t.id).length} preguntas con retroalimentación.`, `data-act="exam:${t.id}"`],
     ["i-note", "Mis notas", "Resaltados y apuntes.", 'data-sheet="notes"'],
@@ -3096,7 +3226,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     $("#t-arte").hidden = !!t.scene; $("#t-escena").hidden = !t.scene;
     $("#apartados").innerHTML = APT(t).map(([ic, ti, d, attr]) => `<button class="apt" type="button" ${attr}>${ico(ic)}<b>${ti}</b><span>${ti === "Mis notas" ? `<span id="notes-count">${S.notes.length} notas</span>` : d}</span></button>`).join("");
     $("#t-apt-p").textContent = `${APT(t).length} apartados. Mantén presionado un módulo para guardarlo en favoritos.`;
-    const rd = $("#readable"); rd.innerHTML = rich(t.intro); $("#reading").dataset.where = id + ":intro"; restoreHL($("#reading"));
+    const rd = $("#readable"); rd.innerHTML = rich(t.intro); $("#reading").dataset.where = id + ":intro"; restoreHL($("#reading")); $("#t-fig").innerHTML = t.fig ? figHTML(t.fig) : "";
     algoI = 0; renderAlgoTabs(); algoReset();
     $("#t-cases").innerHTML = t.cases.map((c, i) => `<button class="row" type="button" data-sheet="case" data-arg="${id}:${i}" data-peek="k-${id}-${i}"><div class="ic">${ico("i-case")}</div><div class="tx"><b>${c.t}</b><span>${c.lvl} · ${c.steps.length} decisiones</span></div>${ico("i-chev", "ico chev")}</button>`).join("");
     $("#t-src").innerHTML = `<span class="w-title">${ico("i-link")}Fuentes</span>` + t.sources.map(k => `<a class="src" href="${SRC[k][2]}" target="_blank" rel="noopener"><b>${SRC[k][0]}</b><span>${SRC[k][1]}</span></a>`).join("");
@@ -3369,7 +3499,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
       case "quick": {
         const due = dueReviews();
         return head("i-bolt", "Repaso rápido", due.length ? `Tienes ${due.length} pregunta${due.length === 1 ? "" : "s"} para repasar hoy. Si la aciertas, regresa en 3 y luego en 7 días; si la fallas, mañana.` : (S.review.length ? `Tienes ${S.review.length} pregunta${S.review.length === 1 ? "" : "s"} programada${S.review.length === 1 ? "" : "s"} para los próximos días.` : "Sin preguntas falladas todavía. Cada pregunta que falles o marques como dudosa regresará a los 1, 3 y 7 días.")) +
-          (due.length ? `<button class="btn-primary" type="button" data-act="exam:rev">Repasar ${due.length} ahora</button>` : "") +
+          (() => { const dq = due.filter(r => !r.id.startsWith("lam:")).length, dl = due.length - dq; return (dq || dl) ? `<div class="btn-row">${dq ? `<button class="btn-primary" type="button" data-act="exam:rev">Repasar ${dq} pregunta${dq === 1 ? "" : "s"}</button>` : ""}${dl ? `<button class="btn-secondary" type="button" data-act="lams:rev">Repasar ${dl} en láminas</button>` : ""}</div>` : ""; })() +
           (S.review.length ? `<div class="list">${S.review.map(r => `<div class="row" style="cursor:default"><div class="ic">${ico("i-bolt")}</div><div class="tx"><b>${escapeHTML(r.q)}</b><span>${r.tag} · ${r.kind} · ${r.due <= t ? "toca hoy" : "regresa el " + longDate(parse(r.due))}</span></div><span></span></div>`).join("")}</div>` : "") + done;
       }
       case "summary": return head("i-sum", "Resumen semanal", "Cada domingo llega solo, como el tiempo en pantalla.") +
@@ -3584,6 +3714,8 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     if (a.startsWith("exam:")) { closeSheet(); return openExam(a.slice(5)); }
     if (a.startsWith("sim:")) { closeSheet(); return openExam("w" + a.slice(4)); }
     if (a === "kit") { closeSheet(); return openKit(); }
+    if (a === "lams") { closeSheet(); return openLams(); }
+    if (a.startsWith("lams:")) { closeSheet(); return openLams(a.slice(5)); }
     if (a === "sunday") { closeSheet(); return openSunday(); }
     if (a === "breathe") { closeSheet(); return openBreathe(); }
     if (a === "sync") return copyText(syncText(), "Copiado. Pégalo en el chat y actualizo Notion y tu Google Calendar");
@@ -3955,7 +4087,7 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     mv = { tid, n, qs: BANK.filter(q => q.tid === tid && q.mod === n).map(mixOpts), ans: [] };
     $("#mv-step").textContent = `${n} de ${t.mods.length}`; $("#mv-title").textContent = t.short;
     $("#mv-body").innerHTML = `<div class="mv-head"><span class="eyebrow">${t.title} · Módulo ${n}</span><h2>${m.t}.</h2><p class="mv-s">${m.s}</p><span class="chip ${st}" id="mv-chip">${LBL[st]}</span></div>
-      <article class="reading readable mv-read" data-where="${tid}:${n}">${rich(m.body)}<div class="read-foot"><span class="hint">Toca lo subrayado para ver su definición. Selecciona una frase para resaltarla.</span><button class="chip-btn" type="button" data-aa>Aa · Lectura cómoda</button></div></article>
+      <article class="reading readable mv-read" data-where="${tid}:${n}">${rich(m.body)}${m.fig ? figHTML(m.fig) : ""}<div class="read-foot"><span class="hint">Toca lo subrayado para ver su definición. Selecciona una frase para resaltarla.</span><button class="chip-btn" type="button" data-aa>Aa · Lectura cómoda</button></div></article>
       <div class="mv-keys"><span class="w-title">${ico("i-check")}Lo esencial</span><ul class="dots">${m.keys.map(k => `<li>${rich(k)}</li>`).join("")}</ul></div>
       ${call("Perla", m.pearl)}<div class="mv-src">${m.src.map(srcLink).join("")}</div>
       <div class="mv-quiz" id="mv-quiz"><div class="section-head"><h2>Para aprobar.</h2><p>${mv.qs.length} preguntas. Con ${mvNeed(mv.qs.length)} correctas el módulo queda aprobado.</p></div><div id="mv-qs">${mv.qs.map(qCard).join("")}</div><div id="mv-res"></div></div>
@@ -4064,6 +4196,171 @@ ol.steps li::marker { color: var(--link); font-weight: 600; }
     }
     if (e.target.closest("#ex-next")) { ex.i++; renderExam(); return; }
     if (e.target.closest("#ex-again")) openExam(exScope === "rev" ? null : exScope);
+  });
+
+  /* ===== Láminas para tapar ===== */
+  const lamv = $("#lamv"), figz = $("#figz"); let LV = null, lvFilter = null;
+  S.lamEdit = store.get("lamEdit", {}); S.lamStat = store.get("lamStat", {});
+  const lamBoxes = id => S.lamEdit[id] || LAM[id].b;
+  const lamKey = (id, i) => `lam:${id}:${i}`;
+  const lamDone = id => { const st = S.lamStat[id] || {}; return lamBoxes(id).filter((_, i) => st[i] && st[i].ok).length; };
+  const lamDue = id => dueReviews().filter(r => r.id.startsWith(`lam:${id}:`)).map(r => +r.id.split(":")[2]);
+  const normA = s => norm(String(s)).replace(/\(.*?\)/g, " ").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+  function lev(a, b) { const m = a.length, n = b.length; if (!m) return n; if (!n) return m; let p = Array.from({ length: n + 1 }, (_, j) => j); for (let i = 1; i <= m; i++) { const c = [i]; for (let j = 1; j <= n; j++) c[j] = Math.min(p[j] + 1, c[j - 1] + 1, p[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); p = c; } return p[n]; }
+  const okAns = (inp, box) => { const x = normA(inp); if (!x) return false; return [box[4], ...(box[5] || [])].some(a => { const y = normA(a); return x === y || (y.length > 5 && lev(x, y) <= (y.length > 12 ? 3 : 2)); }); };
+  const figHTML = k => { const f = FIG[k]; return f ? `<figure class="fig" style="max-width:${f.h > f.w * 1.1 ? 480 : 660}px"><button type="button" class="fig-img" data-zoom="${k}" aria-label="Ampliar figura"><img src="${f.src}" width="${f.w}" height="${f.h}" loading="lazy" alt="${escapeHTML(f.cap)}"></button><figcaption>${f.cap}<small>${f.cred} <a href="${OS_BOOK}" target="_blank" rel="noopener">Ver el libro</a></small></figcaption></figure>` : ""; };
+
+  /* Galería */
+  function openLams(filter) {
+    closeAllTransient(); LV = null; lvFilter = filter || null;
+    const ids = Object.keys(LAM).filter(id => !filter ? true : filter === "rev" ? lamDue(id).length : LAM[id].tids.includes(filter));
+    $("#lv-title").textContent = filter === "rev" ? "Láminas por repasar" : filter ? `Láminas · ${TOP[filter].short}` : "Láminas";
+    $("#lv-right").textContent = "";
+    $("#lv-body").innerHTML = `<div class="hero" style="gap:10px"><span class="eyebrow">Láminas para tapar</span><h2>${filter === "rev" ? "Lo que fallaste, otra vez." : "Nombra cada estructura."}</h2><p class="w-sub">Ilustraciones de OpenStax con los nombres tapados. Toca para descubrir, escribe la respuesta o edita los recuadros con el S Pen.</p></div>
+      <div class="lam-grid">${ids.map((id, n) => { const L = LAM[id], tot = lamBoxes(id).length, due = lamDue(id).length;
+        return `<button class="lam-card" type="button" data-lam="${id}" data-peek="lam-${id}" style="animation-delay:${n * 50}ms"><span class="lam-thumb"><span class="lam-mini"><img src="${L.img}" alt="" loading="lazy">${(L.masks || []).map(m => `<span class="lb mask" style="${boxPos(m, 0, L)}"></span>`).join("")}${lamBoxes(id).map(b => `<span class="lb hid" style="${boxPos(b, 3, L)}"></span>`).join("")}</span></span><span class="lam-tx"><b>${L.t}</b><span>${L.s}</span><span class="lam-meta">${L.tids.map(t => `<i>${TOP[t].short}</i>`).join("")}<em>${due ? `${due} por repasar` : `${lamDone(id)} de ${tot} dominadas`}</em></span></span></button>`; }).join("") || `<p class="w-sub">No hay láminas por repasar hoy.</p>`}</div>`;
+    lamv.classList.add("on"); $(".ovl-body", lamv).scrollTop = 0;
+  }
+
+  /* Visor */
+  function openLam(id, opts = {}) {
+    if (!LAM[id]) return;
+    if (!lamv.classList.contains("on")) { closeAllTransient(); lamv.classList.add("on"); }
+    const only = opts.only || (lvFilter === "rev" ? lamDue(id) : null);
+    LV = { id, mode: opts.mode || (LV && LV.id === id ? LV.mode : "tocar"), rev: new Set(), marks: {}, only, zoom: 1, sel: -1, order: [], cur: 0, ans: {} };
+    renderLam();
+  }
+  const stW = () => { const L = LAM[LV.id]; return `calc(min(100%, (100dvh - var(--lv-off)) * ${(L.w / L.h).toFixed(4)}) * ${LV.zoom})`; };
+  const lvBoxesIdx = () => { const B = lamBoxes(LV.id); return B.map((_, i) => i).filter(i => !LV.only || LV.only.includes(i)); };
+  function renderLam() {
+    const L = LAM[LV.id], B = lamBoxes(LV.id);
+    $("#lv-title").textContent = L.t;
+    if (LV.mode === "escribir" && !LV.order.length) { LV.order = shuffle(lvBoxesIdx()); LV.cur = 0; }
+    $("#lv-body").innerHTML = `<div class="lv-wrap"><div class="lv-bar"><div class="seg" id="lv-mode">${[["tocar", "Tocar"], ["escribir", "Escribir"], ["editar", "Editar"]].map(([k, l]) => `<button type="button" data-lvm="${k}" class="${LV.mode === k ? "sel" : ""}">${l}</button>`).join("")}</div>
+      <div class="lv-tools"><button class="ib" type="button" data-lz="-1" aria-label="Alejar">${ico("i-minus")}</button><button class="ib" type="button" data-lz="1" aria-label="Acercar">${ico("i-plus")}</button>${LV.mode === "tocar" ? `<button class="chip-btn" type="button" data-lv="all">Mostrar todo</button><button class="chip-btn" type="button" data-lv="hide">Tapar todo</button>` : LV.mode === "editar" ? `<button class="chip-btn" type="button" data-lv="restore">Restaurar originales</button>` : ""}</div></div>
+      <div class="lv-scroll" id="lv-scroll"><div class="lv-stage ${LV.mode}" id="lv-stage" style="width:${stW()}"><img src="${L.img}" alt="${L.t}" draggable="false">${(L.masks || []).map(m => `<span class="lb mask" style="${boxPos(m)}"></span>`).join("")}${B.map((b, i) => boxHTML(b, i)).join("")}</div></div>
+      <div class="lv-panel" id="lv-panel"></div><p class="lv-cred">${L.cred} <a href="${OS_BOOK}" target="_blank" rel="noopener">Ver el libro</a></p></div>`;
+    paintPanel(); paintCount();
+  }
+  const boxPos = (b, pad = 0, L = LAM[LV.id]) => { const x0 = Math.max(0, b[0] - pad), y0 = Math.max(0, b[1] - pad), x1 = Math.min(L.w, b[2] + pad), y1 = Math.min(L.h, b[3] + pad); return `left:${(x0 / L.w * 100).toFixed(3)}%;top:${(y0 / L.h * 100).toFixed(3)}%;width:${((x1 - x0) / L.w * 100).toFixed(3)}%;height:${((y1 - y0) / L.h * 100).toFixed(3)}%`; };
+  function boxHTML(b, i) {
+    const inSet = !LV.only || LV.only.includes(i), m = LV.mode, mk = LV.marks[i], an = LV.ans[i];
+    let cls = "lb";
+    if (m === "editar") cls += " ed" + (LV.sel === i ? " sel" : "");
+    else if (!inSet) cls += " off";
+    else if (m === "tocar") cls += LV.rev.has(i) ? " shown" + (mk === true ? " ok" : mk === false ? " ko" : "") : " hid";
+    else cls += an ? " shown " + (an.ok ? "ok" : "ko") : LV.order[LV.cur] === i ? " hid cur" : " hid";
+    const lbl = m === "editar" ? (b[4] || "Sin respuesta") : (cls.includes("shown") ? b[4] : "");
+    if (cls.includes("shown") && (b[0] + b[2]) / 2 > LAM[LV.id].w * .55) cls += " rt";
+    return `<span class="${cls}" data-b="${i}" style="${boxPos(b, m === "editar" ? 0 : 3)}">${m === "tocar" && cls.includes("hid") ? "<i>?</i>" : ""}${lbl ? `<em>${escapeHTML(lbl)}</em>` : ""}${m === "editar" && LV.sel === i ? `<u class="lh" data-h="${i}"></u>` : ""}</span>`;
+  }
+  function repaintBoxes() { const st = $("#lv-stage"); if (!st) return; $$(".lb:not(.mask)", st).forEach(e => e.remove()); st.insertAdjacentHTML("beforeend", lamBoxes(LV.id).map((b, i) => boxHTML(b, i)).join("")); paintCount(); }
+  function paintCount() {
+    const idx = lvBoxesIdx(), tot = idx.length;
+    if (LV.mode === "tocar") { const ok = idx.filter(i => LV.marks[i] === true).length, mk = idx.filter(i => LV.marks[i] !== undefined).length; $("#lv-right").textContent = `${mk} de ${tot}${mk ? ` · ${ok} sabías` : ""}`; }
+    else if (LV.mode === "escribir") { const done = Object.keys(LV.ans).length, ok = Object.values(LV.ans).filter(a => a.ok).length; $("#lv-right").textContent = `${done} de ${tot}${done ? ` · ${ok} correctas` : ""}`; }
+    else $("#lv-right").textContent = `${lamBoxes(LV.id).length} recuadros`;
+  }
+  function paintPanel() {
+    const P = $("#lv-panel"), B = lamBoxes(LV.id), idx = lvBoxesIdx();
+    if (LV.mode === "tocar") {
+      const last = LV.last, all = idx.every(i => LV.marks[i] !== undefined);
+      if (all) return lamSummary(P, idx.filter(i => LV.marks[i] === true).length, idx.length);
+      P.innerHTML = last != null && LV.marks[last] === undefined ? `<div class="lv-ask"><b>${escapeHTML(B[last][4])}</b><div class="btn-pair"><button class="btn-secondary" type="button" data-mk="0">No la sabía</button><button class="btn-primary" type="button" data-mk="1">La sabía</button></div></div>` : `<p class="lv-hint">Toca un recuadro para descubrir el nombre. Después marca si lo sabías.</p>`;
+    } else if (LV.mode === "escribir") {
+      if (LV.cur >= LV.order.length) return lamSummary(P, Object.values(LV.ans).filter(a => a.ok).length, LV.order.length);
+      const i = LV.order[LV.cur], a = LV.ans[i];
+      P.innerHTML = `<div class="lv-type"><span class="eyebrow">Estructura ${LV.cur + 1} de ${LV.order.length} · la que parpadea</span><div class="lv-row"><input class="inp" id="lv-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Escribe el nombre" ${a ? "disabled" : ""} value="${a ? escapeHTML(a.txt) : ""}"><button class="btn-primary" type="button" id="lv-go">${a ? "Siguiente" : "Comprobar"}</button></div>${a ? `<p class="lv-fb ${a.ok ? "ok" : "ko"}">${a.ok ? "Correcto" : "No exactamente"}: <b>${escapeHTML(B[i][4])}</b></p>` : `<button class="link" type="button" id="lv-skip">No la sé</button>`}</div>`;
+      if (!a) setTimeout(() => { const el = $("#lv-in"); if (el) el.focus({ preventScroll: true }); }, 60);
+      focusBox(i);
+    } else {
+      const s = LV.sel;
+      P.innerHTML = s >= 0 && B[s] ? `<div class="lv-type"><span class="eyebrow">Recuadro seleccionado · arrástralo o cambia su tamaño desde la esquina</span><div class="lv-row"><input class="inp" id="lv-ans" type="text" autocomplete="off" placeholder="Respuesta en español" value="${escapeHTML(B[s][4] || "")}"><button class="btn-secondary" type="button" id="lv-del">Borrar</button></div></div>` : `<p class="lv-hint">Con el S Pen o el dedo, arrastra sobre un nombre para crear un recuadro. Toca uno existente para moverlo, cambiar su tamaño o su respuesta.</p>`;
+    }
+  }
+  function lamSummary(P, ok, tot) {
+    const st = S.lamStat[LV.id] = S.lamStat[LV.id] || {};
+    Object.entries(LV.mode === "tocar" ? LV.marks : Object.fromEntries(Object.entries(LV.ans).map(([k, a]) => [k, a.ok]))).forEach(([k, v]) => { st[k] = { ok: v, d: realToday() }; });
+    store.set("lamStat", S.lamStat);
+    P.innerHTML = `<div class="lv-sum"><b>${ok} de ${tot}</b><span>${ok === tot ? "¡Todas! Esta lámina va dominada." : "Las que fallaste ya están en Repaso rápido."}</span><div class="btn-pair"><button class="btn-primary" type="button" id="lv-again">Otra vez</button><button class="btn-secondary" type="button" id="lv-gal">Ver todas las láminas</button></div></div>`;
+    if (ok === tot && tot > 2) celebrate(P.querySelector(".lv-sum"));
+    renderSidebar(); renderNotifs(); checkAch();
+  }
+  function focusBox(i) {
+    const sc = $("#lv-scroll"), el = $(`.lb[data-b="${i}"]`, sc); if (!sc || !el) return;
+    const r = el.getBoundingClientRect(), b = sc.getBoundingClientRect();
+    if (r.top < b.top || r.bottom > b.bottom || r.left < b.left || r.right > b.right) sc.scrollTo({ top: sc.scrollTop + r.top - b.top - b.height / 2 + r.height / 2, left: sc.scrollLeft + r.left - b.left - b.width / 2 + r.width / 2, behavior: reduce ? "auto" : "smooth" });
+  }
+  function markBox(i, ok) {
+    const L = LAM[LV.id], b = lamBoxes(LV.id)[i], id = lamKey(LV.id, i);
+    countAnswer(ok);
+    if (S.review.some(r => r.id === id)) reviewAnswered(id, ok);
+    else if (!ok) addReview({ id, q: `Lámina «${L.t}»: ${b[4]}`, tag: "Anatomía", tid: L.tids[0] });
+    paintRings();
+    if (!ok) { try { navigator.vibrate && navigator.vibrate([30, 40, 30]); } catch (e) {} }
+  }
+  function checkType(skip) {
+    const i = LV.order[LV.cur], b = lamBoxes(LV.id)[i], txt = skip ? "" : ($("#lv-in")?.value || ""), ok = !skip && okAns(txt, b);
+    LV.ans[i] = { ok, txt }; markBox(i, ok); repaintBoxes(); paintPanel();
+    setTimeout(() => { const g = $("#lv-go"); if (g) g.focus({ preventScroll: true }); }, 30);
+  }
+  function saveEdits(B) { S.lamEdit[LV.id] = B; store.set("lamEdit", S.lamEdit); }
+
+  lamv.addEventListener("click", e => {
+    const c = e.target.closest("[data-lam]"); if (c) return openLam(c.dataset.lam);
+    if (!LV) return;
+    const m = e.target.closest("[data-lvm]"); if (m) { LV.mode = m.dataset.lvm; LV.order = []; LV.ans = {}; LV.rev = new Set(); LV.marks = {}; LV.last = null; LV.sel = -1; return renderLam(); }
+    const z = e.target.closest("[data-lz]"); if (z) { LV.zoom = Math.max(1, Math.min(3, LV.zoom + (+z.dataset.lz) * .5)); $("#lv-stage").style.width = stW(); return; }
+    const a = e.target.closest("[data-lv]");
+    if (a) { const k = a.dataset.lv;
+      if (k === "all") lvBoxesIdx().forEach(i => LV.rev.add(i));
+      if (k === "hide") { LV.rev = new Set(); LV.marks = {}; LV.last = null; }
+      if (k === "restore") { delete S.lamEdit[LV.id]; store.set("lamEdit", S.lamEdit); LV.sel = -1; toast("Recuadros originales restaurados", "i-reset"); }
+      repaintBoxes(); return paintPanel(); }
+    const mk = e.target.closest("[data-mk]"); if (mk && LV.last != null) { const ok = mk.dataset.mk === "1"; LV.marks[LV.last] = ok; markBox(LV.last, ok); LV.last = null; repaintBoxes(); return paintPanel(); }
+    if (e.target.closest("#lv-go")) { if (LV.ans[LV.order[LV.cur]]) { LV.cur++; repaintBoxes(); paintPanel(); } else checkType(false); return; }
+    if (e.target.closest("#lv-skip")) return checkType(true);
+    if (e.target.closest("#lv-again")) { const keepOnly = LV.only; LV.rev = new Set(); LV.marks = {}; LV.ans = {}; LV.order = []; LV.last = null; LV.only = keepOnly; return renderLam(); }
+    if (e.target.closest("#lv-gal")) return openLams(lvFilter === "rev" ? "rev" : lvFilter);
+    if (e.target.closest("#lv-del")) { const B = lamBoxes(LV.id).slice(); B.splice(LV.sel, 1); saveEdits(B); LV.sel = -1; repaintBoxes(); return paintPanel(); }
+    const bx = e.target.closest(".lb[data-b]");
+    if (bx && LV.mode === "tocar" && bx.classList.contains("hid")) { const i = +bx.dataset.b; if (LV.last != null && LV.marks[LV.last] === undefined) { const P = $("#lv-panel"); P.classList.remove("nudge"); void P.offsetWidth; P.classList.add("nudge"); return; } LV.rev.add(i); LV.last = i; repaintBoxes(); paintPanel(); try { navigator.vibrate && navigator.vibrate(6); } catch (err) {} }
+  });
+  lamv.addEventListener("keydown", e => { if (e.key === "Enter" && LV && LV.mode === "escribir") { e.preventDefault(); $("#lv-go")?.click(); } });
+  lamv.addEventListener("input", e => { if (e.target.id === "lv-ans" && LV && LV.sel >= 0) { const B = lamBoxes(LV.id).map(b => b.slice()); B[LV.sel][4] = e.target.value; B[LV.sel][5] = []; saveEdits(B); const em = $(`.lb[data-b="${LV.sel}"] em`); if (em) em.textContent = e.target.value || "Sin respuesta"; } });
+
+  /* Editar con el S Pen: dibujar, mover y cambiar tamaño */
+  let ed = null;
+  const toImg = (st, e) => { const r = st.getBoundingClientRect(), L = LAM[LV.id]; return [Math.max(0, Math.min(L.w, (e.clientX - r.left) / r.width * L.w)), Math.max(0, Math.min(L.h, (e.clientY - r.top) / r.height * L.h))]; };
+  lamv.addEventListener("pointerdown", e => {
+    if (!LV || LV.mode !== "editar") return; const st = e.target.closest("#lv-stage"); if (!st) return;
+    e.preventDefault(); const p = toImg(st, e), B = lamBoxes(LV.id).map(b => b.slice()), h = e.target.closest(".lh"), bx = e.target.closest(".lb[data-b]");
+    if (h) ed = { kind: "size", i: +h.dataset.h, B, st };
+    else if (bx) { const i = +bx.dataset.b; if (LV.sel !== i) { LV.sel = i; repaintBoxes(); paintPanel(); } ed = { kind: "move", i, B, st, p0: p, b0: B[i].slice() }; }
+    else { ed = { kind: "draw", B, st, p0: p }; LV.sel = -1; }
+    try { st.setPointerCapture(e.pointerId); } catch (err) {}
+  });
+  lamv.addEventListener("pointermove", e => {
+    if (!ed) return; const p = toImg(ed.st, e), B = ed.B;
+    if (ed.kind === "move") { const dx = p[0] - ed.p0[0], dy = p[1] - ed.p0[1]; B[ed.i][0] = ed.b0[0] + dx; B[ed.i][1] = ed.b0[1] + dy; B[ed.i][2] = ed.b0[2] + dx; B[ed.i][3] = ed.b0[3] + dy; }
+    else if (ed.kind === "size") { B[ed.i][2] = Math.max(B[ed.i][0] + 12, p[0]); B[ed.i][3] = Math.max(B[ed.i][1] + 8, p[1]); }
+    else { ed.p1 = p; let g = $("#lv-ghost"); if (!g) { g = document.createElement("span"); g.id = "lv-ghost"; g.className = "lb ghost"; ed.st.appendChild(g); } g.setAttribute("style", boxPos([Math.min(ed.p0[0], p[0]), Math.min(ed.p0[1], p[1]), Math.max(ed.p0[0], p[0]), Math.max(ed.p0[1], p[1])])); return; }
+    const el = $(`.lb[data-b="${ed.i}"]`, ed.st); if (el) el.setAttribute("style", boxPos(B[ed.i]));
+  });
+  const edEnd = () => {
+    if (!ed) return; const d = ed; ed = null; $("#lv-ghost")?.remove();
+    if (d.kind === "draw") { if (!d.p1) return paintPanel(); const r = [Math.min(d.p0[0], d.p1[0]), Math.min(d.p0[1], d.p1[1]), Math.max(d.p0[0], d.p1[0]), Math.max(d.p0[1], d.p1[1])]; if (r[2] - r[0] < 10 || r[3] - r[1] < 8) return paintPanel(); d.B.push([...r.map(Math.round), "", []]); LV.sel = d.B.length - 1; }
+    d.B.forEach(b => { for (let k = 0; k < 4; k++) b[k] = Math.round(b[k]); });
+    saveEdits(d.B); repaintBoxes(); paintPanel();
+    if (d.kind === "draw") setTimeout(() => $("#lv-ans")?.focus(), 40);
+  };
+  lamv.addEventListener("pointerup", edEnd); lamv.addEventListener("pointercancel", edEnd);
+
+  /* Ampliar figuras */
+  document.addEventListener("click", e => {
+    const z = e.target.closest("[data-zoom]"); if (!z) return; const f = FIG[z.dataset.zoom]; if (!f) return;
+    $("#fz-body").innerHTML = `<div class="fz-wrap"><img src="${f.src}" alt="${escapeHTML(f.cap)}"></div><p class="lv-cred">${f.cap}<br>${f.cred}</p>`;
+    figz.classList.add("on");
   });
 
   /* Revelado al desplazar */
